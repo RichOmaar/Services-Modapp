@@ -1,9 +1,10 @@
 <?php
 
-require_once 'conexion.php';
+require_once 'connection.php';
 
 class modelLogin {
     public function mdlLogin ($login,$passLogin){
+
         $mdlLogin = new modelLogin();
         $exist = false;
 
@@ -14,12 +15,14 @@ class modelLogin {
             if(password_verify($passLogin,$data['password'])){
 
                 return $data;
+
             } else {
+
                 return false;
+
             }
 
         }
-
         return $exist;
     }
 
@@ -56,9 +59,15 @@ class modelLogin {
             $statement -> bindParam(':mail',$login);
 
             if(!$statement){
+
                return false;
+
            } else{
+
                $statement -> execute();
+               
+               return (count($statement -> fetchAll(PDO::FETCH_ASSOC)));
+
                return true;
            }
            
@@ -68,53 +77,40 @@ class modelLogin {
 
     public function mdlGetUserInfo($login) {
         
-        $array = NULL;
-
          $db = new Connection();
 
          $connection = $db -> get_connection();
 
          $sql = "SELECT user.id_user, user.fullname, user.username, user.mail, user.password FROM user WHERE user.mail = :mail";
 
-         if(!$sql){
+        $statement = $connection -> prepare($sql);
 
-            $sql = "SELECT user.id_user, user.fullname, user.username, user.mail, user.password FROM user WHERE user.mail = :username";
+        $statement -> bindParam(':mail',$login);
+
+        $answer = $statement -> execute();
+
+         
+        if($answer){
+
+            //return 'hola';
+            return ($statement -> fetchAll(PDO::FETCH_ASSOC));
+
+        } else{
+            
+            $sql = "SELECT user.id_user, user.fullname, user.username, user.mail, user.password FROM user WHERE user.username = :username";
 
             $statement = $connection -> prepare($sql);
-
+    
             $statement -> bindParam(':username',$login);
+    
+            $answer = $statement -> execute();
 
-            if(!$statement){
-               return false;
-           } else{
-               $statement -> execute();
-               
-               while ($result = $statement -> fetch()) {
-                   $array[] = $result;
-               }
+            if($answer){
 
-               return $array;
+                return ($statement -> fetchAll(PDO::FETCH_ASSOC));
 
             }
-
-        } else {
-            
-           $sql = "SELECT user.id_user, user.fullname, user.username, user.mail, user.password FROM user WHERE user.mail = :mail";
-
-           $statement = $connection -> prepare($sql);
-
-           $statement -> bindParam(':mail',$login);
-
-           if(!$statement){
-              return false;
-          } else{
-              $statement -> execute();
-              
-              return ($statement -> fetchAll(PDO::FETCH_ASSOC));
-            }
-
-            return $array;
-          }
+        }        
     }
 
     public static function mdlRegisterUser($fullname, $username, $mail, $password) {
@@ -123,9 +119,11 @@ class modelLogin {
 
         $connection = $db -> get_connection();
 
+        print_r($connection);
+
         $hash = password_hash($password,PASSWORD_BCRYPT);
 
-        $sql = "INSERT INTO user (fullname, username, mail, 'password') VALUES (:fullname, :username, :mail, :password)";
+        $sql = "INSERT INTO user (fullname, username, mail, password) VALUES (:fullname, :username, :mail, :password)";
 
         $statement = $connection -> prepare($sql);
 

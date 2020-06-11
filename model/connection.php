@@ -6,11 +6,11 @@ class Connection {
         $pass = "root";
         $host = "localhost";
         $db = "modapp";
-        $connection = new PDO("mysql:host=$host; dbname=$db;", $user, $pass);
+        $connection = new PDO("mysql:host={$host}; dbname={$db};", $user, $pass);
         return ($connection);
     }
 }
-
+//ESto lo ten
 class Response implements JsonSerializable {
     protected $status;  
     protected $message; 
