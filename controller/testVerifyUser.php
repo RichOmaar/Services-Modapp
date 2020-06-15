@@ -2,10 +2,6 @@
 
 include '../model/login.model.php';
 
-/*
-$login = $_POST['login'];
-*/
-
 $login = 'richOmaar';
 
 if(strlen($login) > 0){

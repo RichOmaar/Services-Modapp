@@ -3,16 +3,24 @@
 require_once 'connection.php';
 
 class modelLogin {
+
     public function mdlLogin ($login,$passLogin){
 
         $mdlLogin = new modelLogin();
-        $exist = false;
 
-        if($mdlLogin -> mdlVerifyUser($login)){
+        //s$exist = false;
+
+        $response = $mdlLogin -> mdlVerifyUser($login);
+
+        if(!$response){
+
+            return false;
+
+        }else{
 
             $data = $mdlLogin -> mdlGetUserInfo($login);
 
-            if(password_verify($passLogin,$data['password'])){
+            if(password_verify($passLogin,$data[0]['password'])){
 
                 return $data;
 
@@ -21,9 +29,9 @@ class modelLogin {
                 return false;
 
             }
-
         }
-        return $exist;
+
+        //return $exist;
     }
 
     public function mdlVerifyUser($login){
@@ -31,86 +39,106 @@ class modelLogin {
          $db = new Connection();
 
          $connection = $db -> get_connection();
+         //1.- El string en donde voy a buscar
+         //2.- El string que quiero bucar
+         //3.- Desde la posición donde quiero buscar (entero)
 
+         $at = strpos($login,'@',0);
 
-         $sql = "SELECT * FROM user WHERE user.mail = :mail";
+         //False en caso de que no haya un @ dentro de la cadena
+         //Retorna la posición en donde se encuentra el @
 
-         if(!$sql){
+         if($at === FALSE){
 
-             $sql = "SELECT * FROM user WHERE user.username = :username";
+            try{
 
-             $statement = $connection -> prepare($sql);
-
-             $statement -> bindParam(':username',$login);
-
-             if(!$statement){
-                return false;
-            } else{
+                $sql = "SELECT * FROM user WHERE user.username = :username";
+    
+                $statement = $connection -> prepare($sql);
+    
+                $statement -> bindParam(':username',$login);
+    
                 $statement -> execute();
-                return true;
-            }
+
+                return ($statement->rowCount() > 0) ?  $statement->fetchAll(PDO::FETCH_ASSOC) : false;
+    
+             }catch(PDOException $e){
+
+                echo $e -> getMessage();
+
+             }
 
          } else {
-             
-            $sql = "SELECT * FROM user WHERE user.mail = :mail";
 
-            $statement = $connection -> prepare($sql);
+            try{
 
-            $statement -> bindParam(':mail',$login);
+                $sql = "SELECT * FROM user WHERE user.mail = :mail";
+    
+                $statement = $connection -> prepare($sql);
+    
+                $statement -> bindParam(':mail',$login);
+    
+                $statement -> execute();
 
-            if(!$statement){
+                return ($statement->rowCount() > 0) ?  $statement->fetchAll(PDO::FETCH_ASSOC) : false;
 
-               return false;
+    
+             }catch(PDOException $e){
 
-           } else{
+                echo $e -> getMessage();
 
-               $statement -> execute();
-               
-               return (count($statement -> fetchAll(PDO::FETCH_ASSOC)));
-
-               return true;
-           }
-           
-         }
-
+             }
+         } 
     }
 
     public function mdlGetUserInfo($login) {
         
-         $db = new Connection();
+        $db = new Connection();
 
-         $connection = $db -> get_connection();
+        $connection = $db -> get_connection();
 
-         $sql = "SELECT user.id_user, user.fullname, user.username, user.mail, user.password FROM user WHERE user.mail = :mail";
+        $at = strpos($login,'@',0);
 
-        $statement = $connection -> prepare($sql);
+        if($at === FALSE){
 
-        $statement -> bindParam(':mail',$login);
+            try{
 
-        $answer = $statement -> execute();
-
-         
-        if($answer){
-
-            //return 'hola';
-            return ($statement -> fetchAll(PDO::FETCH_ASSOC));
-
-        } else{
-            
-            $sql = "SELECT user.id_user, user.fullname, user.username, user.mail, user.password FROM user WHERE user.username = :username";
-
-            $statement = $connection -> prepare($sql);
+                $sql = "SELECT user.id_user, user.fullname, user.username, user.mail, user.password FROM user WHERE user.username = :username";
     
-            $statement -> bindParam(':username',$login);
+                $statement = $connection -> prepare($sql);
     
-            $answer = $statement -> execute();
+                $statement -> bindParam(':username',$login);
+    
+                $statement -> execute();
 
-            if($answer){
+                return ($statement->rowCount() > 0) ?  $statement->fetchAll(PDO::FETCH_ASSOC) : false;
+    
+             }catch(PDOException $e){
 
-                return ($statement -> fetchAll(PDO::FETCH_ASSOC));
+                echo $e -> getMessage();
 
-            }
-        }        
+             }
+
+         } else {
+
+            try{
+
+                $sql = "SELECT user.id_user, user.fullname, user.username, user.mail, user.password FROM user WHERE user.mail = :mail";
+    
+                $statement = $connection -> prepare($sql);
+    
+                $statement -> bindParam(':mail',$login);
+    
+                $statement -> execute();
+
+                return ($statement->rowCount() > 0) ?  $statement->fetchAll(PDO::FETCH_ASSOC) : false;
+    
+             }catch(PDOException $e){
+
+                echo $e -> getMessage();
+
+             }
+         }         
     }
 
     public static function mdlRegisterUser($fullname, $username, $mail, $password) {
@@ -137,17 +165,9 @@ class modelLogin {
 
         $statement -> execute();
 
-        if($statement->rowCount() > 0){
+        return ($statement->rowCount() > 0) ? true : false;
 
-            return true;
-
-        } else {
-
-            return false;
-        }
     }
-
-    
 }
 
 ?>
