@@ -2,32 +2,48 @@
 
 include '../model/login.model.php';
 
-$login = 'juanomcam@gmail.com';
-$passLogin = 'Juanomar123';
-
-if(strlen($login) > 0 && strlen($passLogin) > 0){
+if ($_SERVER["REQUEST_METHOD"]=="POST") {
     
-    $start = new modelLogin();
+    if (isset($_POST['login']) && isset($_POST['passLogin'])) {
 
-    $data = $start -> mdlLogin($login, $passLogin);
+        /*
+        $login = 'juanomcam@gmail.com';
+        $passLogin = 'Juanomar123';
+        */
+        
+        $login = $_POST['login'];
+        $passLogin = $_POST['passLogin'];
 
-    if($data === false){
+        if(strlen($login) > 0 && strlen($passLogin) > 0){
+            
+            $start = new modelLogin();
 
-        $response = new Response(array('status' => Constants::BAD_RESPONSE, 'message' => 'Error'));
+            $data = $start -> mdlLogin($login, $passLogin);
+
+            if($data === false){
+
+                $response = new Response(array('status' => Constants::BAD_RESPONSE, 'message' => 'Error'));
+
+                echo json_encode($response, JSON_UNESCAPED_UNICODE); 
+                
+            } else{
+
+                $response = new Response(array('status' => Constants::OK_RESPONSE, 'message' => $data));
+
+                echo json_encode($response, JSON_UNESCAPED_UNICODE);
+            }
+
+        } else {  
+
+            $response = new Response(array('status' => Constants::BAD_RESPONSE, 'message' => Constants::BAD_RESPONSE_DESCRIPTION));
+
+            echo json_encode($response, JSON_UNESCAPED_UNICODE); 
+        }
+    } else {
+        
+        $response = new Response(array('status' => Constants::BAD_RESPONSE, 'message' => Constants::BAD_POST_RESPONSE));
 
         echo json_encode($response, JSON_UNESCAPED_UNICODE); 
-        
-    } else{
-
-        $response = new Response(array('status' => Constants::OK_RESPONSE, 'message' => $data));
-
-        echo json_encode($response, JSON_UNESCAPED_UNICODE);
     }
-
-} else {  
-
-    $response = new Response(array('status' => Constants::BAD_RESPONSE, 'message' => Constants::BAD_RESPONSE_DESCRIPTION));
-
-    echo json_encode($response, JSON_UNESCAPED_UNICODE); 
 }
 ?>

@@ -2,23 +2,37 @@
 
 include '../model/login.model.php';
 
-$login = 'richOmaar';
+if ($_SERVER["REQUEST_METHOD"]=="POST") {
 
-if(strlen($login) > 0){
+    if (isset($_POST['login'])) {
 
-    $verify = new modelLogin();
+        //$login = 'richOmaar';
+        
+        $login = $_POST['login'];
+        
 
-    $data = $verify -> mdlVerifyUser($login);
+        if(strlen($login) > 0){
 
-    $response = new Response(array('status' => Constants::OK_RESPONSE, 'message' => $data));
+            $verify = new modelLogin();
 
-    echo json_encode($response, JSON_UNESCAPED_UNICODE);
+            $data = $verify -> mdlVerifyUser($login);
 
-} else {
+            $response = new Response(array('status' => Constants::OK_RESPONSE, 'message' => $data));
 
-    $response = new Response(array('status' => Constants::BAD_RESPONSE, 'message' => Constants::BAD_RESPONSE_NO_USER_FOUND));
+            echo json_encode($response, JSON_UNESCAPED_UNICODE);
 
-    echo json_encode($response, JSON_UNESCAPED_UNICODE); 
+        } else {
 
+            $response = new Response(array('status' => Constants::BAD_RESPONSE, 'message' => Constants::BAD_RESPONSE_NO_USER_FOUND));
+
+            echo json_encode($response, JSON_UNESCAPED_UNICODE); 
+
+        }
+    } else {
+        
+        $response = new Response(array('status' => Constants::BAD_RESPONSE, 'message' => Constants::BAD_POST_RESPONSE));
+
+        echo json_encode($response, JSON_UNESCAPED_UNICODE); 
+    }
 }
 ?>
