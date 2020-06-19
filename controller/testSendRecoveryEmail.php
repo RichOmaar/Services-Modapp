@@ -1,9 +1,10 @@
 <?php
+
 include '../model/mail.model.php';
 
 //$mail = $_POST['mail'];
 
-$mail = 'pepe@gmail.com';
+$mail = 'omarnegocios0@gmail.com';
 
 if(strlen($mail) > 0){
     
@@ -20,16 +21,24 @@ if(strlen($mail) > 0){
 
         $message = 'http://localhost:8888/GitHub/Services-Modapp/view/passwordRecovery.php?mail='.$mail.' If you did not request the change, then ignore this message.';
 
-        echo ($subject);
-        echo ($mail);
-        echo ($message);
+        try{
 
-        $sendMail -> mdlSendEmail($mail,$subject,$message);
+        $response = modelMail::mdlSendEmail($mail,$subject,$message);
+        
+        //$response = $sendMail -> mdlSendEmail($mail,$subject,$message);
 
+        echo ($response);
+        
         $response = new Response(array('status' => Constants::OK_RESPONSE, 'message' => '¡Revisa tu bandeja de entrada o carpeta de no deseados para actualizar tu contraseña!'));
 
         echo json_encode($response, JSON_UNESCAPED_UNICODE);
-        
+
+        } catch(PDOException $e){
+
+            echo $e -> getMessage();
+
+        }
+
     } else {
         
         $response = new Response(array('status' => Constants::BAD_RESPONSE, 'message' => 'Primer if'));
