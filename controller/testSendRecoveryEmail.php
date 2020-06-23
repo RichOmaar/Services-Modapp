@@ -1,55 +1,66 @@
 <?php
+if ($_SERVER["REQUEST_METHOD"]=="POST") {
 
-include '../model/mail.model.php';
+    if (isset($_POST['fullname']) && isset($_POST['username']) && isset($_POST['mail']) && isset($_POST['password'])) {
+        include '../model/mail.model.php';
 
-//$mail = $_POST['mail'];
+        $mail = $_POST['mail'];
 
-$mail = 'omarnegocios0@gmail.com';
+        //$mail = 'omarnegocios0@gmail.com';
 
-if(strlen($mail) > 0){
-    
-    $checkEmail = new modelMail();
+        if(strlen($mail) > 0){
 
-    $data = $checkEmail -> mdlCheckMail($mail);
+        $checkEmail = new modelMail();
 
-    if($data[0]['mail'] == $mail){
+        $data = $checkEmail -> mdlCheckMail($mail);
 
-        $sendMail = new modelMail();
+            if($data[0]['mail'] == $mail){
 
-        $subject = 'Modapp - Recovery password';
+                $sendMail = new modelMail();
+
+                $subject = 'Modapp - Recovery password';
 
 
-        $message = 'http://localhost:8888/GitHub/Services-Modapp/view/passwordRecovery.php?mail='.$mail.' If you did not request the change, then ignore this message.';
+                $message = 'http://localhost:8888/GitHub/Services-Modapp/view/passwordRecovery.php?mail='.$mail.' If you did not request the change, then ignore this message.';
 
-        try{
+                try{
 
-        $response = modelMail::mdlSendEmail($mail,$subject,$message);
-        
-        //$response = $sendMail -> mdlSendEmail($mail,$subject,$message);
+                $response = modelMail::mdlSendEmail($mail,$subject,$message);
+                
+                //$response = $sendMail -> mdlSendEmail($mail,$subject,$message);
 
-        echo ($response);
-        
-        $response = new Response(array('status' => Constants::OK_RESPONSE, 'message' => '¡Revisa tu bandeja de entrada o carpeta de no deseados para actualizar tu contraseña!'));
+                echo ($response);
+                
+                $response = new Response(array('status' => Constants::OK_RESPONSE, 'message' => '¡Revisa tu bandeja de entrada o carpeta de no deseados para actualizar tu contraseña!'));
 
-        echo json_encode($response, JSON_UNESCAPED_UNICODE);
+                echo json_encode($response, JSON_UNESCAPED_UNICODE);
 
-        } catch(PDOException $e){
+                } catch(PDOException $e){
 
-            echo $e -> getMessage();
+                    echo $e -> getMessage();
 
+                }
+
+            } else {
+                
+                $response = new Response(array('status' => Constants::BAD_RESPONSE, 'message' => 'Primer if'));
+
+                echo json_encode($response, JSON_UNESCAPED_UNICODE); 
+            }
+
+        } else {
+            
+        $response = new Response(array('status' => Constants::BAD_RESPONSE, 'message' => Constants::BAD_RESPONSE));
+
+        echo json_encode($response, JSON_UNESCAPED_UNICODE); 
         }
 
     } else {
         
-        $response = new Response(array('status' => Constants::BAD_RESPONSE, 'message' => 'Primer if'));
-    
+        $response = new Response(array('status' => Constants::BAD_RESPONSE, 'message' => Constants::BAD_POST_RESPONSE));
+
         echo json_encode($response, JSON_UNESCAPED_UNICODE); 
     }
-} else {
-        
-    $response = new Response(array('status' => Constants::BAD_RESPONSE, 'message' => Constants::BAD_RESPONSE));
-
-    echo json_encode($response, JSON_UNESCAPED_UNICODE); 
 }
 
 

@@ -45,37 +45,7 @@ class modelMail {
         return ($statement -> rowCount() > 0) ? true : false;
 
     }
-/*
-    public function mdlSendEmail($correo,$subject,$message) {
-
-        $send = new PHPMailer;
-
-        $send->isSendMail();
-
-        $mail->SMTPDebug = 2;
-        $mail->Host = 'mail.legendarykicks.mx';
-        $mail->Port = '587';
-        $mail->SMTPAuth = true;
-        $mail->Userame = 'omar@legendarykicks.mx';
-        $mail->Password = 'Juandedios123';
-        $mail->setFrom('omar@legendarykicks.mx', 'Modapp');
-
-        $mail->addAddress($correo,'Modapp');
-        $mail->CharSet = 'UTF-8';
-        $mail->Subject = $subject;
-        $mail->Encoding = 'base64';
-
-        $mail->msgHTML($message);
-        $mail->AltBody = $message;
-
-        if(!$mail->send()){
-            return '{"error":"error"}';
-        } else {
-            return '{"success":"success"}';
-        }
-    }
-
-    */
+    
     public static function mdlSendEmail($correo,$subject,$message){
 
         //aquí va el html
