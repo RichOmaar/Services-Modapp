@@ -1,7 +1,8 @@
 <?php
 if ($_SERVER["REQUEST_METHOD"]=="POST") {
 
-    if (isset($_POST['fullname']) && isset($_POST['username']) && isset($_POST['mail']) && isset($_POST['password'])) {
+    if (isset($_POST['mail'])) {
+
         include '../model/mail.model.php';
 
         $mail = $_POST['mail'];
