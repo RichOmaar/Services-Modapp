@@ -88,6 +88,31 @@ if ($_SERVER["REQUEST_METHOD"]=="POST") {
 
             case 'updateAddress':
 
+                if(strlen($idUser) > 0){
+
+                    $user = new modelUser();
+                
+                    $data = $user -> mdlInfoAddress($idUser);
+                                
+                    if($data == false){
+                
+                        $response = new Response(array('status' => Constants::BAD_RESPONSE, 'message' => Constants::BAD_RESPONSE_NO_USER_FOUND));
+                
+                        echo json_encode($response, JSON_UNESCAPED_UNICODE); 
+
+                    } else {
+                
+                        
+
+                    }
+
+                } else {  
+                    
+                    $response = new Response(array('status' => Constants::BAD_RESPONSE, 'message' => Constants::BAD_RESPONSE_DESCRIPTION));
+                
+                    echo json_encode($response, JSON_UNESCAPED_UNICODE); 
+                }
+
             break;
 
             case 'deleteAddress':

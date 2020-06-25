@@ -76,7 +76,7 @@ class modelUser {
 
         $connection = $db -> get_connection();
 
-        $sql = "SELECT * FROM `user` WHERE id_user = :idUser";
+        $sql = "SELECT address.state, address.municipio, address.street, address.number_st, address.number_int, address.cp FROM address LEFT JOIN user ON address.id_address = user.id_address WHERE id_user = :idUser";
 
         $statement = $connection -> prepare($sql);
 
@@ -88,7 +88,7 @@ class modelUser {
 
     }
 
-    public function mdlUpdateAddress($idUser,$idAddress,$state,$municipio,$street,$number_st,$number_int,$cp) {
+    public function mdlUpdateAddress($idUser,$state,$municipio,$street,$number_st,$number_int,$cp) {
 
         $db =  new Connection();
 
@@ -98,7 +98,7 @@ class modelUser {
 
         $statement = $connection -> prepare($sql);
 
-        $statement -> bindParam(':state',$state);
+        $statement -> bindParam(':state', $state);
         
         $statement -> bindParam(':municipio',$municipio);
 
@@ -109,6 +109,10 @@ class modelUser {
         $statement -> bindParam(':number_int',$number_int);
 
         $statement -> bindParam(':cp',$cp);
+
+        $statement -> bindParam(':idUser',$idUser);
+
+        return ($statement -> rowCount() > 0) ? 'Entro aqui a true' : 'Entro al false';
 
     }
 }

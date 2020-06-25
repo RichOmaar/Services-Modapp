@@ -8,8 +8,8 @@ if ($_SERVER["REQUEST_METHOD"]=="POST") {
 
         /*
         $fullname = 'Juan Omar Camacho';
-        $username = 'richOmaar';
-        $mail = 'juanomcam@gmail.com';
+        $username = 'Omaar';
+        $mail = 'juan@gmail.com';
         $password = 'Juanomar123';
         */
         
@@ -20,20 +20,53 @@ if ($_SERVER["REQUEST_METHOD"]=="POST") {
         
 
         if(strlen($fullname) > 0 && strlen($username) > 0 && strlen($mail) > 0 && strlen($password) > 0){
-        
-            $register = new modelLogin();
 
-            $data = $register -> mdlRegisterUser($fullname, $username, $mail, $password);
+            $verifyUser = new modelLogin();
 
-            $response = new Response(array('status' => Constants::OK_RESPONSE, 'message' => $data));
+            $checkUsername = $verifyUser -> mdlVerifyUser($username);
 
-            echo json_encode($response, JSON_UNESCAPED_UNICODE);
+            echo json_encode ($checkUsername);
 
-        } else {  
+            if($check != false){
 
-            $response = new Response(array('status' => Constants::BAD_RESPONSE, 'message' => Constants::BAD_RESPONSE_DESCRIPTION));
+                echo json_encode($checkUsername);
+
+                $response = new Response(array('status' => Constants::BAD_RESPONSE, 'message' => 'The user already exist'));
+
+                echo json_encode($response, JSON_UNESCAPED_UNICODE);
+
+            } else {
+
+                $checkEmail = $verifyUser -> mdlVerifyUser($mail);
+
+                if($checkEmail === false){
+                    
+                    echo 'entro aqui';
+
+                    $register = new modelLogin();
+
+                    $data = $register -> mdlRegisterUser($fullname, $username, $mail, $password);
+
+                    $response = new Response(array('status' => Constants::OK_RESPONSE, 'message' => $data));
+
+                    echo json_encode($response, JSON_UNESCAPED_UNICODE);
+
+                } else {  
+
+                $response = new Response(array('status' => Constants::BAD_RESPONSE, 'message' => 'The email already exist'));
+
+                echo json_encode($response, JSON_UNESCAPED_UNICODE); 
+                }
+                
+                
+            }
+            
+        } else {
+
+            $response = new Response(array('status' => Constants::BAD_RESPONSE, 'message' => 'The user or password already exist 2'));
 
             echo json_encode($response, JSON_UNESCAPED_UNICODE); 
+
         }
     } else {
         
