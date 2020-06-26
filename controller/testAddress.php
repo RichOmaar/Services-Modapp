@@ -1,14 +1,16 @@
 <?php
+
+include '../model/address.model.php';
 include '../model/user.model.php';
 
 if ($_SERVER["REQUEST_METHOD"]=="POST") {
     
-    if (isset($_POST['idUser']) && isset($_POST['state']) && isset($_POST['municipio']) && isset($_POST['street']) && isset($_POST['number_st']) && isset($_POST['number_int']) && isset($_POST['cp']) && isset($_POST['action'])) {
+    if (isset($_POST['idUser']) && isset($_POST['action'])) {
 
         $idUser = $_POST['idUser'];
         $action = $_POST['action'];
 
-        switch('action'){
+        switch($action){
 
             case 'addAddress':
 
@@ -21,7 +23,7 @@ if ($_SERVER["REQUEST_METHOD"]=="POST") {
 
                 if(strlen($idUser) > 0 && strlen($state) > 0 && strlen($municipio) > 0 && strlen($street) > 0 && strlen($number_st) > 0 && strlen($cp) > 0){
 
-                    $addAddress = new modelUser();
+                    $addAddress = new modelAddress();
         
                     if($number_int == ''){
         
@@ -57,7 +59,7 @@ if ($_SERVER["REQUEST_METHOD"]=="POST") {
 
                 if(strlen($idUser) > 0){
 
-                    $user = new modelUser();
+                    $user = new modelAddress();
                 
                     $data = $user -> mdlInfoAddress($idUser);
                 
@@ -88,28 +90,54 @@ if ($_SERVER["REQUEST_METHOD"]=="POST") {
 
             case 'updateAddress':
 
-                if(strlen($idUser) > 0){
-
-                    $user = new modelUser();
-                
+                $state = ['state'];
+                $municipio = ['municipio'];
+                $street = ['street'];
+                $number_st = ['number_st'];
+                $number_int = ['number_int'];
+                $cp = ['cp'];
+                                
+                if(strlen($state) > 0 && strlen($municipio) > 0 && strlen($street) > 0 && strlen($number_st) > 0 && strlen($cp) > 0){
+        
+                    $user = new modelAddress();
+        
                     $data = $user -> mdlInfoAddress($idUser);
                                 
-                    if($data == false){
+                    if($data != false){
+        
+                        $update = new modelAddress();
+        
+                        $addres = $update -> mdlUpdateAddress($idUser,$state,$municipio,$street,$number_st,$number_int,$cp);
+        
+                        if($addres != false){
+                                
+        
+                            $response = new Response(array('status' => Constants::OK_RESPONSE, 'message' => $addres));
+                    
+                            echo json_encode($response, JSON_UNESCAPED_UNICODE);
+        
+                        } else {
+                    
+                            //$response = new Response(array('status' => Constants::BAD_RESPONSE, 'message' => Constants::BAD_RESPONSE_NO_USER_FOUND));
+        
+                            $response = new Response(array('status' => Constants::BAD_RESPONSE, 'message' => 'Estamos aqui'));
+        
+                            echo json_encode($response, JSON_UNESCAPED_UNICODE); 
+        
+                        }
                 
-                        $response = new Response(array('status' => Constants::BAD_RESPONSE, 'message' => Constants::BAD_RESPONSE_NO_USER_FOUND));
-                
-                        echo json_encode($response, JSON_UNESCAPED_UNICODE); 
-
                     } else {
-                
-                        
-
+        
+                        $response = new Response(array('status' => Constants::BAD_RESPONSE, 'message' => Constants::BAD_RESPONSE_NO_USER_FOUND));
+        
+                        echo json_encode($response, JSON_UNESCAPED_UNICODE);
+        
                     }
-
+        
                 } else {  
                     
                     $response = new Response(array('status' => Constants::BAD_RESPONSE, 'message' => Constants::BAD_RESPONSE_DESCRIPTION));
-                
+        
                     echo json_encode($response, JSON_UNESCAPED_UNICODE); 
                 }
 
@@ -121,43 +149,58 @@ if ($_SERVER["REQUEST_METHOD"]=="POST") {
 
                     $user = new modelUser();
                                 
-                    $data = $user -> mdlInfoAddress($idUser);
-                
+                    $data = $user -> mdlInfoUser($idUser);
+
                     $idAddres = $data[0]['id_address'];
-                
-                    if($data == false){
-                
-                        $response = new Response(array('status' => Constants::BAD_RESPONSE, 'message' => Constants::BAD_RESPONSE_NO_USER_FOUND));
-                
-                        echo json_encode($response, JSON_UNESCAPED_UNICODE); 
-                
-                    } else {
-                
-                        $delete = $user -> mdlDeleteAddress($idAddres);
-                
-                        if($delete == false) {
-                                
-                            $response = new Response(array('status' => Constants::BAD_RESPONSE, 'message' => Constants::BAD_RESPONSE));
+
+                    if($data != false){
+
+                        $addres = new modelAddress();
+
+                        $deleteAddressTableUser = $addres -> mdlDeleteAddressUser($idUser);
+
+                        if($deleteAddressTableUser != false){
+
+                            $deleAddress = $addres -> mdlDeleteAddress($idAddres);
+
+                            if($deleAddress != false){
+
+                                $response = new Response(array('status' => Constants::OK_RESPONSE, 'message' => Constants::OK_RESPONSE_QUERY));
                     
-                            echo json_encode($response, JSON_UNESCAPED_UNICODE); 
-                
+                                echo json_encode($response, JSON_UNESCAPED_UNICODE);
+
+                            } else {
+
+                                $response = new Response(array('status' => Constants::BAD_RESPONSE, 'message' => Constants::BAD_RESPONSE_QUERY));
+
+                                //$response = new Response(array('status' => Constants::BAD_RESPONSE, 'message' => 'No se hizo el segundo query'));
+                    
+                                echo json_encode($response, JSON_UNESCAPED_UNICODE);
+                            }
+
                         } else {
+
+                            $response = new Response(array('status' => Constants::BAD_RESPONSE, 'message' => Constants::BAD_RESPONSE_QUERY));
                     
-                            $response = new Response(array('status' => Constants::OK_RESPONSE, 'message' => $data));
-                    
+                            //$response = new Response(array('status' => Constants::BAD_RESPONSE, 'message' => 'No se hizo la primer consulta'));
+
                             echo json_encode($response, JSON_UNESCAPED_UNICODE);
-                            
                         }
-                        
+
+                    } else {
+
+                        $response = new Response(array('status' => Constants::BAD_RESPONSE, 'message' => Constants::BAD_RESPONSE_NO_USER_FOUND));
+
+                        echo json_encode($response, JSON_UNESCAPED_UNICODE); 
                     }
-                
-                } else {  
-                
-                    $response = new Response(array('status' => Constants::BAD_RESPONSE, 'message' => Constants::BAD_RESPONSE_DESCRIPTION));
-                
+
+                } else {
+
+                    $response = new Response(array('status' => Constants::BAD_RESPONSE, 'message' => Constants::BAD_RESPONSE_NO_USER_FOUND));
+
                     echo json_encode($response, JSON_UNESCAPED_UNICODE); 
                 }
-
+                
             break;
 
             default:
@@ -168,7 +211,6 @@ if ($_SERVER["REQUEST_METHOD"]=="POST") {
 
         }
 
-        
     } else {
         
         $response = new Response(array('status' => Constants::BAD_RESPONSE, 'message' => Constants::BAD_POST_RESPONSE));

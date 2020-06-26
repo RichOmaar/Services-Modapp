@@ -58,6 +58,8 @@ class Constants {
     const BAD_RESPONSE_DESCRIPTION_COMPANY_NO_LOCATION = 'No se encontró ninguna empresa en ese estado, verifica e intenta nuevamente';
 
     const OK_RESPONSE = 'OK';
+    const OK_RESPONSE_QUERY = 'Se realizó la consulta';
+    const BAD_RESPONSE_QUERY = 'No se realizó la consulta';
 
     const SERVER_PATH = "http://localhost:8888/";
     const FOLDER_IMAGE_USER = "imagesUser/";
