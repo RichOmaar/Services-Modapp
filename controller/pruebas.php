@@ -4,55 +4,61 @@ include '../model/user.model.php';
 
 $idUser = 2;
 
-$state = ['state'];
-$municipio = ['municipio'];
-$street = ['street'];
-$number_st = ['number_st'];
-$number_int = ['number_int'];
-$cp = ['cp'];
-                
-if(strlen($state) > 0 && strlen($municipio) > 0 && strlen($street) > 0 && strlen($number_st) > 0 && strlen($cp) > 0){
+if(strlen($idUser) > 0){
 
-    $user = new modelAddress();
-
-    $data = $user -> mdlInfoAddress($idUser);
+    $user = new modelUser();
                 
+    $data = $user -> mdlInfoUser($idUser);
+
+    $idAddres = $data[0]['id_address'];
+
     if($data != false){
 
-        $update = new modelAddress();
+        $addres = new modelAddress();
 
-        $addres = $update -> mdlUpdateAddress($idUser,$state,$municipio,$street,$number_st,$number_int,$cp);
+        $deleteAddressTableUser = $addres -> mdlDeleteAddressUser($idUser);
 
-        if($addres != false){
-                
+        if($deleteAddressTableUser != false){
 
-            $response = new Response(array('status' => Constants::OK_RESPONSE, 'message' => $addres));
+            $deleAddress = $addres -> mdlDeleteAddress($idAddres);
+
+            if($deleAddress != false){
+
+                $response = new Response(array('status' => Constants::OK_RESPONSE, 'message' => Constants::OK_RESPONSE_QUERY));
     
-            echo json_encode($response, JSON_UNESCAPED_UNICODE);
+                echo json_encode($response, JSON_UNESCAPED_UNICODE);
+
+            } else {
+
+                $response = new Response(array('status' => Constants::BAD_RESPONSE, 'message' => Constants::BAD_RESPONSE_QUERY));
+
+                //$response = new Response(array('status' => Constants::BAD_RESPONSE, 'message' => 'No se hizo el segundo query'));
+    
+                echo json_encode($response, JSON_UNESCAPED_UNICODE);
+            }
 
         } else {
+
+            $response = new Response(array('status' => Constants::BAD_RESPONSE, 'message' => Constants::BAD_RESPONSE_QUERY));
     
-            //$response = new Response(array('status' => Constants::BAD_RESPONSE, 'message' => Constants::BAD_RESPONSE_NO_USER_FOUND));
+            //$response = new Response(array('status' => Constants::BAD_RESPONSE, 'message' => 'No se hizo la primer consulta'));
 
-            $response = new Response(array('status' => Constants::BAD_RESPONSE, 'message' => 'Estamos aqui'));
-
-            echo json_encode($response, JSON_UNESCAPED_UNICODE); 
-
+            echo json_encode($response, JSON_UNESCAPED_UNICODE);
         }
 
     } else {
 
         $response = new Response(array('status' => Constants::BAD_RESPONSE, 'message' => Constants::BAD_RESPONSE_NO_USER_FOUND));
 
-        echo json_encode($response, JSON_UNESCAPED_UNICODE);
-
+        echo json_encode($response, JSON_UNESCAPED_UNICODE); 
     }
 
-} else {  
-    
-    $response = new Response(array('status' => Constants::BAD_RESPONSE, 'message' => Constants::BAD_RESPONSE_DESCRIPTION));
+} else {
+
+    $response = new Response(array('status' => Constants::BAD_RESPONSE, 'message' => Constants::BAD_RESPONSE_NO_USER_FOUND));
 
     echo json_encode($response, JSON_UNESCAPED_UNICODE); 
 }
+
         
 ?>
