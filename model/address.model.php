@@ -116,8 +116,6 @@ class modelAddress {
 
         $sql = "UPDATE address SET state = :state, municipio = :municipio, street = :street, number_st = :number_st, number_int = :number_int, cp = :cp WHERE id_address = (SELECT * FROM (SELECT user.id_address FROM user LEFT JOIN address ON user.id_address = address.id_address WHERE user.id_user = :idUser)example)";
 
-        //$sql = "UPDATE address SET state = :state, municipio = :municipio, street = :street, number_st = :number_st, number_int = :number_int, cp = :cp WHERE id_address = :idAddress";
-
         $statement = $connection -> prepare($sql);
 
         $statement -> bindParam(':state', $state);
