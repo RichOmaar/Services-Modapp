@@ -1,64 +1,66 @@
 <?php
-include '../model/address.model.php';
-include '../model/user.model.php';
 
-$idUser = 2;
+include '../model/loginClient.model.php';
 
-if(strlen($idUser) > 0){
+//$company_name = $_POST['company_name'];
+//$mail = $_POST['mail'];
+//$name_contact = $_POST['name_contact'];
+//$password = $_POST['password'];
 
-    $user = new modelUser();
-                
-    $data = $user -> mdlInfoUser($idUser);
+$company_name = 'omar';
+$mail = 'mail@gmail.comm';
+$name_contact = 'name_contact';
+$password ='password';
 
-    $idAddres = $data[0]['id_address'];
+if(strlen($company_name) > 0 && strlen($mail) > 0 && strlen($name_contact) > 0 && strlen($password) > 0){
 
-    if($data != false){
+    $verifyUser = new modelLoginClient();
 
-        $addres = new modelAddress();
+    $checkUsername = $verifyUser -> mdlVerifyClient($company_name);
 
-        $deleteAddressTableUser = $addres -> mdlDeleteAddressUser($idUser);
+    echo json_encode ($checkUsername);
 
-        if($deleteAddressTableUser != false){
+    if($check != false){
 
-            $deleAddress = $addres -> mdlDeleteAddress($idAddres);
+        echo json_encode($checkUsername);
 
-            if($deleAddress != false){
+        $response = new Response(array('status' => Constants::BAD_RESPONSE, 'message' => 'The user already exist'));
 
-                $response = new Response(array('status' => Constants::OK_RESPONSE, 'message' => Constants::OK_RESPONSE_QUERY));
-    
-                echo json_encode($response, JSON_UNESCAPED_UNICODE);
-
-            } else {
-
-                $response = new Response(array('status' => Constants::BAD_RESPONSE, 'message' => Constants::BAD_RESPONSE_QUERY));
-
-                //$response = new Response(array('status' => Constants::BAD_RESPONSE, 'message' => 'No se hizo el segundo query'));
-    
-                echo json_encode($response, JSON_UNESCAPED_UNICODE);
-            }
-
-        } else {
-
-            $response = new Response(array('status' => Constants::BAD_RESPONSE, 'message' => Constants::BAD_RESPONSE_QUERY));
-    
-            //$response = new Response(array('status' => Constants::BAD_RESPONSE, 'message' => 'No se hizo la primer consulta'));
-
-            echo json_encode($response, JSON_UNESCAPED_UNICODE);
-        }
+        echo json_encode($response, JSON_UNESCAPED_UNICODE);
 
     } else {
 
-        $response = new Response(array('status' => Constants::BAD_RESPONSE, 'message' => Constants::BAD_RESPONSE_NO_USER_FOUND));
+        $checkEmail = $verifyUser -> mdlVerifyClient($mail);
+
+        if($checkEmail === false){
+            
+            echo 'entro aqui';
+
+            $register = new modelLoginClient();
+
+            $data = $register -> mdlRegisterClient($company_name, $mail, $name_contact, $password);
+
+            $response = new Response(array('status' => Constants::OK_RESPONSE, 'message' => $data));
+
+            echo json_encode($response, JSON_UNESCAPED_UNICODE);
+
+        } else {  
+
+        $response = new Response(array('status' => Constants::BAD_RESPONSE, 'message' => 'The email already exist'));
 
         echo json_encode($response, JSON_UNESCAPED_UNICODE); 
+        }
+        
+        
     }
-
+    
 } else {
 
-    $response = new Response(array('status' => Constants::BAD_RESPONSE, 'message' => Constants::BAD_RESPONSE_NO_USER_FOUND));
+    $response = new Response(array('status' => Constants::BAD_RESPONSE, 'message' => 'The user or password already exist'));
 
     echo json_encode($response, JSON_UNESCAPED_UNICODE); 
+
 }
 
-        
+
 ?>
