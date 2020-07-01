@@ -4,7 +4,7 @@ include '../model/loginClient.model.php';
 
 if ($_SERVER["REQUEST_METHOD"]=="POST") {
 
-    if (isset($_POST['fullname']) && isset($_POST['username']) && isset($_POST['mail']) && isset($_POST['password'])) {
+    if (isset($_POST['company_name']) && isset($_POST['mail']) && isset($_POST['name_contact']) && isset($_POST['password'])) {
 
         $company_name = 'omar';
         $mail = 'mail@gmail.comm';

@@ -24,6 +24,23 @@ class modelMail {
 
     }
 
+    public function mdlCheckMailClient($mail){
+
+        $db = new Connection();
+
+        $connection = $db -> get_connection();
+
+        $sql = "SELECT mail FROM client WHERE mail = :mail";
+
+        $statement = $connection -> prepare($sql);
+
+        $statement -> bindParam('mail',$mail);
+
+        $statement -> execute();
+
+        return ($statement -> rowCount() > 0) ? $statement->fetchAll(PDO::FETCH_ASSOC) : false;
+    }
+
     public function mdlUpdatePassword($mail,$password){
 
         $db = new Connection();
@@ -33,6 +50,28 @@ class modelMail {
         $hash = password_hash($password,PASSWORD_BCRYPT);
 
         $sql = "UPDATE user SET user.password = :password WHERE mail = :mail";
+
+        $statement = $connection -> prepare($sql);
+
+        $statement -> bindParam(':password',$hash);
+
+        $statement -> bindParam(':mail',$mail);
+
+        $statement -> execute();
+
+        return ($statement -> rowCount() > 0) ? true : false;
+
+    }
+
+    public function mdlUpdatePasswordClient($mail, $password){
+
+        $db = new Connection();
+
+        $connection = $db -> get_connection();
+
+        $hash = password_hash($password,PASSWORD_BCRYPT);
+
+        $sql = "UPDATE client SET client.password = :password WHERE client.mail = :mail";
 
         $statement = $connection -> prepare($sql);
 
