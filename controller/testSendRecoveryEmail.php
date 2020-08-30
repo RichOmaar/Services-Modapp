@@ -22,15 +22,15 @@ if ($_SERVER["REQUEST_METHOD"]=="POST") {
                 $subject = 'Modapp - Recovery password';
 
 
-                $message = 'http://localhost:8888/GitHub/Services-Modapp/view/passwordRecovery.php?mail='.$mail.' If you did not request the change, then ignore this message.';
+                $message = 'http://modapp.longbit.mx/view/passwordRecovery.php?mail='.$mail.' If you did not request the change, then ignore this message.';
 
                 try{
 
-                $response = modelMail::mdlSendEmail($mail,$subject,$message);
+                //$response = modelMail::mdlSendEmail($mail,$subject,$message);
                 
-                //$response = $sendMail -> mdlSendEmail($mail,$subject,$message);
+                $response = $sendMail -> mdlSendEmail($mail,$subject,$message);
 
-                echo ($response);
+                //echo ($response);
                 
                 $response = new Response(array('status' => Constants::OK_RESPONSE, 'message' => '¡Revisa tu bandeja de entrada o carpeta de no deseados para actualizar tu contraseña!'));
 
@@ -40,11 +40,13 @@ if ($_SERVER["REQUEST_METHOD"]=="POST") {
 
                     echo $e -> getMessage();
 
+                    $response = new Response(array('status' => Constants::BAD_RESPONSE, 'message' => Constants::BAD_RESPONSE_DESCRIPTION));
+
                 }
 
             } else {
                 
-                $response = new Response(array('status' => Constants::BAD_RESPONSE, 'message' => 'Primer if'));
+                $response = new Response(array('status' => Constants::BAD_RESPONSE, 'message' => Constants::BAD_RESPONSE_DESCRIPTION));
 
                 echo json_encode($response, JSON_UNESCAPED_UNICODE); 
             }

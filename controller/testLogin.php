@@ -22,7 +22,7 @@ if ($_SERVER["REQUEST_METHOD"]=="POST") {
 
             if($data === false){
 
-                $response = new Response(array('status' => Constants::BAD_RESPONSE, 'message' => 'Error'));
+                $response = new Response(array('status' => Constants::BAD_RESPONSE, 'message' => Constants::BAD_RESPONSE_DESCRIPTION));
 
                 echo json_encode($response, JSON_UNESCAPED_UNICODE); 
                 

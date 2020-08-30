@@ -167,6 +167,7 @@ class modelLoginClient {
         return ($statement->rowCount() > 0) ? true : false;
 
     }
+
 }
 
 ?>

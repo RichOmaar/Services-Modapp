@@ -143,7 +143,7 @@ class modelLogin {
 
     public static function mdlRegisterUser($fullname, $username, $mail, $password) {
 
-        $db = new Connection;
+        $db = new Connection();
 
         $connection = $db -> get_connection();
 

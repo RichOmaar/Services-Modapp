@@ -1,14 +1,14 @@
 <?php
 
-include '../model/login.model.php';
+include '../model/loginClient.model.php';
 
 if ($_SERVER["REQUEST_METHOD"]=="POST") {
     
     if (isset($_POST['login']) && isset($_POST['passLogin'])) {
 
         /*
-        $login = 'mail@gmail.com';
-        $passLogin = 'Juanomarr';
+        $login = 'mail@gmail.comm';
+        $passLogin = 'password';
         */
         
         $login = $_POST['login'];

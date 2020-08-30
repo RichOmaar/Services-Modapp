@@ -5,13 +5,13 @@ require_once 'connection.php';
 
 class modelAddress {
     
-    public function mdlAddAddress($idUser,$state,$municipio,$street,$number_st,$number_int,$cp) {
+    public function mdlAddAddressUser($idUser,$state,$municipio,$street,$number_st,$number_int,$cp) {
 
         $db = new Connection();
 
         $connection = $db -> get_connection();
 
-        $sql = "INSERT INTO `address`(`state`, `municipio`, `street`, `number_st`, `number_int`, `cp`) VALUES (:state, :municipio, :street, :number_st,:number_int, :cp)";
+        $sql = "INSERT INTO `address`(`state`, `municipio`, `street`, `number_st`, `number_int`, `cp`, id_user) VALUES (:state, :municipio, :street, :number_st,:number_int, :cp, :idUser)";
 
         $statement = $connection -> prepare($sql);
 
@@ -27,30 +27,71 @@ class modelAddress {
 
         $statement -> bindParam(':cp',$cp);
 
+        $statement -> bindParam(':idUser', $idUser);
+
         $statement -> execute();
 
-        $last_id = $connection -> lastInsertId();
+        return ($statement);
 
-        if($statement -> rowCount() > 0){
+    }
 
-            //$last_id = $connection -> lastInsertId();
+    public function mdlAddAddressClient($idClient,$state,$municipio,$street,$number_st,$number_int,$cp) {
 
-            $sql = "UPDATE `user` SET `id_address`= :idAddress WHERE id_user = :idUser";
+        $db = new Connection();
 
-            $statement = $connection -> prepare($sql);
+        $connection = $db -> get_connection();
 
-            $statement -> bindParam('idAddress',$last_id);
+        $sql = "INSERT INTO `address`(`state`, `municipio`, `street`, `number_st`, `number_int`, `cp`, id_client) VALUES (:state, :municipio, :street, :number_st,:number_int, :cp, :idClient)";
 
-            $statement -> bindParam('idUser',$idUser);
+        $statement = $connection -> prepare($sql);
 
-            $statement -> execute();
+        $statement -> bindParam(':state',$state);
+        
+        $statement -> bindParam(':municipio',$municipio);
 
-            return ($statement -> rowCount() > 0) ? true : false;
+        $statement -> bindParam(':street',$street);
 
-        } else {
+        $statement -> bindParam(':number_st',$number_st);
 
-            return false;
-        }
+        $statement -> bindParam(':number_int',$number_int);
+
+        $statement -> bindParam(':cp',$cp);
+
+        $statement -> bindParam(':idClient', $idClient);
+
+        $statement -> execute();
+
+        return ($statement);
+
+    }
+
+    public function mdlAddAddressStore($idStore,$state,$municipio,$street,$number_st,$number_int,$cp) {
+
+        $db = new Connection();
+
+        $connection = $db -> get_connection();
+
+        $sql = "INSERT INTO `address`(`state`, `municipio`, `street`, `number_st`, `number_int`, `cp`, store) VALUES (:state, :municipio, :street, :number_st,:number_int, :cp, :store)";
+
+        $statement = $connection -> prepare($sql);
+
+        $statement -> bindParam(':state',$state);
+        
+        $statement -> bindParam(':municipio',$municipio);
+
+        $statement -> bindParam(':street',$street);
+
+        $statement -> bindParam(':number_st',$number_st);
+
+        $statement -> bindParam(':number_int',$number_int);
+
+        $statement -> bindParam(':cp',$cp);
+
+        $statement -> bindParam(':store', $idStore);
+
+        $statement -> execute();
+
+        return ($statement);
 
     }
 
@@ -60,43 +101,25 @@ class modelAddress {
 
         $connection = $db -> get_connection();
 
-        $sql = "DELETE FROM address WHERE id_address = :idAddres";
+        $sql = "DELETE FROM address WHERE id_address = :idAddress";
 
         $statement = $connection -> prepare($sql);
 
-        $statement -> bindParam(':idAddres',$idAddress);
+        $statement -> bindParam(':idAddress',$idAddress);
 
         $statement -> execute();
 
-        return ($statement -> rowCount() > 0) ? true : false;
+        return ($statement);
 
     }
 
-    public function mdlDeleteAddressUser($idUser){
+    public function mdlInfoAddressUser($idUser) {
 
         $db = new Connection();
 
         $connection = $db -> get_connection();
 
-        $sql = "UPDATE user SET id_address = NULL WHERE id_user = :idUser";
-
-        $statement = $connection -> prepare($sql);
-
-        $statement -> bindParam(':idUser',$idUser);
-
-        $statement -> execute();
-
-        return ($statement -> rowCount() > 0) ? true : false;
-        
-    }
-
-    public function mdlInfoAddress($idUser) {
-
-        $db = new Connection();
-
-        $connection = $db -> get_connection();
-
-        $sql = "SELECT address.state, address.municipio, address.street, address.number_st, address.number_int, address.cp FROM address LEFT JOIN user ON address.id_address = user.id_address WHERE id_user = :idUser";
+        $sql = "SELECT id_address, state, municipio, street, number_st, number_int, cp, status, id_address FROM address WHERE id_user = :idUser";
 
         $statement = $connection -> prepare($sql);
 
@@ -108,13 +131,51 @@ class modelAddress {
 
     }
 
-    public function mdlUpdateAddress($idUser,$state,$municipio,$street,$number_st,$number_int,$cp) {
+    public function mdlInfoAddressClient($idClient) {
+
+        $db = new Connection();
+
+        $connection = $db -> get_connection();
+
+        $sql = "SELECT id_address, state, municipio, street, number_st, number_int, cp, status, id_client FROM address WHERE id_client = :idClient";
+
+        $statement = $connection -> prepare($sql);
+
+        $statement -> bindParam(':idClient',$idClient);
+
+        $statement -> execute();
+
+        return ($statement->rowCount() > 0) ?  $statement->fetchAll(PDO::FETCH_ASSOC) : false; 
+
+    }
+
+    public function mdlInfoAddressStore($idStore) {
+
+        $db = new Connection();
+
+        $connection = $db -> get_connection();
+
+        $sql = "SELECT id_address, state, municipio, street, number_st, number_int, cp, status, store FROM address WHERE store = :idStore";
+
+        $statement = $connection -> prepare($sql);
+
+        $statement -> bindParam(':idStore',$idStore);
+
+        $statement -> execute();
+
+        return ($statement->rowCount() > 0) ?  $statement->fetchAll(PDO::FETCH_ASSOC) : false; 
+
+    }
+
+    public function mdlUpdateAddress($idAddress,$state,$municipio,$street,$number_st,$number_int,$cp) {
 
         $db =  new Connection();
 
         $connection = $db -> get_connection();
 
-        $sql = "UPDATE address SET state = :state, municipio = :municipio, street = :street, number_st = :number_st, number_int = :number_int, cp = :cp WHERE id_address = (SELECT * FROM (SELECT user.id_address FROM user LEFT JOIN address ON user.id_address = address.id_address WHERE user.id_user = :idUser)example)";
+        $sql = "UPDATE address SET state = :state, municipio = :municipio, street = :street, number_st = :number_st, number_int = :number_int, cp = :cp WHERE id_address = :id_address";
+
+        //$sql = "UPDATE address SET state = :state, municipio = :municipio, street = :street, number_st = :number_st, number_int = :number_int, cp = :cp WHERE id_address = :idAddress";
 
         $statement = $connection -> prepare($sql);
 
@@ -130,14 +191,13 @@ class modelAddress {
 
         $statement -> bindParam(':cp',$cp);
 
-        $statement -> bindParam(':idUser',$idUser);
+        $statement -> bindParam(':id_address',$idAddress);
 
         $statement -> execute();
 
         return $statement;
     }
 }
-
 
 /*
 

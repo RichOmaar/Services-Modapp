@@ -1,0 +1,36 @@
+[01-Jul-2020 03:11:27 UTC] PHP Fatal error:  Class 'modelMail' not found in /home3/longbit/modapp.longbit.mx/controller/pruebas.php on line 13
+[01-Jul-2020 03:12:12 UTC] PHP Fatal error:  Class 'modelMail' not found in /home3/longbit/modapp.longbit.mx/controller/pruebas.php on line 13
+[01-Jul-2020 03:12:48 UTC] PHP Fatal error:  Class 'modelMail' not found in /home3/longbit/modapp.longbit.mx/controller/pruebas.php on line 13
+[01-Jul-2020 03:15:17 UTC] PHP Fatal error:  Cannot redeclare class ruta in /home3/longbit/modapp.longbit.mx/model/route.model.php on line 3
+[01-Jul-2020 03:15:37 UTC] PHP Fatal error:  Cannot redeclare class ruta in /home3/longbit/modapp.longbit.mx/model/route.model.php on line 3
+[01-Jul-2020 03:15:58 UTC] PHP Fatal error:  Cannot redeclare class ruta in /home3/longbit/modapp.longbit.mx/model/route.model.php on line 3
+[01-Jul-2020 03:18:45 UTC] PHP Fatal error:  Cannot redeclare class ruta in /home3/longbit/modapp.longbit.mx/model/route.model.php on line 3
+[01-Jul-2020 03:18:58 UTC] PHP Fatal error:  Cannot redeclare class ruta in /home3/longbit/modapp.longbit.mx/model/route.model.php on line 3
+[01-Jul-2020 03:46:23 UTC] PHP Fatal error:  Class 'modelLoginClient' not found in /home3/longbit/modapp.longbit.mx/controller/pruebas.php on line 11
+[01-Jul-2020 03:46:52 UTC] PHP Fatal error:  Class 'modelLoginClient' not found in /home3/longbit/modapp.longbit.mx/controller/pruebas.php on line 10
+[16-Jul-2020 03:16:46 UTC] PHP Fatal error:  Class 'Response' not found in /home3/longbit/modapp.longbit.mx/controller/loginClient.php on line 46
+[16-Jul-2020 03:18:07 UTC] PHP Fatal error:  Class 'Response' not found in /home3/longbit/modapp.longbit.mx/controller/loginClient.php on line 46
+[22-Jul-2020 05:31:11 UTC] PHP Fatal error:  Class 'Response' not found in /home3/longbit/modapp.longbit.mx/controller/testSendRecoveryEmail.php on line 63
+[22-Jul-2020 05:31:34 UTC] PHP Fatal error:  Class 'Response' not found in /home3/longbit/modapp.longbit.mx/controller/testSendRecoveryEmail.php on line 63
+[22-Jul-2020 05:39:56 UTC] PHP Fatal error:  Class 'Response' not found in /home3/longbit/modapp.longbit.mx/controller/testPasswordRecovery.php on line 39
+[22-Jul-2020 05:42:59 UTC] PHP Fatal error:  Class 'Response' not found in /home3/longbit/modapp.longbit.mx/controller/testPasswordRecovery.php on line 39
+[23-Jul-2020 21:21:14 UTC] PHP Fatal error:  Class 'Response' not found in /home3/longbit/modapp.longbit.mx/controller/testPasswordRecovery.php on line 39
+[29-Jul-2020 00:36:16 UTC] PHP Fatal error:  Class 'Response' not found in /home3/longbit/modapp.longbit.mx/controller/dataClient.php on line 79
+[01-Aug-2020 04:12:22 UTC] PHP Warning:  PDOStatement::execute(): SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens in /home3/longbit/modapp.longbit.mx/model/dataClient.model.php on line 173
+[01-Aug-2020 04:16:56 UTC] PHP Warning:  PDOStatement::execute(): SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens in /home3/longbit/modapp.longbit.mx/model/dataClient.model.php on line 173
+[01-Aug-2020 05:23:50 UTC] PHP Fatal error:  Call to a member function mdlAddMoreSchedule() on a non-object in /home3/longbit/modapp.longbit.mx/controller/pruebas.php on line 203
+[01-Aug-2020 05:25:13 UTC] PHP Fatal error:  Call to a member function mdlAddMoreSchedule() on a non-object in /home3/longbit/modapp.longbit.mx/controller/pruebas.php on line 203
+[21-Aug-2020 04:56:15 UTC] PHP Fatal error:  Class 'modelScheduleClient' not found in /home3/longbit/modapp.longbit.mx/controller/schedulesStore.php on line 16
+[21-Aug-2020 04:56:48 UTC] PHP Fatal error:  Class 'modelScheduleClient' not found in /home3/longbit/modapp.longbit.mx/controller/schedulesStore.php on line 14
+[21-Aug-2020 04:57:05 UTC] PHP Fatal error:  Class 'modelScheduleClient' not found in /home3/longbit/modapp.longbit.mx/controller/schedulesStore.php on line 14
+[21-Aug-2020 04:57:21 UTC] PHP Fatal error:  Class 'modelScheduleClient' not found in /home3/longbit/modapp.longbit.mx/controller/schedulesStore.php on line 36
+[21-Aug-2020 04:58:20 UTC] PHP Fatal error:  Class 'modelScheduleClient' not found in /home3/longbit/modapp.longbit.mx/controller/schedulesStore.php on line 36
+[21-Aug-2020 05:00:11 UTC] PHP Fatal error:  Class 'modelScheduleClient' not found in /home3/longbit/modapp.longbit.mx/controller/schedulesStore.php on line 36
+[21-Aug-2020 05:00:49 UTC] PHP Fatal error:  Class 'modelScheduleClient' not found in /home3/longbit/modapp.longbit.mx/controller/schedulesStore.php on line 36
+[21-Aug-2020 05:01:45 UTC] PHP Fatal error:  Class 'modelScheduleClient' not found in /home3/longbit/modapp.longbit.mx/controller/schedulesStore.php on line 38
+[21-Aug-2020 05:01:59 UTC] PHP Fatal error:  Class 'modelScheduleClient' not found in /home3/longbit/modapp.longbit.mx/controller/schedulesStore.php on line 38
+[21-Aug-2020 05:02:15 UTC] PHP Fatal error:  Class 'modelScheduleClient' not found in /home3/longbit/modapp.longbit.mx/controller/schedulesStore.php on line 39
+[21-Aug-2020 05:02:17 UTC] PHP Fatal error:  Class 'modelScheduleClient' not found in /home3/longbit/modapp.longbit.mx/controller/schedulesStore.php on line 39
+[21-Aug-2020 05:02:18 UTC] PHP Fatal error:  Class 'modelScheduleClient' not found in /home3/longbit/modapp.longbit.mx/controller/schedulesStore.php on line 39
+[21-Aug-2020 05:03:05 UTC] PHP Fatal error:  Class 'modelScheduleClient' not found in /home3/longbit/modapp.longbit.mx/controller/schedulesStore.php on line 17
+[21-Aug-2020 05:03:28 UTC] PHP Fatal error:  Class 'modelScheduleClient' not found in /home3/longbit/modapp.longbit.mx/controller/schedulesStore.php on line 14

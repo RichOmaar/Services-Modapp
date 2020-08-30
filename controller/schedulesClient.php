@@ -1,53 +1,32 @@
 <?php
 
-include '../model/dataClient.model.php';
+include '../model/scheduleClient.model.php';
 
 if ($_SERVER["REQUEST_METHOD"]=="POST") {
     
-    if (isset($_POST['idClient']) && isset($_POST['action'])) {
+    
 
         $idClient = $_POST['idClient'];
         $action = $_POST['action'];
 
         switch($action){
 
-            case 'addFiscalAddress':
+            case 'infoSchedule':
 
-                $state = $_POST['state'];
-                $municipio = $_POST['municipio'];
-                $street = $_POST['street'];
-                $numberSt = $_POST['numberSt'];
-                $numberInt = $_POST['numberInt'];
-                $cp = $_POST['cp'];
+                $schedule = new modelScheduleClient();
 
-                if(strlen($state) > 0 && strlen($municipio) > 0 && strlen($street) > 0 && strlen($cp) > 0){
+                $data = $schedule -> mdlInfoSchedule($idClient);
 
-                    $numberSt = !empty($numberSt) ? "$numberSt" : "NULL";
-
-                    $numberInt = !empty($numberInt) ? "$numberInt" : "NULL";
-
-                    $addAddress = new modelDataClient();
-
-                    $data = $addAddress -> mdlAddFiscalAddress($idClient, $state, $municipio, $street, $numberSt, $numberInt, $cp);
-
-                    if($data == false) {
-
-                        $response = new Response(array('status' => Constants::BAD_RESPONSE, 'message' => Constants::BAD_RESPONSE));
-                            
-                        echo json_encode($response, JSON_UNESCAPED_UNICODE); 
-
-                    } else {
-                    
-                        $response = new Response(array('status' => Constants::OK_RESPONSE, 'message' => $data));
-                
-                        echo json_encode($response, JSON_UNESCAPED_UNICODE);
-
-                    }
-
-                } else {
+                if($data == false) {
 
                     $response = new Response(array('status' => Constants::BAD_RESPONSE, 'message' => Constants::BAD_RESPONSE));
-                            
+                        
+                    echo json_encode($response, JSON_UNESCAPED_UNICODE); 
+
+                } else {
+                
+                    $response = new Response(array('status' => Constants::OK_RESPONSE, 'message' => $data));
+            
                     echo json_encode($response, JSON_UNESCAPED_UNICODE);
 
                 }
@@ -56,7 +35,7 @@ if ($_SERVER["REQUEST_METHOD"]=="POST") {
 
             case 'addFirstSchedule':
 
-                $check = new modelDataClient();
+                $check = new modelScheduleClient();
 
                 $data = $check -> mdlCountScheduleAdded($idClient);
 
@@ -222,7 +201,7 @@ if ($_SERVER["REQUEST_METHOD"]=="POST") {
                 } 
                 echo json_encode ('Antes del query');
 
-                $update = new modelDataClient();
+                $update = new modelScheduleClient();
                 
                 $data = $update -> mdlAddMoreSchedule($idClient, $openL, $closeL, $openM, $closeM, $openW, $closeW, $openJ, $closeJ, $openV, $closeV, $openS, $closeS, $openD, $closeD);
 
@@ -251,12 +230,5 @@ if ($_SERVER["REQUEST_METHOD"]=="POST") {
                 echo json_encode($response, JSON_UNESCAPED_UNICODE); 
 
         }
-
-    } else {
-        
-        $response = new Response(array('status' => Constants::BAD_RESPONSE, 'message' => Constants::BAD_POST_RESPONSE));
-
-        echo json_encode($response, JSON_UNESCAPED_UNICODE); 
-    }
 }
 ?>
