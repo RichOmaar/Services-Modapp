@@ -2,10 +2,10 @@
 
 class Connection {
     public function get_connection(){ 
-        $user = "longbit";
-        $pass = "bitmx0020x";
-        $host = "10.0.0.79";
-        $db = "longbit_modapp";
+        $user = "root";
+        $pass = "";
+        $host = "localhost";
+        $db = "modapp";
         $connection = new PDO("mysql:host={$host}; dbname={$db};", $user, $pass, array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
         return ($connection);
     }
