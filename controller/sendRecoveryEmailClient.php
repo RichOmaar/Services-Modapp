@@ -31,7 +31,7 @@ if ($_SERVER["REQUEST_METHOD"]=="POST") {
                 
                 //$response = $sendMail -> mdlSendEmail($mail,$subject,$message);
         
-                echo ($response);
+                //echo ($response);
                 
                 $response = new Response(array('status' => Constants::OK_RESPONSE, 'message' => '¡Revisa tu bandeja de entrada o carpeta de no deseados para actualizar tu contraseña!'));
         

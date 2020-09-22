@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Boostrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <!--Font awesome -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" crossorigin="anonymous"></script>
+    <!--Others-->
+    <link rel="shortcut icon" href="./favicon.ico" />
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/empresa/profile.css">
+    <link rel='stylesheet' href='../assets/css/empresa/spectrum.css'>
+    <link rel="stylesheet" href="../assets/css/empresa/file-upload-with-preview.min.css">
+    <link rel="stylesheet" href="../assets/css/empresa/nuevoProducto.css">
+    <link rel="stylesheet" href="../assets/css/empresa/tagify.css">
+
+    <!-- <link rel="stylesheet" href="../assets/css/empresa/time.css"> -->
+    <title>Nuevo producto</title>
+</head>
+
+<body class="sb-nav-fixed">
+    <nav id="navPrincipal" class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+        <a style="color:black" class="navbar-brand" href="profile.html">Negocio</a>
+        <button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#">
+            <i style="color: black;" class="fas fa-bars"></i>
+        </button>
+    </nav>
+    <div id="layoutSidenav">
+        <div id="layoutSidenav_nav">
+            <nav class="sb-sidenav accordion sb-sidenav-light" id="sidenavAccordion">
+                <div class="sb-sidenav-menu">
+                    <div class="nav">
+                        <div class="sb-sidenav-menu-heading">Perfil</div>
+                        <a class="nav-link" href="profile.html">
+                            <div class="sb-nav-link-icon">
+                                <i class="fas fa-user-circle"></i>
+                            </div>
+                            Mi perfil
+                        </a>
+                        <div class="sb-sidenav-menu-heading">Adminsitración</div>
+                        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
+                            <div class="sb-nav-link-icon">
+                                <i class="fas fa-columns"></i>
+                            </div>
+                            Gestiona
+                            <div class="sb-sidenav-collapse-arrow">
+                                <i class="fas fa-angle-down"></i>
+                            </div>
+                        </a>
+                        <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav">
+                                <a class="nav-link" href="inventario.html">
+                                    <div class="sb-nav-link-icon">
+                                        <i class="fas fa-socks"></i>
+                                    </div>
+                                    Inventario
+                                </a>
+                                <a class="nav-link" href="#">
+                                    <div class="sb-nav-link-icon">
+                                        <i class="far fa-credit-card"></i>
+                                    </div>
+                                    Ventas
+                                </a>
+                                <a class="nav-link" href="#">
+                                    <div class="sb-nav-link-icon">
+                                        <i class="fas fa-user-plus"></i>
+                                    </div>
+                                    Contrataciones
+                                </a>
+                                <a class="nav-link" href="#">
+                                    <div class="sb-nav-link-icon">
+                                        <i class="fas fa-users-cog"></i>
+                                    </div>
+                                    Permisos
+                                </a>
+                                <a class="nav-link" href="promociones.html">
+                                    <div class="sb-nav-link-icon">
+                                        <i class="fas fa-tags"></i>
+                                    </div>
+                                    Promociones
+                                </a>
+                                <a class="nav-link" href="#">
+                                    <div class="sb-nav-link-icon">
+                                        <i class="fas fa-comments"></i>
+                                    </div>
+                                    Servicio al cliente
+                                </a>
+                            </nav>
+                        </div>
+                        <div class="sb-sidenav-menu-heading">Otros</div>
+                        <a class="nav-link" href="charts.html">
+                            <div class="sb-nav-link-icon">
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                            Ver comentarios y valoraciones
+                        </a>
+                        <a class="nav-link" href="charts.html">
+                            <div class="sb-nav-link-icon">
+                                <i class="fas fa-sign-out-alt"></i>
+                            </div>
+                            Cerrar sesión
+                        </a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+
+        <div id="layoutSidenav_content">
+            <div id="nuevoProducto" class="fc-gray">
+                <div class="container-fluid">
+                    <h3 style="margin-bottom:20px">Categorías principales del artículo</h3>
+                    <form class="needs-validation" novalidate="" action="/echo" method="POST" id="myForm">
+                        <div class="categorias">
+                            <div class="row">
+                                <div class="col-3">
+                                    <input type="checkbox" id="articulo1" value="Ropa"  />
+                                    <label for="articulo1">Ropa</label>
+                                </div>
+                                <div class="col-3">
+                                    <input type="checkbox" id="articulo2" value="Calzado" />
+                                    <label for="articulo2">Calzado</label>
+                                </div>
+                                <div class="col3">
+                                    <input type="checkbox" id="articulo3" value="Accesorios" />
+                                    <label for="articulo3">Accesorios</label>
+                                </div>
+
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-2">
+                                    <input type="checkbox" id="articulo4" value="Mujer" />
+                                    <label for="articulo4">Mujer</label>
+                                </div>
+                                <div class="col-2">
+                                    <input type="checkbox" id="articulo5" value="Hombre" />
+                                    <label for="articulo5">Hombre</label>
+                                </div>
+                                <div class="col-2">
+                                    <input type="checkbox" id="articulo6" value="Niña" />
+                                    <label for="articulo6">Niña</label>
+                                </div>
+                                <div class="col-2">
+                                    <input type="checkbox" id="articulo7" value="Niño" />
+                                    <label for="articulo7">Niño</label>
+                                </div>
+                                <div class="col-2">
+                                    <input type="checkbox" id="articulo8" value="Unisex" />
+                                    <label for="articulo8">Unisex</label>
+                                </div>
+
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-3">
+                                    <input type="checkbox" id="articulo9" value="Superior" />
+                                    <label for="articulo9">Parte superior</label>
+                                </div>
+                                <div class="col-3">
+                                    <input type="checkbox" id="articulo10" value="Inferior" />
+                                    <label for="articulo10">Parte inferior</label>
+                                </div>
+                                <div class="col3">
+                                    <input type="checkbox" id="articulo11" value="Complemento" />
+                                    <label for="articulo11">Conjunto o complementos</label>
+                                </div>
+
+                            </div>
+                        </div>
+                        <hr>
+                        <h3 style="margin-bottom:20px;margin-top: 20px">Ficha técnica</h3>
+                        <div class="form-row">
+                            <label class="col-form-label" for="nombre">Nombre del producto:</label>
+                            <div class="col-5">
+                                <input type="text" class="form-control w-75" placeholder="Sudadera Nasa" id="nombreProducto" required />
+                                <div class="invalid-feedback">
+                                    Por favor, escriba el nombre del producto.
+                                </div>
+                                <div class="valid-feedback">
+                                    Correcto!
+                                </div>
+                            </div>
+                            <label class="col-form-label" for="id">ID:</label>
+                            <div class="col-5">
+                                <input type="number" class="form-control w-50" placeholder="123456" id="id" required />
+                                <div class="invalid-feedback">
+                                    Se necesita un id de tipo numero.
+                                </div>
+                                <div class="valid-feedback">
+                                    Correcto!
+                                </div>
+                            </div>
+                        </div>
+                        <div style="margin-top: 10px" class="form-row">
+                            <label class="col-form-label" for="tipoArticulo">Tipo de artículo:</label>
+                            <div class="col-2">
+                                <select id="tipoArticulo" class="form-control" required>
+                                    <option value="" selected>...</option>
+                                    <option>Sudadera</option>
+                                </select>
+                                <div class="invalid-feedback">
+                                    Por favor, seleccione el tipo de artículo.
+                                </div>
+                                <div class="valid-feedback">
+                                    Correcto!
+                                </div>
+                            </div>
+                        </div>
+                        <div style="margin-top: 20px" class="form-row">
+                            <article>
+                                <label for="files">Agregar fotografias:</label>
+                                <div style="margin-left: 50px" class="row ">
+                                    <div class="custom-file-container " data-upload-id="mySecondImage">
+
+                                        <label class=" custom-file-container__custom-file">
+                                            <input type="file" class="form-control" accept="image/*" multiple required>
+                                            <div class="invalid-feedback">
+                                                Sube almenos 1 fotografía.
+                                            </div>
+                                            <div class="valid-feedback">
+                                                Almenos 1 fotografía cargada!
+                                            </div>
+                                            <input type="hidden" name="MAX_FILE_SIZE" value="10485760" />
+                                            <span class="custom-file-container__custom-file__custom-file-control"></span>
+                                        </label>
+                                        <div id="holder" class="custom-file-container__image-preview"></div>
+                                        <label><a href="javascript:void(0)" class="custom-file-container__image-clear btn btn-primary" title="Clear Image">Limpiar</a></label>
+
+                                    </div>
+
+                                </div>
+
+                            </article>
+
+                        </div>
+                        <br>
+
+
+                        <div class="form-row">
+                            <label class="col-form-label" for="Marca">Marca:</label>
+                            <div class="col">
+                                <input type="text" class="form-control w-75" placeholder="Nombre de la marca" id="Marca" required />
+                                <div class="invalid-feedback">
+                                    Se necesita este campo.
+                                </div>
+                                <div class="valid-feedback">
+                                    Correcto!
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="form-row">
+                            <label class="col-form-label" for="nombre">Materiales:</label>
+                            <div class="col">
+                                <input type="text" class="form-control w-75" placeholder="% Algodón, Poliéster u otros" id="Materiales" required />
+                                <div class="invalid-feedback">
+                                    Se necesita este campo.
+                                </div>
+                                <div class="valid-feedback">
+                                    Correcto!
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="form-row">
+                            <label class="col-form-label" for="Manga">Manga:</label>
+                            <div class="col">
+                                <input type="text" class="form-control w-75" placeholder="Sin mangas/ Manga larga/ Manga corta" id="Manga" required />
+                                <div class="invalid-feedback">
+                                    Se necesita este campo.
+                                </div>
+                                <div class="valid-feedback">
+                                    Correcto!
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="form-row">
+                            <label class="col-form-label" for="Escote">Escote:</label>
+                            <div class="col">
+                                <input type="text" class="form-control w-75" placeholder="Cuello V/ Cuello redondo u otro" id="Escote" required />
+                                <div class="invalid-feedback">
+                                    Se necesita este campo.
+                                </div>
+                                <div class="valid-feedback">
+                                    Correcto!
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="form-row">
+                            <label class="col-form-label" for="nombre">Largo:</label>
+                            <div class="col">
+                                <input type="text" class="form-control w-75" placeholder="A la cintura/ A la cadera" id="Largo" required />
+                                <div class="invalid-feedback">
+                                    Se necesita este campo.
+                                </div>
+                                <div class="valid-feedback">
+                                    Correcto!
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr>
+                        <h3 style="margin-bottom:20px">Etiquetas</h3>
+
+                        <div class="form-row">
+                            <label class="col-form-label" for="Estilo">Estilo:</label>
+                            <div class="col">
+                                <input type="text" class="form-control w-75" placeholder="Elegante, casual, deportivo, etc." id="Estilo" />
+                            </div>
+                        </div>
+                        <br>
+                        <div class="form-row">
+                            <label class="col-form-label" for="Ocasion">Ocasión:</label>
+                            <div class="col">
+                                <input type="text" class="form-control w-75" placeholder="Boda, bautízo, etc" id="Ocasion" />
+                            </div>
+                        </div>
+                        <br>
+
+                        <div class="form-row">
+                            <label class="col-form-label" for="Temporada">Temporada:</label>
+                            <div class="col">
+                                <input type="text" class="form-control w-75" placeholder="Primavera, Otoño, Invierno, Verano" id="Temporada" />
+                            </div>
+                        </div>
+                        <hr>
+                        <div id="precioContenedor">
+                            <h3 style="margin-bottom:20px">Precio</h3>
+                            <div class="form-row">
+                                <label class="col-form-label" for="preciInicial">Precio inicial(mxn) $:</label>
+                                <div class="col-4">
+                                    <input type="number" min="1" id="precioInicial" class="form-control w-25" placeholder="0.0" required />
+                                    <div class="invalid-feedback">
+                                        Se necesita un dato de tipo numero.
+                                    </div>
+                                    <div class="valid-feedback">
+                                        Correcto!
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="form-row">
+                                <label class="col-form-label" for="descuentoPorcentaje"> Descuento %:</label>
+                                <div class="col-sm-2">
+                                    <input type="number" min="0" id="descuentoPorcentaje" class="form-control w-50" placeholder="0.0" />
+                                    <div class="invalid-feedback">
+                                        Se necesita un dato de tipo numero.
+                                    </div>
+                                    <div class="valid-feedback">
+                                        Correcto!
+                                    </div>
+                                </div>
+                                <label style="margin-left:-100px" class="col-form-label" for="descuentoDinero">/ $:</label>
+                                <div class="col-sm-2">
+                                    <input type="number" min="0" id="descuentoDinero" class="form-control w-50" placeholder="0.0" />
+                                    <div style="margin-left: 60px" class="invalid-feedback">
+                                        Se necesita un dato de tipo numero.
+                                    </div>
+                                    <div class="valid-feedback">
+                                        Correcto!
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="form-row">
+                                <label class="col-form-label" for="precioFinal">Precio final(mxn) $:</label>
+                                <div class="col-4">
+                                    <input type="number" id="precioFinal" min="1" class="form-control w-25" placeholder="0.0" required readonly />
+                                    <div class="invalid-feedback">
+                                        Se necesita un dato de tipo numero.
+                                    </div>
+                                    <div class="valid-feedback">
+                                        Correcto!
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                        <h3 style="margin-bottom:20px">Colores y estampados</h3>
+                        <div class="form-row">
+                            <div class="form-group colors" style="padding-left: 10px; padding-right:10px;">
+
+                                <label class=" mb-1">Color único:</label><br>
+                                <div class=" row input_fields_wrap_colorU ">
+                                    <div class="row">
+                                        <label class="col-form-label">Color:</label>
+                                        <div class="col-4">
+                                            <select id="primerColorUnico" class="colorUnicoNombre form-control" name="colorUNombre[]" required>
+                                                <option value="" selected>Color</option>
+                                                <option value="Verde">Verde</option>
+                                                <option value="Negro">Negro</option>
+                                                <option value="Azul">Azul</option>
+                                                <option value="Blanco">Blanco</option>
+                                                <option value="Amarillo">Amarillo</option>
+                                                <option value="Rosa">Rosa</option>
+                                                <option value="Café">Café</option>
+                                                <option value="Rojo">Rojo</option>
+                                                <option value="Naranja">Naranja</option>
+                                            </select>
+                                            <div class="invalid-feedback">
+                                                Elige color.
+                                            </div>
+                                            <div class="valid-feedback">
+                                                Correcto!
+                                            </div>
+                                        </div>
+                                        <label class="col-form-label">Tonalidad:</label>
+                                        <div class="col-3">
+                                            <input id="primerTonalidadUnica" type="text" class="colorUnico form-control" name="colorU[]" placeHolder="Blanco" required />
+                                            <div class="invalid-feedback">
+                                                Elige tonalidad.
+                                            </div>
+                                            <div class="valid-feedback">
+                                                Correcto!
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <br>
+                                <a href="#" class="remove_field" data-toggle="modal" data-target="#colorU"><i class="fas fa-plus-circle"></i> Agregar color único</a>
+
+                                <!-- Modal Estampado-->
+                                <div class="modal fade" id="colorU" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLongTitle">Color Unico</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="form-row">
+                                                    <label class="col-form-label">Nombre del color:</label>
+                                                    <div class="col-4">
+                                                        <select id="colorUnicoNombre" class=" form-control">
+                                                            <option value="" selected>Color</option>
+                                                            <option value="Verde">Verde</option>
+                                                            <option value="Negro">Negro</option>
+                                                            <option value="Azul">Azul</option>
+                                                            <option value="Blanco">Blanco</option>
+                                                            <option value="Amarillo">Amarillo</option>
+                                                            <option value="Rosa">Rosa</option>
+                                                            <option value="Café">Café</option>
+                                                            <option value="Rojo">Rojo</option>
+                                                            <option value="Naranja">Naranja</option>
+                                                        </select>
+                                                    </div>
+                                                    <label class="col-form-label">Tonalidad:</label>
+                                                    <div class="col-2">
+                                                        <input type="text" id="colorUnico" class="colorUnico form-control" name="colorUnico" value="">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                                <button type="button" class="add_field_button_colorU  btn btn-primary">Guardar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="separador">
+                            <hr>
+                        </div>
+                        <br>
+                        <div class="form-row">
+                            <div class="form-group colors" style="padding-left: 10px; padding-right:10px;">
+
+                                <label class=" mb-1">Color compuesto:</label><br>
+                                <div class="input_fields_wrap_colorC row">
+                                </div>
+
+                                <br>
+                                <a href="#" class="remove_field" data-toggle="modal" data-target="#colorC"><i class="fas fa-plus-circle"></i> Agregar color compuesto</a>
+
+                                <!-- Modal Compuesto-->
+                                <div class="modal fade " id="colorC" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                                    <div class="modal-dialog modal-lg" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLongTitle">Color Compuesto</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="row">
+                                                    <label class="col-form-label">Color1:</label>
+                                                    <select id="colorCompuestoNombre1" class="col-2 colorCompuestoNombre form-control">
+                                                        <option value="" selected>Color</option>
+                                                        <option value="Verde">Verde</option>
+                                                        <option value="Negro">Negro</option>
+                                                        <option value="Azul">Azul</option>
+                                                        <option value="Blanco">Blanco</option>
+                                                        <option value="Amarillo">Amarillo</option>
+                                                        <option value="Rosa">Rosa</option>
+                                                        <option value="Café">Café</option>
+                                                        <option value="Rojo">Rojo</option>
+                                                        <option value="Naranja">Naranja</option>
+                                                    </select>
+                                                    <label class="col-form-label">Tonalidad1:</label>
+                                                    <input type="text" id="colorCompuesto" class="col-2 colorCompuesto form-control" name="colorCompuesto" value="">
+                                                    <label class="col-form-label">/Color2:</label>
+                                                    <select id="colorCompuestoNombre2" class="col-2 colorCompuestoNombre2 form-control">
+                                                        <option value="" selected>Color</option>
+                                                        <option value="Verde">Verde</option>
+                                                        <option value="Negro">Negro</option>
+                                                        <option value="Azul">Azul</option>
+                                                        <option value="Blanco">Blanco</option>
+                                                        <option value="Amarillo">Amarillo</option>
+                                                        <option value="Rosa">Rosa</option>
+                                                        <option value="Café">Café</option>
+                                                        <option value="Rojo">Rojo</option>
+                                                        <option value="Naranja">Naranja</option>
+                                                    </select>
+                                                    <label class="col-form-label">Tonalidad2:</label>
+                                                    <input type="text" id="colorCompuesto1" class="col-2 colorCompuesto form-control" name="colorCompuesto" value="">
+                                                </div>
+                                            </div>
+
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                                <button type="button" class="add_field_button_colorC  btn btn-primary">Guardar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="separador">
+                            <hr>
+                        </div>
+                        <br>
+                        <div class="form-row">
+                            <div class="form-group colors" style="padding-left: 10px; padding-right:10px;">
+
+                                <label class=" mb-1">Estampados:</label><br>
+                                <div class="input_fields_wrap row"></div>
+
+                                <br>
+                                <a href="#" class="remove_field" data-toggle="modal" data-target="#exampleModalLong"><i class="fas fa-plus-circle"></i> Agregar estampado</a>
+
+                                <!-- Modal Estampado-->
+                                <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLongTitle">Estampado</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <label>Nombe de estampado</label>
+                                                <input type="text" id="estampado" class="form-control" name="estampado">
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                                <button type="button" class="add_field_button  btn btn-primary">Guardar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr>
+                        <h3 style="margin-bottom:20px">Tallas</h3>
+                        <div class="form-row">
+                            <div class="form-group colors" style="padding-left: 10px; padding-right:10px;">
+
+                                <label class=" mb-1">Tallas:</label><br>
+                                <div class="input_fields_wrap_talla row"></div>
+
+                                <br>
+
+                                <a href="#" class="remove_field" data-toggle="modal" data-target="#modalTalla"><i class="fas fa-plus-circle"></i> Agregar talla</a>
+                                <!-- Modal Talla-->
+                                <div class="modal fade" id="modalTalla" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLongTitle">Talla</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <label>Nombre de la talla</label>
+                                                <select id="talla" class="form-control">
+                                                    <option value="" selected>Tallas</option>
+                                                    <option value="CH">CH</option>
+                                                    <option value="M ">M</option>
+                                                    <option value="G">G</option>
+                                                    <option value="XG">XG</option>
+                                                </select>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                                <button type="button" class="add_field_button_talla  btn btn-primary">Guardar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                        <h3 style="margin-bottom:20px">Medidas por talla </h3>
+                        <div class="form-row">
+                            <!--Tabla medidas-->
+
+                            <table class="table table-striped" id="tablaMedidas" cell>
+                                <tbody>
+                                    <tr class="medidaColumnas">
+                                        <th scope="col">Medidas</th>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <div class="form-group colors" style="padding-left: 10px; padding-right:10px;">
+
+                                <br>
+
+                                <a href="#" data-toggle="modal" data-target="#modalMedida"><i class="fas fa-plus-circle"></i> Agregar medida</a>
+                                <!-- Modal Medida-->
+                                <div class="modal fade" id="modalMedida" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLongTitle">Medida</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <label>Nombre de la medida:</label>
+                                                <select id="medida" name="medida" class="form-control" >
+                                                    <option value="" selected>Medidas</option>
+                                                    <option value="Hombro">Hombro</option>
+                                                    <option value="Pecho">Pecho</option>
+                                                    <option value="Contorno cintura">Contorno cintura</option>
+                                                    <option value="Contorno cadera">Contorno cadera</option>
+                                                    <option value="Largo manga">Largo manga</option>
+                                                    <option value="Largo talle">Largo talle</option>
+                                                    <option value="Contorno bicep">Contorno bicep</option>
+                                                    <option value="Puño">Puño</option>
+                                                </select>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                                <button id="agregarFila" type="button" class="agregarFila btn btn-primary">Guardar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Modal errorMedida-->
+                                <div class="modal fade" id="errorMedida" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLongTitle">Upss!</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <p>¡Debe agregar al menos una talla!</p>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Modal errorMedida-->
+                                <div class="modal fade" id="errorMedidaNinguna" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLongTitle">Upss!</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <p>¡Debe agregar al menos una medida!</p>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+                        <hr>
+                        <h3 style="margin-bottom:20px">Disponibilidad</h3>
+                        <div class="form-row">
+                            <!--<div class="custom-control custom-switch ">
+                              <input type="checkbox" class="custom-control-input col-sm-2" id="activarHora">
+                              <label class="custom-control-label" for="activarHora">Siempre disponible</label>
+                            </div>-->
+
+                            <!--Tabla medidas-->
+                            <table style="margin-top: 20px;" class="table table-striped" id="tablaDisp">
+                                <thead>
+                                    <tr class="dispColumnas">
+                                        <th scope="col">Color</th>
+                                        <th scope="col">Talla</th>
+                                        <th scope="col">Stock</th>
+                                        <th scope="col">Sucursal</th>
+                                        <th scope="col">Cantidad</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                            <!--<a id="disp" href="#"  data-toggle="modal" data-target="#"><i class="fas fa-plus-circle" ></i> Agregar medida</a>-->
+                        </div>
+                        <br>
+                        <button type="submit" class="btn btn-primary" id="submit-all">Guardar</button>
+                    </form>
+
+                </div>
+
+
+            </div>
+
+
+            <footer class="py-4 bg-light mt-auto">
+                <div class="container-fluid">
+                    <div class="d-flex align-items-center justify-content-between small">
+                        <div class="text-muted">Copyright &copy; Your Website 2019 -- Dash --</div>
+                        <div>
+                            <a href="#">Privacy Policy</a>
+                            &middot;
+                            <a href="#">Terms &amp; Conditions</a>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+</body>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+</script>
+<script src='../assets/js/spectrum.js'></script>
+<script src="../assets/js/dash.js"></script>
+<script type="" src="../assets/js/profile.js"></script>
+<script src="../assets/js/time.js"></script>
+<script src="../assets/js/file-upload-with-preview.min.js"></script>
+<script src="../assets/js/tagify.min.js"></script>
+<script src="../assets/js/producto.js"></script>
+
+
+</html>

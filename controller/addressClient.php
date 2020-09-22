@@ -40,7 +40,7 @@ if ($_SERVER["REQUEST_METHOD"]=="POST") {
         
                     } else {
         
-                        $response = new Response(array('status' => Constants::OK_RESPONSE, 'message' => $data));
+                        $response = new Response(array('status' => Constants::OK_RESPONSE, 'message' => 'Dirección agregada correctamente'));
         
                         echo json_encode($response, JSON_UNESCAPED_UNICODE);
         
@@ -119,7 +119,7 @@ if ($_SERVER["REQUEST_METHOD"]=="POST") {
     
                     } else {
 
-                        $response = new Response(array('status' => Constants::OK_RESPONSE, 'message' => $address));
+                        $response = new Response(array('status' => Constants::OK_RESPONSE, 'message' => 'Dirección actualizada correctamente'));
                 
                         echo json_encode($response, JSON_UNESCAPED_UNICODE);
     
@@ -147,7 +147,7 @@ if ($_SERVER["REQUEST_METHOD"]=="POST") {
                         if($delete != false){
                                 
         
-                            $response = new Response(array('status' => Constants::OK_RESPONSE, 'message' => $delete));
+                            $response = new Response(array('status' => Constants::OK_RESPONSE, 'message' => 'Dirección eliminada correctamente'));
                     
                             echo json_encode($response, JSON_UNESCAPED_UNICODE);
         
@@ -155,7 +155,7 @@ if ($_SERVER["REQUEST_METHOD"]=="POST") {
                     
                             //$response = new Response(array('status' => Constants::BAD_RESPONSE, 'message' => Constants::BAD_RESPONSE_NO_USER_FOUND));
         
-                            $response = new Response(array('status' => Constants::BAD_RESPONSE, 'message' => 'Estamos aqui'));
+                            $response = new Response(array('status' => Constants::BAD_RESPONSE, 'message' => 'Error al intentar eliminar dirección, intente nuevamente'));
         
                             echo json_encode($response, JSON_UNESCAPED_UNICODE); 
         

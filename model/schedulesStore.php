@@ -116,8 +116,6 @@ if ($_SERVER["REQUEST_METHOD"]=="POST") {
                 
                 $data2 = $check -> mdlAddFirstSchedule($idStore, $openL, $closeL, $openM, $closeM, $openW, $closeW, $openJ, $closeJ, $openV, $closeV, $openS, $closeS, $openD, $closeD);
 
-                var_dump($data2);
-
                 if($data2 == false) {
 
                     $response = new Response(array('status' => Constants::BAD_RESPONSE, 'message' => Constants::BAD_RESPONSE));
@@ -126,7 +124,7 @@ if ($_SERVER["REQUEST_METHOD"]=="POST") {
 
                 } else {
                 
-                    $response = new Response(array('status' => Constants::OK_RESPONSE, 'message' => 'Horario agregado correctamente'));
+                    $response = new Response(array('status' => Constants::OK_RESPONSE, 'message' => $data2));
             
                     echo json_encode($response, JSON_UNESCAPED_UNICODE);
 

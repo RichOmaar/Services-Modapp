@@ -1,0 +1,1900 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Boostrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <!--Font awesome -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js"
+        crossorigin="anonymous"></script>
+    <!--Others-->
+    <link rel="shortcut icon" href="./favicon.ico" />
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/empresa/profile.css">
+    <!-- <link rel="stylesheet" href="../assets/css/empresa/time.css"> -->
+    <title>Gestor Web Longbit</title>
+</head>
+
+<body class="sb-nav-fixed">
+    <nav id="navPrincipal" class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+        <a style="color:black" class="navbar-brand" href="profile.html">Negocio</a>
+        <button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#">
+            <i style="color: black;" class="fas fa-bars"></i>
+        </button>
+    </nav>
+    <div id="layoutSidenav">
+        <div id="layoutSidenav_nav">
+            <nav class="sb-sidenav accordion sb-sidenav-light" id="sidenavAccordion">
+                <div class="sb-sidenav-menu">
+                    <div class="nav">
+                        <div class="sb-sidenav-menu-heading">Perfil</div>
+                        <a class="nav-link" href="profile.html">
+                            <div class="sb-nav-link-icon">
+                                <i class="fas fa-user-circle"></i>
+                            </div>
+                            Mi perfil
+                        </a>
+                        <div class="sb-sidenav-menu-heading">Adminsitración</div>
+                        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts"
+                            aria-expanded="false" aria-controls="collapseLayouts">
+                            <div class="sb-nav-link-icon">
+                                <i class="fas fa-columns"></i>
+                            </div>
+                            Gestiona
+                            <div class="sb-sidenav-collapse-arrow">
+                                <i class="fas fa-angle-down"></i>
+                            </div>
+                        </a>
+                        <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav">
+                                <a class="nav-link" href="inventario.html">
+                                    <div class="sb-nav-link-icon">
+                                        <i class="fas fa-socks"></i>
+                                    </div>
+                                    Inventario
+                                </a>
+                                <a class="nav-link" href="#">
+                                    <div class="sb-nav-link-icon">
+                                        <i class="far fa-credit-card"></i>
+                                    </div>
+                                    Ventas
+                                </a>
+                                <a class="nav-link" href="#">
+                                    <div class="sb-nav-link-icon">
+                                        <i class="fas fa-user-plus"></i>
+                                    </div>
+                                    Contrataciones
+                                </a>
+                                <a class="nav-link" href="#">
+                                    <div class="sb-nav-link-icon">
+                                        <i class="fas fa-users-cog"></i>
+                                    </div>
+                                    Permisos
+                                </a>
+                                <a class="nav-link" href="#">
+                                    <div class="sb-nav-link-icon">
+                                        <i class="fas fa-tags"></i>
+                                    </div>
+                                    Promociones
+                                </a>
+                                <a class="nav-link" href="#">
+                                    <div class="sb-nav-link-icon">
+                                        <i class="fas fa-comments"></i>
+                                    </div>
+                                    Servicio al cliente
+                                </a>
+                            </nav>
+                        </div>
+                        <div class="sb-sidenav-menu-heading">Otros</div>
+                        <a class="nav-link" href="charts.html">
+                            <div class="sb-nav-link-icon">
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                            Ver comentarios y valoraciones
+                        </a>
+                        <a class="nav-link" href="charts.html">
+                            <div class="sb-nav-link-icon">
+                                <i class="fas fa-sign-out-alt"></i>
+                            </div>
+                            Cerrar sesión
+                        </a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <div id="layoutSidenav_content">
+            <nav class="mb-4" style="background-color: #f1f3f4;">
+                <ul class="nav nav-tabs" id="myTab">
+                    <!--quite role="tablist"-->
+                    <li class="nav-item">
+                        <!--quite role="presentation" -->
+                        <a class="nav-link active" id="user-tab" data-toggle="tab" href="#info-contact">
+                            <!--quite role="tab"-->
+                            <div class="d-flex align-items-center">
+                                <div class="sb-nav-link-icon">
+                                    <i class="fas fa-user"></i>
+                                </div>
+                                Datos de contacto
+                            </div>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <!--quite role="presentation" -->
+                        <a class="nav-link" id="company-tab" data-toggle="tab" href="#data-company">
+                            <!--quite role="tab"-->
+                            <div class="d-flex align-items-center">
+                                <div class="sb-nav-link-icon">
+                                    <i class="fas fa-building"></i>
+                                </div>
+                                Datos de la empresa
+                            </div>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="branches-tab" data-toggle="tab" href="#branches">
+                            <div class="d-flex align-items-center">
+                                <div class="sb-nav-link-icon">
+                                    <i class="fas fa-store"></i>
+                                </div>
+                                Sucursales
+                            </div>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="subscription-tab" data-toggle="tab" href="#subscribe">
+                            <div class="d-flex align-items-center">
+                                <div class="sb-nav-link-icon">
+                                    <i class="fas fa-tag"></i>
+                                </div>
+                                Subscripción
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="d-flex sb_subcontent">
+                <div class="tab-content sb_subcontent-content" id="">
+                    <!--sin el footer añadi mb-auto-->
+                    <div id="info-contact" class="fc-gray tab-pane fade show active">
+                        <div>
+                            <main>
+                                <div class="container-fluid">
+                                    <div class="form-group">
+                                        <label class="fc-gray-main" for="name-complete">Nombre(s) y apellidos*</label>
+                                        <input type="text" class="form-control col-md-6" id="name-complete"
+                                            placeholder="Ernesto Gutiérrez López">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="fc-gray-main" for="phone">Telefono a 10 dígitos*</label>
+                                        <input type="tel" maxlength="10" pattern="^[^0](\d{9})$"
+                                            class="form-control col-md-6" id="phone" placeholder="55 12 34 56 78">
+                                    </div>
+                                </div>
+                            </main>
+                        </div>
+                    </div>
+                    <div id="data-company" class="fc-gray tab-pane tab-pane-dual fade">
+                        <div id="tab-tabLogo" class="container mb-2">
+                            <div class="container">
+                                <label for="chooseImg" class="fc-gray-main">Logo de la empresa*</label>
+                                <small id="imgHelp" class="text-muted d-none">Si deseas cambiar la imagen, da click
+                                    nuevamente.</small>
+                                <input type="file" accept=".png, .jpg, .jpeg " class="form-control-file d-none"
+                                    id="chooseImg">
+                                <div class="image-preview d-flex align-items-center justify-content-center "
+                                    id="imgPreview" onclick="seleccionaImagen()">
+                                    <img src="" class="d-none image-preview__imagen" alt="Visualización de imagen">
+                                    <span class="image-preview__default-text">Vista de la imagen</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="tab-tabInfo" class="container d-flex">
+                            <div id="tab-tabInputs" class="container">
+                                <form>
+                                    <div class="form-group">
+                                        <label class="fc-gray-main" for="nameComany">Nombre de la empresa*</label>
+                                        <input type="text" class="form-control" id="nameCompany"
+                                            placeholder="Atelier showroom">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="fc-gray-main" for="email">Correo empresarial*</label>
+                                        <input type="email" class="form-control" id="email"
+                                            placeholder="ateliershowroom@gmail.com">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="fc-gray-main" for="phone">Telefono a 10 dígitos*</label>
+                                        <input type="tel" maxlength="10" pattern="^[^0](\d{9})$" class="form-control"
+                                            id="phone" placeholder="55 12 34 56 78">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="fc-gray-main" for="RFC">RFC*</label>
+                                        <input type="text" minlength="12" maxlength="13" class="form-control" id="RFC"
+                                            placeholder="TL0180527612">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="fc-gray-main" for="descTienda">Descripción de la tienda</label>
+                                        <textarea class="form-control" id="descTienda" rows="5"
+                                            placeholder="Ofrecemos ropa, calzado y accesorios de la mejor caldiad, para satisfacer las necesidades y gustos del mercado potencial. Vendemos artículos de moda que cumplen con los requerimientos de estilo en el segmeno del mercado."></textarea>
+                                    </div>
+                                </form>
+                            </div>
+                            <div id="tab-tabModals" class="container">
+                                <div id="modalAtencion" class="form-group">
+                                    <label class="d-block fc-gray-main">Horario de atención*</label>
+                                    <!--Form que contiene la info una vez sea llenado el modal-->
+                                    <form id="schedule1" class="mb-2 d-none">
+                                        <div class="d-flex justify-content-between mb-2">
+                                            <p class="mb-0 text-center">Horario 1</p>
+                                            <div>
+                                                <button type="button"
+                                                    class=" edit btn btn-outline-success btn-sm align-items-center"><i
+                                                        class="fas fa-edit"></i></button>
+                                                <button type="button" class="delete btn btn-outline-danger btn-sm"><i
+                                                        class="fas fa-trash-alt"></i></button>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex dias">
+                                            <p class="mr-2">Dias: </p>
+                                            <p>
+                                                <span class="mr-1 dia">Lunes</span>
+                                                <span class="mr-1 dia">Martes</span>
+                                                <span class="mr-1 dia">Miercoles</span>
+                                                <span class="mr-1 dia">Jueves</span>
+                                                <span class="mr-1 dia">Viernes</span>
+                                                <span class="mr-1 dia">Sabado</span>
+                                                <span class="mr-1 dia">Domingo</span></p>
+                                        </div>
+                                        <div class="d-flex horas">
+                                            <p class="mr-2">Horario de atencion: </p>
+                                            <p>
+                                                <span id="horaI">08</span>
+                                                <span id="">:</span>
+                                                <span id="minutoI">00</span>
+                                                <span id="meridianoI">AM</span>
+                                                <span id="">-</span>
+                                                <span id="horaF">04</span>
+                                                <span id="">:</span>
+                                                <span id="minutoF">30</span>
+                                                <span id="meridianoF">PM</span>
+                                            </p>
+                                        </div>
+                                    </form>
+                                    <!-- Button trigger modal -->
+                                    <button id="newSchedule" type="button" class="btn btn-primary" data-toggle="modal"
+                                        data-target="#horaAtencion">
+                                        Agregar
+                                    </button>
+                                    <!-- Modal horario de atencion-->
+                                    <div class="modal fade" id="horaAtencion" tabindex="-1">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title fc-gray-main" id="exampleModalLabel">Agregar
+                                                        horario de atencion</h5>
+                                                    <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div id="empresaAtencion" class="modal-body">
+                                                    <div class="container empresaAtencion-dias" data-toggle="popover"
+                                                        data-trigger="hover" title="Dia vacio"
+                                                        data-content="Selecciona minimo un día" data-placement="right">
+                                                        <table id="schedule" class="schedule table text-center fc-gray">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td id="diaE-Lunes">L</td>
+                                                                    <td id="diaE-Martes">M</td>
+                                                                    <td id="diaE-Miercoles">M</td>
+                                                                    <td id="diaE-Jueves">J</td>
+                                                                    <td id="diaE-Viernes">V</td>
+                                                                    <td id="diaE-Sabado">S</td>
+                                                                    <td id="diaE-Domingo">D</td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                    <div class="empresaAtencion-horas" data-toggle="popover"
+                                                        data-trigger="hover" title="Verifica horas"
+                                                        data-content="Hora inicial es mas tarde">
+                                                        <span>De</span>
+                                                        <div id="hours"
+                                                            class="hoursInicio d-flex flex-column justify-content-center align-items-center">
+                                                            <span class="upInicio"><i
+                                                                    class="fas fa-angle-up upInicio"></i></span>
+                                                            <span class="hourI sized">06</span>
+                                                            <span class="downInicio"><i
+                                                                    class="fas fa-angle-down downInicio"></i></span>
+                                                        </div>
+                                                        <span>:</span>
+                                                        <div id="minutes"
+                                                            class="minutesInicio d-flex flex-column justify-content-center align-items-center">
+                                                            <span class="upInicio"><i
+                                                                    class="fas fa-angle-up upInicio"></i></span>
+                                                            <span class="minuteI sized">00</span>
+                                                            <span class="downInicio"><i
+                                                                    class="fas fa-angle-down downInicio"></i></span>
+                                                        </div>
+                                                        <div class="mr-2">
+                                                            <span class="meridiano meridI sized">AM</span>
+                                                        </div>
+                                                        <span>a</span>
+                                                        <div id="hours"
+                                                            class="hoursFinal d-flex flex-column justify-content-center align-items-center">
+                                                            <span class="upFin"><i
+                                                                    class="fas fa-angle-up upFin"></i></span>
+                                                            <span class="hourF sized">06</span>
+                                                            <span class="downFin"><i
+                                                                    class="fas fa-angle-down downFin"></i></span>
+                                                        </div>
+                                                        <span>:</span>
+                                                        <div id="minutes"
+                                                            class="minutesFinal d-flex flex-column justify-content-center align-items-center">
+                                                            <span class="upFin"><i
+                                                                    class="fas fa-angle-up upFin"></i></span>
+                                                            <span class="minuteF sized">30</span>
+                                                            <span class="downFin"><i
+                                                                    class="fas fa-angle-down downFin"></i></span>
+                                                        </div>
+                                                        <div>
+                                                            <span class="meridiano meridF sized">PM</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary"
+                                                        data-dismiss="modal">Cancelar</button>
+                                                    <button type="button" id="btnEmpresa-CrearHorario"
+                                                        class=" btn btn-primary crearHorario">Agregar horario</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="modalFiscal" class="form-group">
+                                    <label class="d-block fc-gray-main">Dirección fiscal*</label>
+                                    <!-- Button trigger modal -->
+                                    <button id="btnAgregar-DirFiscal" type="button" class="btn btn-primary"
+                                        data-toggle="modal" data-target="#dFiscal">
+                                        Agregar
+                                    </button>
+                                    <!-- Modal direccion fiscal -->
+                                    <div class="modal fade" id="dFiscal" tabindex="-1">
+                                        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel">Agregar dirección
+                                                        fiscal</h5>
+                                                    <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <form id="formFiscal" class="needs-validation">
+                                                        <div class="form-group">
+                                                            <label for="estadoFiscal">Estado*</label>
+                                                            <select required name="estadoFisco" id="estadoFiscal"
+                                                                class="form-control">
+                                                                <option selected disabled value="">Selecciona un Estado
+                                                                </option>
+                                                                <option value="AGS">Aguascalientes</option>
+                                                                <option value="BCN">Baja California</option>
+                                                                <option value="BCS">Baja California Sur</option>
+                                                                <option value="CAM">Campeche</option>
+                                                                <option value="CDMX">Ciudad de M&eacute;xico</option>
+                                                                <option value="CHP">Chiapas</option>
+                                                                <option value="CHI">Chihuahua</option>
+                                                                <option value="COA">Coahuila</option>
+                                                                <option value="COL">Colima</option>
+                                                                <option value="DUR">Durango</option>
+                                                                <option value="GTO">Guanajuato</option>
+                                                                <option value="GRO">Guerrero</option>
+                                                                <option value="HGO">Hidalgo</option>
+                                                                <option value="JAL">Jalisco</option>
+                                                                <option value="MEX">M&eacute;xico</option>
+                                                                <option value="MIC">Michoac&aacute;n</option>
+                                                                <option value="MOR">Morelos</option>
+                                                                <option value="NAY">Nayarit</option>
+                                                                <option value="NLE">Nuevo Le&oacute;n</option>
+                                                                <option value="OAX">Oaxaca</option>
+                                                                <option value="PUE">Puebla</option>
+                                                                <option value="QRO">Quer&eacute;taro</option>
+                                                                <option value="ROO">Quintana Roo</option>
+                                                                <option value="SLP">San Luis Potos&iacute;</option>
+                                                                <option value="SIN">Sinaloa</option>
+                                                                <option value="SON">Sonora</option>
+                                                                <option value="TAB">Tabasco</option>
+                                                                <option value="TAM">Tamaulipas</option>
+                                                                <option value="TLX">Tlaxcala</option>
+                                                                <option value="VER">Veracruz</option>
+                                                                <option value="YUC">Yucat&aacute;n</option>
+                                                                <option value="ZAC">Zacatecas</option>
+                                                            </select>
+                                                        </div>
+                                                        <div id="divMunicipio-Fisco" class="form-group d-none">
+                                                            <label for="municipioFiscal">Municipio o
+                                                                Alcald&iacute;a*</label>
+                                                            <select name="municipioFisco" id="municipioFiscal"
+                                                                class="form-control">
+                                                                <option value="" disabled selected>Selecciona una opcion
+                                                                </option>
+                                                            </select>
+                                                        </div>
+                                                        <div id="divCP-Fisco" class="form-group d-none">
+                                                            <label for="inputCP-Fisco">C.P. *</label>
+                                                            <input pattern="[0-9]+" maxlength="5" type="text"
+                                                                class="form-control" id="inputCP-Fisco" name="CP"
+                                                                placeholder="06170">
+                                                        </div>
+                                                        <div id="divCalle-Fisco" class="form-group d-none">
+                                                            <label for="inputCalle-Fisco">Calle *</label>
+                                                            <input type="text" class="form-control"
+                                                                id="inputCalle-Fisco" name="Calle"
+                                                                placeholder="Nombre de calle">
+                                                        </div>
+                                                        <div class="form-row d-flex justify-content-between">
+                                                            <div id="divNE-Fisco" class="form-group col-md-4 d-none">
+                                                                <label for="inputNE-Fiscal">Número exterior*</label>
+                                                                <input type="text" pattern="[0-9]+" class="form-control"
+                                                                    id="inputNE-Fiscal" placeholder="12">
+                                                            </div>
+                                                            <div id="divNI-Fisco" class="form-group col-md-4 d-none">
+                                                                <label for="inputNI-Fiscal">Número interior</label>
+                                                                <input type="text" class="form-control"
+                                                                    id="inputNI-Fiscal" placeholder="07">
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary"
+                                                        data-dismiss="modal">Cancelar</button>
+                                                    <button id="btnCrear-DirFiscal" class="btn btn-primary">Agregar
+                                                        dirección</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--Div que avisa el modal fue llenado-->
+                                    <div id="dFiscal-Fill" class="mt-2 d-none">
+                                        <div>
+                                            <button id="editFiscal" type="button"
+                                                class="btn btn-outline-success btn-sm"><i
+                                                    class="fas fa-edit"></i></button>
+                                            <button id="deleteFiscal" type="button"
+                                                class="btn btn-outline-danger btn-sm"><i
+                                                    class="fas fa-trash-alt"></i></button>
+                                        </div>
+                                        <small id="dFsical-Help" class="form-text text-muted">La dirección fiscal fue
+                                            capturada.</small>
+                                    </div>
+                                </div>
+                                <div id="modalPagos" class="form-group">
+                                    <label class="d-block fc-gray-main">Formas para recibir pagos*</label>
+                                    <!-- Button trigger modal -->
+                                    <button id="btnPayment" type="button" class="btn btn-primary" data-toggle="modal"
+                                        data-target="#formasPagos">
+                                        Agregar
+                                    </button>
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="formasPagos" tabindex="-1">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                                    <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    Stuff Formas pagos
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary"
+                                                        data-dismiss="modal">Close</button>
+                                                    <button type="button" class="btn btn-primary">Save changes</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="productosVender" class="form-group">
+                                    <label class="d-block fc-gray-main">¿Qué productos vendes?*</label>
+                                    <div class="checkbox">
+                                        <label><input class="mr-2" type="checkbox" value="">Ropa</label>
+                                    </div>
+                                    <div class="checkbox">
+                                        <label><input class="mr-2" type="checkbox" value="">Calzado</label>
+                                    </div>
+                                    <div class="checkbox">
+                                        <label><input class="mr-2" type="checkbox" value="">Accesorios</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="branches" class="tab-pane fade">
+                        <div class="container">
+                            <div class="mb-2 d-flex justify-content-center">
+                                <div id="formulario-branches" class="col-11">
+                                    <form id="formBranchWhole" class="needs-validation" novalidate>
+                                        <div id="parteName-Branch" class="form-group">
+                                            <label class="fc-gray-main" for="nameBranch">Nombre de la Sucursal*</label>
+                                            <input id="nameBranch" required name="name-branch" type="text"
+                                                class="form-control" placeholder="Sucursal Condesa">
+                                            <div class="invalid-feedback">
+                                                Agrega un nombre
+                                            </div>
+                                            <div class="valid-feedback">
+                                                Campo llenado!
+                                            </div>
+                                        </div>
+                                        <div id="parteDireccion-Branch" class="form-group">
+                                            <div id="divEstadoMunicipioBranch" class="form-row">
+                                                <div id="divEstadoBranch" class="form-group col-md-6 mb-3">
+                                                    <label for="estadoBranch">Estado*</label>
+                                                    <select required name="estado-branch" id="estadoBranch"
+                                                        class="form-control">
+                                                        <option selected disabled value="">Selecciona un Estado</option>
+                                                        <option value="AGS">Aguascalientes</option>
+                                                        <option value="BCN">Baja California</option>
+                                                        <option value="BCS">Baja California Sur</option>
+                                                        <option value="CAM">Campeche</option>
+                                                        <option value="CDMX">Ciudad de M&eacute;xico</option>
+                                                        <option value="CHP">Chiapas</option>
+                                                        <option value="CHI">Chihuahua</option>
+                                                        <option value="COA">Coahuila</option>
+                                                        <option value="COL">Colima</option>
+                                                        <option value="DUR">Durango</option>
+                                                        <option value="GTO">Guanajuato</option>
+                                                        <option value="GRO">Guerrero</option>
+                                                        <option value="HGO">Hidalgo</option>
+                                                        <option value="JAL">Jalisco</option>
+                                                        <option value="MEX">M&eacute;xico</option>
+                                                        <option value="MIC">Michoac&aacute;n</option>
+                                                        <option value="MOR">Morelos</option>
+                                                        <option value="NAY">Nayarit</option>
+                                                        <option value="NLE">Nuevo Le&oacute;n</option>
+                                                        <option value="OAX">Oaxaca</option>
+                                                        <option value="PUE">Puebla</option>
+                                                        <option value="QRO">Quer&eacute;taro</option>
+                                                        <option value="ROO">Quintana Roo</option>
+                                                        <option value="SLP">San Luis Potos&iacute;</option>
+                                                        <option value="SIN">Sinaloa</option>
+                                                        <option value="SON">Sonora</option>
+                                                        <option value="TAB">Tabasco</option>
+                                                        <option value="TAM">Tamaulipas</option>
+                                                        <option value="TLX">Tlaxcala</option>
+                                                        <option value="VER">Veracruz</option>
+                                                        <option value="YUC">Yucat&aacute;n</option>
+                                                        <option value="ZAC">Zacatecas</option>
+                                                    </select>
+                                                    <div class="invalid-feedback">Debes seleccionar un elemento</div>
+                                                    <div class="valid-feedback">Campo llenado!</div>
+                                                </div>
+                                                <div id="divMunicipioBranch" class="form-group col-md-6 mb-3 d-none">
+                                                    <label for="municipioBranch">Municipio o Alcald&iacute;a*</label>
+                                                    <select name="municipio-branch" id="municipioBranch"
+                                                        class="form-control">
+                                                        <option value="" disabled selected>Selecciona una opcion
+                                                        </option>
+                                                    </select>
+                                                    <div class="invalid-feedback">Debes selecciona un elemento</div>
+                                                    <div class="valid-feedback">Campo llenado!</div>
+                                                </div>
+                                            </div>
+                                            <div id="divCPCalleBranch" class="form-row">
+                                                <div id="divCPBranch" class="form-group col-md-6 mb-3">
+                                                    <label for="inputCP-Branch">C.P. *</label>
+                                                    <input required pattern="[0-9]+" maxlength="5" type="text"
+                                                        class="form-control" id="CPBranch" name="cp-branch"
+                                                        placeholder="06170">
+                                                    <div class="invalid-feedback">
+                                                        Deben ser números.
+                                                    </div>
+                                                    <div class="valid-feedback">
+                                                        Campo llenado!
+                                                    </div>
+                                                </div>
+                                                <div id="divCalleBranch" class="form-group col-md-6 mb-3">
+                                                    <label for="calleBranch">Calle *</label>
+                                                    <input required type="text" class="form-control" id="calleBranch"
+                                                        name="calle-branch" placeholder="Nombre de calle">
+                                                    <div class="invalid-feedback">
+                                                        Campo no lleno.
+                                                    </div>
+                                                    <div class="valid-feedback">
+                                                        Campo llenado!
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div id="divNumrosBranch" class="form-row d-flex justify-content-between">
+                                                <div id="divNEBranch" class="form-group col-md-4">
+                                                    <label for="NEBranch">Número exterior*</label>
+                                                    <input required type="text" pattern="[0-9]+" class="form-control"
+                                                        id="NEBranch" name="ne-branch" placeholder="12">
+                                                    <div class="invalid-feedback">Deben ser número</div>
+                                                    <div class="valid-feedback">Campo llenado!</div>
+                                                </div>
+                                                <div id="divNIBranch" class="form-group col-md-4">
+                                                    <label for="NIBranch">Número interior</label>
+                                                    <input type="text" pattern="[0-9]+" class="form-control"
+                                                        id="NIBranch" name="ni-branch">
+                                                    <div class="invalid-feedback">Si el campo es llenado debe ser con
+                                                        números</div>
+                                                    <div class="valid-feedback">Este campo es opcional!</div>
+                                                </div>
+                                            </div>
+                                            <div id="divPaginaBranch" class="form-group">
+                                                <label for="paginaBranch">Link para ubicar pin en la
+                                                    aplicaci&oacute;n</label>
+                                                <input required type="text" class="form-control" id="paginaBranch"
+                                                    name="pagina-branch" placeholder="https://www.google.com.mx/maps/">
+                                                <div class="invalid-feedback">
+                                                    Campo Vacio
+                                                </div>
+                                                <div class="valid-feedback">
+                                                    Campo llenado!
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div id="partePhone-Branch" class="form-group">
+                                            <label class="fc-gray-main">Telefono a 10 digitos*</label>
+                                            <input id="phoneBranch" required pattern="[1-9]+" name="phone-branch"
+                                                type="text" minlength="10" maxlength="10" class="form-control"
+                                                placeholder="55 35 12 60 20">
+                                            <div class="invalid-feedback">
+                                                Error.
+                                            </div>
+                                            <div class="valid-feedback">
+                                                Longitud exacta!
+                                            </div>
+                                        </div>
+                                        <div id="parteHorario-Branch" class="form-group">
+                                            <div id="modalHorario" class="form-group">
+                                                <label class="d-block fc-gray-main">Horario de atención*</label>
+                                                <!--Div que contendra los horarios añadidos-->
+                                                <div id="horarios" class="d-none fc-gray">
+                                                    <!--Div base de un horario-->
+                                                    <div id="horario_0" class="mb-4 fc-gray d-none">
+                                                        <div id="botoneraHorario"
+                                                            class="d-flex justify-content-between mb-2">
+                                                            <p class="mb-0 text-center">Horario X</p>
+                                                            <div id="botonesHorario">
+                                                                <!--Button trigger modal Edit-->
+                                                                <!-- <button type="button" class="edit btn btn-outline-success btn-sm align-items-center" data-toggle="modal" data-target="#horaAtencion_Branch_Edit"><i class="fas fa-edit"></i></button> -->
+                                                                <button type="button"
+                                                                    class="edit btn btn-outline-success btn-sm align-items-center"><i
+                                                                        class="fas fa-edit"></i></button>
+                                                                <button type="button"
+                                                                    class="delete btn btn-outline-danger btn-sm"><i
+                                                                        class="fas fa-trash-alt"></i></button>
+                                                            </div>
+                                                        </div>
+                                                        <div id="diasHorario" class="d-flex dias">
+                                                            <p class="mr-2">Dias: </p>
+                                                            <p>
+                                                                <span class="mr-1 dia">Lunes</span>
+                                                                <span class="mr-1 dia">Martes</span>
+                                                                <span class="mr-1 dia">Miercoles</span>
+                                                                <span class="mr-1 dia">Jueves</span>
+                                                                <span class="mr-1 dia">Viernes</span>
+                                                                <span class="mr-1 dia">Sabado</span>
+                                                                <span class="mr-1 dia">Domingo</span></p>
+                                                        </div>
+                                                        <div id="horasHorario" class="d-flex horas">
+                                                            <p class="mr-2">Horario de atencion: </p>
+                                                            <p>
+                                                                <span class="horaI" id="horaI">08</span>
+                                                                <span id="">:</span>
+                                                                <span class="minutoI" id="minutoI">00</span>
+                                                                <span class="meridianoI" id="meridianoI">AM</span>
+                                                                <span id="">-</span>
+                                                                <span class="horaF" id="horaF">04</span>
+                                                                <span id="">:</span>
+                                                                <span class="minutoF" id="minutoF">30</span>
+                                                                <span class="meridianoF" id="meridianoF">PM</span>
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- Button trigger modal Crear horario -->
+                                                <button id="btnModalHorario-Branch" type="button"
+                                                    class="btn btn-primary" data-toggle="modal"
+                                                    data-target="#horaAtencion-Branch" data-toggle="popover"
+                                                    data-trigger="hover" title="Horario"
+                                                    data-content="Debes añadir un horario" data-placement="right">
+                                                    Agregar horario de sucursal
+                                                </button>
+                                                <!-- Modal Crear horario -->
+                                                <div id="horaAtencion-Branch"  class="modal fade fc-gray" tabindex="-1">
+                                                    <div class="modal-dialog">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title fc-gray-main"
+                                                                    id="exampleModalLabel">Agregar horario de atencion
+                                                                </h5>
+                                                                <button type="button" class="close" data-dismiss="modal"
+                                                                    aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                </button>
+                                                            </div>
+                                                            <div id="atencionBranch" class="modal-body">
+                                                                <div class="empresaAtencion-dias container"
+                                                                    data-toggle="popover" data-trigger="hover"
+                                                                    title="Dia vacio"
+                                                                    data-content="Selecciona minimo un día"
+                                                                    data-placement="right">
+                                                                    <table id="scheduleBranch"
+                                                                        class="schedule table text-center fc-gray">
+                                                                        <tbody>
+                                                                            <tr>
+                                                                                <td id="diaB-Lunes">L</td>
+                                                                                <td id="diaB-Martes">M</td>
+                                                                                <td id="diaB-Miercoles">M</td>
+                                                                                <td id="diaB-Jueves">J</td>
+                                                                                <td id="diaB-Viernes">V</td>
+                                                                                <td id="diaB-Sabado">S</td>
+                                                                                <td id="diaB-Domingo">D</td>
+                                                                            </tr>
+                                                                        </tbody>
+                                                                    </table>
+                                                                </div>
+                                                                <div class="empresaAtencion-horas container"
+                                                                    data-toggle="popover" data-trigger="hover"
+                                                                    title="Verifica horas"
+                                                                    data-content="Hora inicial es mas tarde">
+                                                                    <span>De</span>
+                                                                    <div id="hoursInicioBranch"
+                                                                        class="hoursInicio d-flex flex-column justify-content-center align-items-center">
+                                                                        <span class="upInicio"><i
+                                                                                class="fas fa-angle-up upInicio"></i></span>
+                                                                        <span class="hourI sized">06</span>
+                                                                        <span class="downInicio"><i
+                                                                                class="fas fa-angle-down downInicio"></i></span>
+                                                                    </div>
+                                                                    <span>:</span>
+                                                                    <div id="minutesInicioBranch"
+                                                                        class="minutesInicio d-flex flex-column justify-content-center align-items-center">
+                                                                        <span class="upInicio"><i
+                                                                                class="fas fa-angle-up upInicio"></i></span>
+                                                                        <span class="minuteI sized">00</span>
+                                                                        <span class="downInicio"><i
+                                                                                class="fas fa-angle-down downInicio"></i></span>
+                                                                    </div>
+                                                                    <div class="mr-2">
+                                                                        <span class="meridiano meridI sized">AM</span>
+                                                                    </div>
+                                                                    <span>a</span>
+                                                                    <div id="hoursFinalBranch"
+                                                                        class="hoursFinal d-flex flex-column justify-content-center align-items-center">
+                                                                        <span class="upFin"><i
+                                                                                class="fas fa-angle-up upFin"></i></span>
+                                                                        <span class="hourF sized">06</span>
+                                                                        <span class="downFin"><i
+                                                                                class="fas fa-angle-down downFin"></i></span>
+                                                                    </div>
+                                                                    <span>:</span>
+                                                                    <div id="minutesFinalBranch"
+                                                                        class="minutesFinal d-flex flex-column justify-content-center align-items-center">
+                                                                        <span class="upFin"><i
+                                                                                class="fas fa-angle-up upFin"></i></span>
+                                                                        <span class="minuteF sized">30</span>
+                                                                        <span class="downFin"><i
+                                                                                class="fas fa-angle-down downFin"></i></span>
+                                                                    </div>
+                                                                    <div>
+                                                                        <span class="meridiano meridF sized">PM</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-secondary"
+                                                                    data-dismiss="modal">Cancelar</button>
+                                                                <button type="button" id="btnCrearHorario-Branch" class="btn btn-primary crearHorario">Agregar horario</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- Modal Editar horario -->
+                                                <div id="horaAtencion_Branch_Edit" class="modal fade fc-gray" tabindex="-1">
+                                                    <div class="modal-dialog">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title fc-gray-main" id="tituloModal">
+                                                                    Actualizar horario</h5>
+                                                                <button type="button" class="close" data-dismiss="modal"
+                                                                    aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                </button>
+                                                            </div>
+                                                            <div id="atencionBranch_Edit" class="modal-body">
+                                                                <div class="empresaAtencion-dias container"
+                                                                    data-toggle="popover" data-trigger="hover"
+                                                                    title="Dia vacio"
+                                                                    data-content="Selecciona minimo un día"
+                                                                    data-placement="right">
+                                                                    <table id="scheduleBranch-Edit"
+                                                                        class="schedule table text-center fc-gray">
+                                                                        <tbody>
+                                                                            <tr>
+                                                                                <td class="Lunes" id="diaEdit-Lunes">L
+                                                                                </td>
+                                                                                <td class="Martes" id="diaEdit-Martes">M
+                                                                                </td>
+                                                                                <td class="Miercoles"
+                                                                                    id="diaEdit-Miercoles">M</td>
+                                                                                <td class="Jueves" id="diaEdit-Jueves">J
+                                                                                </td>
+                                                                                <td class="Viernes"
+                                                                                    id="diaEdit-Viernes">V</td>
+                                                                                <td class="Sabado" id="diaEdit-Sabado">S
+                                                                                </td>
+                                                                                <td class="Domingo"
+                                                                                    id="diaEdit-Domingo">D</td>
+                                                                            </tr>
+                                                                        </tbody>
+                                                                    </table>
+                                                                </div>
+                                                                <div class="empresaAtencion-horas container"
+                                                                    data-toggle="popover" data-trigger="hover"
+                                                                    title="Verifica horas"
+                                                                    data-content="Hora inicial es mas tarde">
+                                                                    <span>De</span>
+                                                                    <div id="hoursInicioBranch-Edit"
+                                                                        class="hoursInicio d-flex flex-column justify-content-center align-items-center">
+                                                                        <span class="upInicio"><i
+                                                                                class="fas fa-angle-up upInicio"></i></span>
+                                                                        <span class="hourI sized">06</span>
+                                                                        <span class="downInicio"><i
+                                                                                class="fas fa-angle-down downInicio"></i></span>
+                                                                    </div>
+                                                                    <span>:</span>
+                                                                    <div id="minutesInicioBranch-Edit"
+                                                                        class="minutesInicio d-flex flex-column justify-content-center align-items-center">
+                                                                        <span class="upInicio"><i
+                                                                                class="fas fa-angle-up upInicio"></i></span>
+                                                                        <span class="minuteI sized">00</span>
+                                                                        <span class="downInicio"><i
+                                                                                class="fas fa-angle-down downInicio"></i></span>
+                                                                    </div>
+                                                                    <div class="mr-2">
+                                                                        <span class="meridiano meridI sized">AM</span>
+                                                                    </div>
+                                                                    <span>a</span>
+                                                                    <div id="hoursFinalBranch-Edit"
+                                                                        class="hoursFinal d-flex flex-column justify-content-center align-items-center">
+                                                                        <span class="upFin"><i
+                                                                                class="fas fa-angle-up upFin"></i></span>
+                                                                        <span class="hourF sized">06</span>
+                                                                        <span class="downFin"><i
+                                                                                class="fas fa-angle-down downFin"></i></span>
+                                                                    </div>
+                                                                    <span>:</span>
+                                                                    <div id="minutesFinalBranch-Edit"
+                                                                        class="minutesFinal d-flex flex-column justify-content-center align-items-center">
+                                                                        <span class="upFin"><i
+                                                                                class="fas fa-angle-up upFin"></i></span>
+                                                                        <span class="minuteF sized">30</span>
+                                                                        <span class="downFin"><i
+                                                                                class="fas fa-angle-down downFin"></i></span>
+                                                                    </div>
+                                                                    <div>
+                                                                        <span class="meridiano meridF sized">PM</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                                                <button type="button" id="btnActualizarHorario_Branch" class="btn btn-primary editarHorario">Actualizar horario</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <button id="btnCrear-Branch" type="submit" form="formBranchWhole" class="btn btn-primary">Guardar</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Modal de creacion de sucursal -->
+                        <div class="modal fade" id="sucursalCreada" data-backdrop="static" data-keyboard="false"
+                            tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-xs modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="msgHeader">Operación exitosa</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div id="cuerpoModalFinalSucursal" class="modal-body">
+                                        <h1>Sucursal creada con exito</h1>
+                                        <div class="form-group row">
+                                            <label for="nombre-sucursal-creada" class="col-sm-2 col-form-label">Nombre:</label>
+                                            <div class="col-sm-10">
+                                                <input id="nombre-sucursal-creada" class="form-control form-control-sm" type="text" placeholder="Nombre de sucursal" readonly>
+                                            </div>
+                                            <label for="link-sucursal-creada" class="col-sm-2 col-form-label">Link:</label>
+                                            <div class="col-sm-10">
+                                                <input id="link-sucursal-creada" class="form-control form-control-sm" type="text" placeholder="Link de sucursal" readonly>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" id="btnSucursalCreada" class="btn btn-primary">Entendido</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="subscribe" class="tab-pane fade">
+                        <div class="container-fluid">
+                            <div class="container">
+                                <h3 class="text-center fc-gray">En la compra de tu primer paquete, te regalamos 3 gratis</h3>
+                            </div>
+                            <div class="grid">
+                                <!-- <div class="element paquete">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Esse aliquid laboriosam minima ex praesentium recusandae reprehenderit unde sit tempore atque aut commodi quae expedita corrupti, dignissimos architecto. Eius, maiores ad?</div> -->
+                                <div id="paqueteRubi-mensual" class="paquete">
+                                    <div class="container">
+                                        <div class="d-flex flex-column bd-highlight mb-3 mt-3 mr-0 fc-gray-main text-center" >
+                                            <div class="">
+                                                <h3>Paquete Rubí</h3>
+                                            </div>
+                                            <div class="mb-3">
+                                                <h4>Mensual</h4>
+                                            </div>
+                                            <div class="mb-4">
+                                                <h2>$599</h2>
+                                            </div>
+                                            <div class="mb-4">
+                                                <button type="button" class="btn btn-primary btn-sm">Contratar</button>
+                                            </div>
+                                            <div class="mb-2">
+                                                <hr>
+                                                <p>Inventario</p>
+                                                <hr>
+                                                <p>Ventas</p>
+                                                <hr>
+                                                <p>Contratación de servicios</p>
+                                                <hr>
+                                                <p>Promociones</p>
+                                                <hr>
+                                                <p style="font-size: 10px;">
+                                                    <p>3 Promociones flash</p>
+                                                    <p>+</p>
+                                                    <p class="promo">$50 notificación extra</p>
+                                                </p>
+                                                <hr>
+                                                <p>
+                                                    <p>2 Promociones normales</p>
+                                                    <p>+</p>
+                                                    <p class="promo">$200 notificación extra</p>
+                                                </p>
+                                                <hr>
+                                                <p>
+                                                    <p>1 Promocion push</p>
+                                                    <p>+</p>
+                                                    <p class="promo">$549 notificación extra</p>
+                                                </p>
+                                                <hr>
+                                                <p style="font-size: 11px;">
+                                                    3 Promociones flash + <span class="promo">$50 notificación extra</span>
+                                                </p>
+                                                <hr>
+                                                <p style="font-size: 10px;">
+                                                    2 Promociones normales + <span class="promo">$200 notificación extra</span>
+                                                </p>
+                                                <hr>
+                                                <p style="font-size: 11px;">
+                                                    1 Promocion push + <span class="promo">$549 notificación extra</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="paqueteRubi-trimestral" class="paquete">
+                                    <div class="container">
+                                        <div class="d-flex flex-column bd-highlight mb-3 mt-3 mr-0 fc-gray-main text-center" >
+                                            <div class="">
+                                                <h3>Paquete Rubí</h3>
+                                            </div>
+                                            <div class="mb-3">
+                                                <h4>Trimestral</h4>
+                                            </div>
+                                            <div class="mb-4">
+                                                <h2>$1,499</h2>
+                                            </div>
+                                            <div class="mb-4">
+                                                <button type="button" class="btn btn-primary btn-sm">Contratar</button>
+                                            </div>
+                                            <div class="mb-2">
+                                                <hr>
+                                                <p>Inventario</p>
+                                                <hr>
+                                                <p>Ventas</p>
+                                                <hr>
+                                                <p>Contratación de servicios</p>
+                                                <hr>
+                                                <p>Promociones</p>
+                                                <hr>
+                                                <p style="font-size: 10px;">
+                                                    <p>5 Promociones flash</p>
+                                                    <p>+</p>
+                                                    <p class="promo">$50 notificación extra</p>
+                                                </p>
+                                                <hr>
+                                                <p>
+                                                    <p>3 Promociones normales</p>
+                                                    <p>+</p>
+                                                    <p class="promo">$200 notificación extra</p>
+                                                </p>
+                                                <hr>
+                                                <p>
+                                                    <p>2 Promocion push</p>
+                                                    <p>+</p>
+                                                    <p class="promo">$549 notificación extra</p>
+                                                </p>
+                                                <hr>
+                                                <p style="font-size: 11px;">
+                                                    5 Promociones flash + <span class="promo">$50 notificación extra</span>
+                                                </p>
+                                                <hr>
+                                                <p style="font-size: 10px;">
+                                                    3 Promociones normales + <span class="promo">$200 notificación extra</span>
+                                                </p>
+                                                <hr>
+                                                <p style="font-size: 11px;">
+                                                    2 Promocion push + <span class="promo">$549 notificación extra</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="paqueteRubi-anual" class="paquete">
+                                    <div class="container">
+                                        <div class="d-flex flex-column bd-highlight mb-3 mt-3 mr-0 fc-gray-main text-center" >
+                                            <div class="">
+                                                <h3>Paquete Rubí</h3>
+                                            </div>
+                                            <div class="mb-3">
+                                                <h4>Anual</h4>
+                                            </div>
+                                            <div class="mb-4">
+                                                <h2>$5,199</h2>
+                                            </div>
+                                            <div class="mb-4">
+                                                <button type="button" class="btn btn-primary btn-sm">Contratar</button>
+                                            </div>
+                                            <div class="mb-2">
+                                                <hr>
+                                                <p>Inventario</p>
+                                                <hr>
+                                                <p>Ventas</p>
+                                                <hr>
+                                                <p>Contratación de servicios</p>
+                                                <hr>
+                                                <p>Promociones</p>
+                                                <hr>
+                                                <p>Servicio al cliente</p>
+                                                <hr>
+                                                <p>Comentarios y valoraciones</p>
+                                                <hr>
+                                                <p>Permisos</p>
+                                                <hr>
+                                                <p style="font-size: 10px;">
+                                                    <p>15 Promociones flash</p>
+                                                    <p>+</p>
+                                                    <p class="promo">$50 notificación extra</p>
+                                                </p>
+                                                <hr>
+                                                <p>
+                                                    <p>9 Promociones normales</p>
+                                                    <p>+</p>
+                                                    <p class="promo">$200 notificación extra</p>
+                                                </p>
+                                                <hr>
+                                                <p>
+                                                    <p>6 Promocion push</p>
+                                                    <p>+</p>
+                                                    <p class="promo">$549 notificación extra</p>
+                                                </p>
+                                                <hr>
+                                                <p style="font-size: 11px;">
+                                                    15 Promociones flash + <span class="promo">$50 notificación extra</span>
+                                                </p>
+                                                <hr>
+                                                <p style="font-size: 10px;">
+                                                    9 Promociones normales + <span class="promo">$200 notificación extra</span>
+                                                </p>
+                                                <hr>
+                                                <p style="font-size: 11px;">
+                                                    6 Promocion push + <span class="promo">$549 notificación extra</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="paqueteDiamante-mensual" class="paquete">
+                                    <div class="container">
+                                        <div class="d-flex flex-column bd-highlight mb-3 mt-3 mr-0 fc-gray-main text-center" >
+                                            <div class="">
+                                                <h3>Paquete Diamante</h3>
+                                            </div>
+                                            <div class="mb-3">
+                                                <h4>Mensual</h4>
+                                            </div>
+                                            <div class="mb-4">
+                                                <h2>$899</h2>
+                                            </div>
+                                            <div class="mb-4">
+                                                <button type="button" class="btn btn-primary btn-sm">Contratar</button>
+                                            </div>
+                                            <div class="mb-2">
+                                                <hr>
+                                                <p>Inventario</p>
+                                                <hr>
+                                                <p>Ventas</p>
+                                                <hr>
+                                                <p>Contratación de servicios</p>
+                                                <hr>
+                                                <p>Promociones</p>
+                                                <hr>
+                                                <p style="font-size: 10px;">
+                                                    <p>5 Promociones flash</p>
+                                                    <p>+</p>
+                                                    <p class="promo">$25 notificación extra</p>
+                                                </p>
+                                                <hr>
+                                                <p>
+                                                    <p>3 Promociones normales</p>
+                                                    <p>+</p>
+                                                    <p class="promo">$180 notificación extra</p>
+                                                </p>
+                                                <hr>
+                                                <p>
+                                                    <p>2 Promocion push</p>
+                                                    <p>+</p>
+                                                    <p class="promo">$499 notificación extra</p>
+                                                </p>
+                                                <hr>
+                                                <p style="font-size: 11px;">
+                                                    5 Promociones flash + <span class="promo">$25 notificación extra</span>
+                                                </p>
+                                                <hr>
+                                                <p style="font-size: 10px;">
+                                                    3 Promociones normales + <span class="promo">$180 notificación extra</span>
+                                                </p>
+                                                <hr>
+                                                <p style="font-size: 11px;">
+                                                    2 Promocion push + <span class="promo">$499 notificación extra</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="paqueteDiamante-trimestral" class="paquete">
+                                    <div class="container">
+                                        <div class="d-flex flex-column bd-highlight mb-3 mt-3 mr-0 fc-gray-main text-center" >
+                                            <div class="">
+                                                <h3>Paquete Diamante</h3>
+                                            </div>
+                                            <div class="mb-3">
+                                                <h4>Trimestral</h4>
+                                            </div>
+                                            <div class="mb-4">
+                                                <h2>$2,300</h2>
+                                            </div>
+                                            <div class="mb-4">
+                                                <button type="button" class="btn btn-primary btn-sm">Contratar</button>
+                                            </div>
+                                            <div class="mb-2">
+                                                <hr>
+                                                <p>Inventario</p>
+                                                <hr>
+                                                <p>Ventas</p>
+                                                <hr>
+                                                <p>Contratación de servicios</p>
+                                                <hr>
+                                                <p>Promociones</p>
+                                                <hr>
+                                                <p>Servicio al cliente</p>
+                                                <hr>
+                                                <p>Comentarios y valoraciones</p>
+                                                <hr>
+                                                <p>Permisos</p>
+                                                <hr>
+                                                <p style="font-size: 10px;">
+                                                    <p>13 Promociones flash</p>
+                                                    <p>+</p>
+                                                    <p class="promo">$25 notificación extra</p>
+                                                </p>
+                                                <hr>
+                                                <p>
+                                                    <p>8 Promociones normales</p>
+                                                    <p>+</p>
+                                                    <p class="promo">$180 notificación extra</p>
+                                                </p>
+                                                <hr>
+                                                <p>
+                                                    <p>5 Promocion push</p>
+                                                    <p>+</p>
+                                                    <p class="promo">$499 notificación extra</p>
+                                                </p>
+                                                <p style="font-size: 11px;">
+                                                    13 Promociones flash + <span class="promo">$25 notificación extra</span>
+                                                </p>
+                                                <hr>
+                                                <p style="font-size: 10px;">
+                                                    8 Promociones normales + <span class="promo">$180 notificación extra</span>
+                                                </p>
+                                                <hr>
+                                                <p style="font-size: 11px;">
+                                                    5 Promocion push + <span class="promo">$499 notificación extra</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="paqueteDiamante-anual" class="paquete">
+                                    <div class="container">
+                                        <div class="d-flex flex-column bd-highlight mb-3 mt-3 mr-0 fc-gray-main text-center" >
+                                            <div class="">
+                                                <h3>Paquete Diamante</h3>
+                                            </div>
+                                            <div class="mb-3">
+                                                <h4>Anual</h4>
+                                            </div>
+                                            <div class="mb-4">
+                                                <h2>$7,500</h2>
+                                            </div>
+                                            <div class="mb-4">
+                                                <button type="button" class="btn btn-primary btn-sm">Contratar</button>
+                                            </div>
+                                            <div class="mb-2">
+                                                <hr>
+                                                <p>Inventario</p>
+                                                <hr>
+                                                <p>Ventas</p>
+                                                <hr>
+                                                <p>Contratación de servicios</p>
+                                                <hr>
+                                                <p>Promociones</p>
+                                                <hr>
+                                                <p>Servicio al cliente</p>
+                                                <hr>
+                                                <p>Comentarios y valoraciones</p>
+                                                <hr>
+                                                <p>Permisos</p>
+                                                <hr>
+                                                <p style="font-size: 10px;">
+                                                    <p>40 Promociones flash</p>
+                                                    <p>+</p>
+                                                    <p class="promo">$25 notificación extra</p>
+                                                </p>
+                                                <hr>
+                                                <p>
+                                                    <p>24 Promociones normales</p>
+                                                    <p>+</p>
+                                                    <p class="promo">$180 notificación extra</p>
+                                                </p>
+                                                <hr>
+                                                <p>
+                                                    <p>18 Promocion push</p>
+                                                    <p>+</p>
+                                                    <p class="promo">$499 notificación extra</p>
+                                                </p>
+                                                <p style="font-size: 11px;">
+                                                    40 Promociones flash + <span class="promo">$25 notificación extra</span>
+                                                </p>
+                                                <hr>
+                                                <p style="font-size: 9.3px;">
+                                                    24 Promociones normales + <span class="promo">$180 notificación extra</span>
+                                                </p>
+                                                <hr>
+                                                <p style="font-size: 11px;">
+                                                    18 Promocion push + <span class="promo">$499 notificación extra</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div style="background-color: beige;" class="container">
+                                asd
+                            </div>
+                            <div class="row">
+                                <div class="col-xl-6">
+                                    <div class="card mb-4">
+                                        <div class="card-header">
+                                            <i class="fas fa-chart-area mr-1"></i>Area Chart Example
+                                        </div>
+                                        <div class="card-body">
+                                            <canvas id="myAreaChart" width="100%" height="40"></canvas>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xl-6">
+                                    <div class="card mb-4">
+                                        <div class="card-header">
+                                            <i class="fas fa-chart-bar mr-1"></i>Bar Chart Example
+                                        </div>
+                                        <div class="card-body">
+                                            <canvas id="myBarChart" width="100%" height="40"></canvas>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="sb_subcontent-footer">
+                    <div class="container">
+                        <a href="#" id="sigTab" onclick="cambiaPestaña()">
+                            <i class="fas fa-angle-double-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 
+                <main>
+                    <div class="container-fluid">
+                        <h1 class="mt-4">Dashboard</h1>
+                        <ol class="breadcrumb mb-4">
+                            <li class="breadcrumb-item active">Dashboards</li>
+                        </ol>
+                        <div class="row">
+                            <div class="col-xl-6">
+                                <div class="card mb-4">
+                                    <div class="card-header">
+                                        <i class="fas fa-chart-area mr-1"></i>Area Chart Example
+                                    </div>
+                                    <div class="card-body">
+                                        <canvas id="myAreaChart" width="100%" height="40"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-6">
+                                <div class="card mb-4">
+                                    <div class="card-header">
+                                        <i class="fas fa-chart-bar mr-1"></i>Bar Chart Example
+                                    </div>
+                                    <div class="card-body">
+                                        <canvas id="myBarChart" width="100%" height="40"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card mb-4">
+                            <div class="card-header">
+                                <i class="fas fa-table mr-1"></i>DataTable Example
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                        <thead>
+                                            <tr>
+                                                <th>Name</th>
+                                                <th>Position</th>
+                                                <th>Office</th>
+                                                <th>Age</th>
+                                                <th>Start date</th>
+                                                <th>Salary</th>
+                                            </tr>
+                                        </thead>
+                                        <tfoot>
+                                            <tr>
+                                                <th>Name</th>
+                                                <th>Position</th>
+                                                <th>Office</th>
+                                                <th>Age</th>
+                                                <th>Start date</th>
+                                                <th>Salary</th>
+                                            </tr>
+                                        </tfoot>
+                                        <tbody>
+                                            <tr>
+                                                <td>Tiger Nixon</td>
+                                                <td>System Architect</td>
+                                                <td>Edinburgh</td>
+                                                <td>61</td>
+                                                <td>2011/04/25</td>
+                                                <td>$320,800</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Garrett Winters</td>
+                                                <td>Accountant</td>
+                                                <td>Tokyo</td>
+                                                <td>63</td>
+                                                <td>2011/07/25</td>
+                                                <td>$170,750</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Ashton Cox</td>
+                                                <td>Junior Technical Author</td>
+                                                <td>San Francisco</td>
+                                                <td>66</td>
+                                                <td>2009/01/12</td>
+                                                <td>$86,000</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Cedric Kelly</td>
+                                                <td>Senior Javascript Developer</td>
+                                                <td>Edinburgh</td>
+                                                <td>22</td>
+                                                <td>2012/03/29</td>
+                                                <td>$433,060</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Airi Satou</td>
+                                                <td>Accountant</td>
+                                                <td>Tokyo</td>
+                                                <td>33</td>
+                                                <td>2008/11/28</td>
+                                                <td>$162,700</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Brielle Williamson</td>
+                                                <td>Integration Specialist</td>
+                                                <td>New York</td>
+                                                <td>61</td>
+                                                <td>2012/12/02</td>
+                                                <td>$372,000</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Herrod Chandler</td>
+                                                <td>Sales Assistant</td>
+                                                <td>San Francisco</td>
+                                                <td>59</td>
+                                                <td>2012/08/06</td>
+                                                <td>$137,500</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Rhona Davidson</td>
+                                                <td>Integration Specialist</td>
+                                                <td>Tokyo</td>
+                                                <td>55</td>
+                                                <td>2010/10/14</td>
+                                                <td>$327,900</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Colleen Hurst</td>
+                                                <td>Javascript Developer</td>
+                                                <td>San Francisco</td>
+                                                <td>39</td>
+                                                <td>2009/09/15</td>
+                                                <td>$205,500</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Sonya Frost</td>
+                                                <td>Software Engineer</td>
+                                                <td>Edinburgh</td>
+                                                <td>23</td>
+                                                <td>2008/12/13</td>
+                                                <td>$103,600</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Jena Gaines</td>
+                                                <td>Office Manager</td>
+                                                <td>London</td>
+                                                <td>30</td>
+                                                <td>2008/12/19</td>
+                                                <td>$90,560</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Quinn Flynn</td>
+                                                <td>Support Lead</td>
+                                                <td>Edinburgh</td>
+                                                <td>22</td>
+                                                <td>2013/03/03</td>
+                                                <td>$342,000</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Charde Marshall</td>
+                                                <td>Regional Director</td>
+                                                <td>San Francisco</td>
+                                                <td>36</td>
+                                                <td>2008/10/16</td>
+                                                <td>$470,600</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Haley Kennedy</td>
+                                                <td>Senior Marketing Designer</td>
+                                                <td>London</td>
+                                                <td>43</td>
+                                                <td>2012/12/18</td>
+                                                <td>$313,500</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Tatyana Fitzpatrick</td>
+                                                <td>Regional Director</td>
+                                                <td>London</td>
+                                                <td>19</td>
+                                                <td>2010/03/17</td>
+                                                <td>$385,750</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Michael Silva</td>
+                                                <td>Marketing Designer</td>
+                                                <td>London</td>
+                                                <td>66</td>
+                                                <td>2012/11/27</td>
+                                                <td>$198,500</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Paul Byrd</td>
+                                                <td>Chief Financial Officer (CFO)</td>
+                                                <td>New York</td>
+                                                <td>64</td>
+                                                <td>2010/06/09</td>
+                                                <td>$725,000</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Gloria Little</td>
+                                                <td>Systems Administrator</td>
+                                                <td>New York</td>
+                                                <td>59</td>
+                                                <td>2009/04/10</td>
+                                                <td>$237,500</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Bradley Greer</td>
+                                                <td>Software Engineer</td>
+                                                <td>London</td>
+                                                <td>41</td>
+                                                <td>2012/10/13</td>
+                                                <td>$132,000</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Dai Rios</td>
+                                                <td>Personnel Lead</td>
+                                                <td>Edinburgh</td>
+                                                <td>35</td>
+                                                <td>2012/09/26</td>
+                                                <td>$217,500</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Jenette Caldwell</td>
+                                                <td>Development Lead</td>
+                                                <td>New York</td>
+                                                <td>30</td>
+                                                <td>2011/09/03</td>
+                                                <td>$345,000</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Yuri Berry</td>
+                                                <td>Chief Marketing Officer (CMO)</td>
+                                                <td>New York</td>
+                                                <td>40</td>
+                                                <td>2009/06/25</td>
+                                                <td>$675,000</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Caesar Vance</td>
+                                                <td>Pre-Sales Support</td>
+                                                <td>New York</td>
+                                                <td>21</td>
+                                                <td>2011/12/12</td>
+                                                <td>$106,450</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Doris Wilder</td>
+                                                <td>Sales Assistant</td>
+                                                <td>Sidney</td>
+                                                <td>23</td>
+                                                <td>2010/09/20</td>
+                                                <td>$85,600</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Angelica Ramos</td>
+                                                <td>Chief Executive Officer (CEO)</td>
+                                                <td>London</td>
+                                                <td>47</td>
+                                                <td>2009/10/09</td>
+                                                <td>$1,200,000</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Gavin Joyce</td>
+                                                <td>Developer</td>
+                                                <td>Edinburgh</td>
+                                                <td>42</td>
+                                                <td>2010/12/22</td>
+                                                <td>$92,575</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Jennifer Chang</td>
+                                                <td>Regional Director</td>
+                                                <td>Singapore</td>
+                                                <td>28</td>
+                                                <td>2010/11/14</td>
+                                                <td>$357,650</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Brenden Wagner</td>
+                                                <td>Software Engineer</td>
+                                                <td>San Francisco</td>
+                                                <td>28</td>
+                                                <td>2011/06/07</td>
+                                                <td>$206,850</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Fiona Green</td>
+                                                <td>Chief Operating Officer (COO)</td>
+                                                <td>San Francisco</td>
+                                                <td>48</td>
+                                                <td>2010/03/11</td>
+                                                <td>$850,000</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Shou Itou</td>
+                                                <td>Regional Marketing</td>
+                                                <td>Tokyo</td>
+                                                <td>20</td>
+                                                <td>2011/08/14</td>
+                                                <td>$163,000</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Michelle House</td>
+                                                <td>Integration Specialist</td>
+                                                <td>Sidney</td>
+                                                <td>37</td>
+                                                <td>2011/06/02</td>
+                                                <td>$95,400</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Suki Burks</td>
+                                                <td>Developer</td>
+                                                <td>London</td>
+                                                <td>53</td>
+                                                <td>2009/10/22</td>
+                                                <td>$114,500</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Prescott Bartlett</td>
+                                                <td>Technical Author</td>
+                                                <td>London</td>
+                                                <td>27</td>
+                                                <td>2011/05/07</td>
+                                                <td>$145,000</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Gavin Cortez</td>
+                                                <td>Team Leader</td>
+                                                <td>San Francisco</td>
+                                                <td>22</td>
+                                                <td>2008/10/26</td>
+                                                <td>$235,500</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Martena Mccray</td>
+                                                <td>Post-Sales support</td>
+                                                <td>Edinburgh</td>
+                                                <td>46</td>
+                                                <td>2011/03/09</td>
+                                                <td>$324,050</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Unity Butler</td>
+                                                <td>Marketing Designer</td>
+                                                <td>San Francisco</td>
+                                                <td>47</td>
+                                                <td>2009/12/09</td>
+                                                <td>$85,675</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Howard Hatfield</td>
+                                                <td>Office Manager</td>
+                                                <td>San Francisco</td>
+                                                <td>51</td>
+                                                <td>2008/12/16</td>
+                                                <td>$164,500</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Hope Fuentes</td>
+                                                <td>Secretary</td>
+                                                <td>San Francisco</td>
+                                                <td>41</td>
+                                                <td>2010/02/12</td>
+                                                <td>$109,850</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Vivian Harrell</td>
+                                                <td>Financial Controller</td>
+                                                <td>San Francisco</td>
+                                                <td>62</td>
+                                                <td>2009/02/14</td>
+                                                <td>$452,500</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Timothy Mooney</td>
+                                                <td>Office Manager</td>
+                                                <td>London</td>
+                                                <td>37</td>
+                                                <td>2008/12/11</td>
+                                                <td>$136,200</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Jackson Bradshaw</td>
+                                                <td>Director</td>
+                                                <td>New York</td>
+                                                <td>65</td>
+                                                <td>2008/09/26</td>
+                                                <td>$645,750</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Olivia Liang</td>
+                                                <td>Support Engineer</td>
+                                                <td>Singapore</td>
+                                                <td>64</td>
+                                                <td>2011/02/03</td>
+                                                <td>$234,500</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Bruno Nash</td>
+                                                <td>Software Engineer</td>
+                                                <td>London</td>
+                                                <td>38</td>
+                                                <td>2011/05/03</td>
+                                                <td>$163,500</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Sakura Yamamoto</td>
+                                                <td>Support Engineer</td>
+                                                <td>Tokyo</td>
+                                                <td>37</td>
+                                                <td>2009/08/19</td>
+                                                <td>$139,575</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Thor Walton</td>
+                                                <td>Developer</td>
+                                                <td>New York</td>
+                                                <td>61</td>
+                                                <td>2013/08/11</td>
+                                                <td>$98,540</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Finn Camacho</td>
+                                                <td>Support Engineer</td>
+                                                <td>San Francisco</td>
+                                                <td>47</td>
+                                                <td>2009/07/07</td>
+                                                <td>$87,500</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Serge Baldwin</td>
+                                                <td>Data Coordinator</td>
+                                                <td>Singapore</td>
+                                                <td>64</td>
+                                                <td>2012/04/09</td>
+                                                <td>$138,575</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Zenaida Frank</td>
+                                                <td>Software Engineer</td>
+                                                <td>New York</td>
+                                                <td>63</td>
+                                                <td>2010/01/04</td>
+                                                <td>$125,250</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Zorita Serrano</td>
+                                                <td>Software Engineer</td>
+                                                <td>San Francisco</td>
+                                                <td>56</td>
+                                                <td>2012/06/01</td>
+                                                <td>$115,000</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Jennifer Acosta</td>
+                                                <td>Junior Javascript Developer</td>
+                                                <td>Edinburgh</td>
+                                                <td>43</td>
+                                                <td>2013/02/01</td>
+                                                <td>$75,650</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Cara Stevens</td>
+                                                <td>Sales Assistant</td>
+                                                <td>New York</td>
+                                                <td>46</td>
+                                                <td>2011/12/06</td>
+                                                <td>$145,600</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Hermione Butler</td>
+                                                <td>Regional Director</td>
+                                                <td>London</td>
+                                                <td>47</td>
+                                                <td>2011/03/21</td>
+                                                <td>$356,250</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Lael Greer</td>
+                                                <td>Systems Administrator</td>
+                                                <td>London</td>
+                                                <td>21</td>
+                                                <td>2009/02/27</td>
+                                                <td>$103,500</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Jonas Alexander</td>
+                                                <td>Developer</td>
+                                                <td>San Francisco</td>
+                                                <td>30</td>
+                                                <td>2010/07/14</td>
+                                                <td>$86,500</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Shad Decker</td>
+                                                <td>Regional Director</td>
+                                                <td>Edinburgh</td>
+                                                <td>51</td>
+                                                <td>2008/11/13</td>
+                                                <td>$183,000</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Michael Bruce</td>
+                                                <td>Javascript Developer</td>
+                                                <td>Singapore</td>
+                                                <td>29</td>
+                                                <td>2011/06/27</td>
+                                                <td>$183,000</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Donna Snider</td>
+                                                <td>Customer Support</td>
+                                                <td>New York</td>
+                                                <td>27</td>
+                                                <td>2011/01/25</td>
+                                                <td>$112,000</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </main> 
+            -->
+
+            <footer class="py-4 bg-light mt-auto">
+                <div class="container-fluid">
+                    <div class="d-flex align-items-center justify-content-between small">
+                        <div class="text-muted">Copyright &copy; Your Website 2019 -- Dash --</div>
+                        <div>
+                            <a href="#">Privacy Policy</a>
+                            &middot;
+                            <a href="#">Terms &amp; Conditions</a>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+
+        </div>
+    </div>
+</body>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+     crossorigin="anonymous">
+</script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" 
+    crossorigin="anonymous">
+</script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+    integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" 
+    crossorigin="anonymous">
+</script>
+<script src="../assets/js/dash.js"></script>
+<script type="" src="../assets/js/profile.js"></script>
+<script src="../assets/js/time.js"></script>
+
+</html>

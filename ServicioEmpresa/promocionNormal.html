@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Boostrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <!--Font awesome -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" crossorigin="anonymous"></script>
+    <!--Others-->
+    <link rel="shortcut icon" href="./favicon.ico" />
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/empresa/profile.css">
+    <link rel='stylesheet' href='../assets/css/empresa/spectrum.css'>
+    <link rel="stylesheet" href="../assets/css/empresa/file-upload-with-preview.min.css">
+    <link rel="stylesheet" href="../assets/css/empresa/promociones.css">
+    <title>Promociones</title>
+</head>
+
+<body class="sb-nav-fixed">
+    <nav id="navPrincipal" class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+        <a style="color:black" class="navbar-brand" href="profile.html">Negocio</a>
+        <button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#">
+            <i style="color: black;" class="fas fa-bars"></i>
+        </button>
+    </nav>
+    <div id="layoutSidenav">
+        <div id="layoutSidenav_nav">
+            <nav class="sb-sidenav accordion sb-sidenav-light" id="sidenavAccordion">
+                <div class="sb-sidenav-menu">
+                    <div class="nav">
+                        <div class="sb-sidenav-menu-heading">Perfil</div>
+                        <a class="nav-link" href="profile.html">
+                            <div class="sb-nav-link-icon">
+                                <i class="fas fa-user-circle"></i>
+                            </div>
+                            Mi perfil
+                        </a>
+                        <div class="sb-sidenav-menu-heading">Adminsitración</div>
+                        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
+                            <div class="sb-nav-link-icon">
+                                <i class="fas fa-columns"></i>
+                            </div>
+                            Gestiona
+                            <div class="sb-sidenav-collapse-arrow">
+                                <i class="fas fa-angle-down"></i>
+                            </div>
+                        </a>
+                        <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav">
+                                <a class="nav-link" href="inventario.html">
+                                    <div class="sb-nav-link-icon">
+                                        <i class="fas fa-socks"></i>
+                                    </div>
+                                    Inventario
+                                </a>
+                                <a class="nav-link" href="#">
+                                    <div class="sb-nav-link-icon">
+                                        <i class="far fa-credit-card"></i>
+                                    </div>
+                                    Ventas
+                                </a>
+                                <a class="nav-link" href="#">
+                                    <div class="sb-nav-link-icon">
+                                        <i class="fas fa-user-plus"></i>
+                                    </div>
+                                    Contrataciones
+                                </a>
+                                <a class="nav-link" href="#">
+                                    <div class="sb-nav-link-icon">
+                                        <i class="fas fa-users-cog"></i>
+                                    </div>
+                                    Permisos
+                                </a>
+                                <a class="nav-link" href="promociones.html">
+                                    <div class="sb-nav-link-icon">
+                                        <i class="fas fa-tags"></i>
+                                    </div>
+                                    Promociones
+                                </a>
+                                <a class="nav-link" href="#">
+                                    <div class="sb-nav-link-icon">
+                                        <i class="fas fa-comments"></i>
+                                    </div>
+                                    Servicio al cliente
+                                </a>
+                            </nav>
+                        </div>
+                        <div class="sb-sidenav-menu-heading">Otros</div>
+                        <a class="nav-link" href="charts.html">
+                            <div class="sb-nav-link-icon">
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                            Ver comentarios y valoraciones
+                        </a>
+                        <a class="nav-link" href="charts.html">
+                            <div class="sb-nav-link-icon">
+                                <i class="fas fa-sign-out-alt"></i>
+                            </div>
+                            Cerrar sesión
+                        </a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+
+        <div id="layoutSidenav_content">
+
+            <div id="promociones" class="fc-gray tab-pane fade show active">
+                <div class=" ">
+                    <div style="margin-top:40px" class="titulo row">
+
+                    </div>
+
+                    <div class="container">
+                        <div class="col-md-12 col-xs-12">
+                            <div class="row justify-content-center">
+                                <div class="box">
+                                    <ul class="nav">
+                                        <a class=" btn text-white">
+                                            <li id="botonPromoProductos" class="nav-item active">Promoción productos</li>
+                                        </a>
+                                        <a style="margin-left: -25px;" class=" btn fc-gray">
+                                            <li id="botonPromoEspecial" class="nav-item ">Promoción especial</li>
+                                        </a>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="promocionNormal" style="margin-top: 20px;" class="container">
+
+                        <form class="validacionFormularioPromoNormal" novalidate="" action="/echo" method="POST" id="formularioPromoNormalNormal">
+                            <p style="color: #0080ff;"><strong>Agregar artículo</strong></p>
+                            <div class="form-row">
+                                <label class="col-form-label">Ingresa el ID del artículo o selecciona el articulo</label>
+                                <input type="text" id="idProducto" name="idProducto" class="form-control col-4">
+                                <button type="submit" style="margin-left: 30px;" class="btn btn-primary">Ok</button>
+                            </div>
+                            <br>
+                            <div class="form-row">
+                                <label class="col-form-label" for="descuento"> Descuento -%:</label>
+                                <div class="col-sm-4">
+                                    <input id="descuento" type="number" class="form-control w-50" placeholder="0.0" required />
+                                    <div class="invalid-feedback">
+                                        Se necesita un dato de tipo numero.
+                                    </div>
+                                    <div class="valid-feedback">
+                                        Correcto!
+                                    </div>
+                                </div>
+                                <label style="margin-left:-100px" class="col-form-label" for="cantidadDescuento">/ -$:</label>
+                                <div class="col-sm-4">
+                                    <input id="cantidadDescuento" type="number" class="form-control w-50" placeholder="0.0" required />
+                                    <div style="margin-left: 60px" class="invalid-feedback">
+                                        Se necesita un dato de tipo numero.
+                                    </div>
+                                    <div class="valid-feedback">
+                                        Correcto!
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="form-row">
+                                <label class="col-form-label" for="descuento">Inicio de la promoción:</label>
+                                <div class="col-sm-3">
+                                    <input type="date" class="form-control w-100" placeholder="título" id="fechaInicioPromocion" required />
+                                    <div class="invalid-feedback">
+                                        Se necesita fecha de inicio.
+                                    </div>
+                                    <div class="valid-feedback">
+                                        Correcto!
+                                    </div>
+                                </div>
+                                <label style="margin-left:0px" class="col-form-label" for="cantidadDescuento">Hora de Inicio:</label>
+                                <div class="col-sm-3">
+                                    <input type="time" id="horaInicioPromocion1" class="form-control" name="horaInicio" min="09:00" max="18:00" required>
+                                    <div style="margin-left: 60px" class="invalid-feedback">
+                                        Se necesita hora de inicio.
+                                    </div>
+                                    <div class="valid-feedback">
+                                        Correcto!
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="container-fluid">
+
+                                <div class="categorias row ">
+                                    <label>Buscar: </label><input id="barraBusqueda" class="form-control ds-input w-25 " type="search" placeholder="ID, Vestidos, Pantalones, Cinturones, Camisas,Etc." aria-label="Search" data-search>
+                                    <select style="margin-left: 10px;" class="filtr-select col-2">
+                                        <option value="all" selected>Todo</option>
+                                        <option value="1">Categoria1</option>
+                                        <option value="2">Categoria2</option>
+                                        <option value="3">Categoria3</option>
+                                    </select>
+                                    <select style="margin-left: 10px;" class="filtr-select-genero  col-2">
+                                        <option value="" selected>Género</option>
+                                        <option value="mujer">Mujer</option>
+                                        <option value="hombre">Hombre</option>
+                                    </select>
+                                    <select style="margin-left: 10px;" class="filtr-select-prenda col-2">
+                                        <option value="" selected>Prenda</option>
+                                        <option value="anillo">anillo</option>
+                                        <option value="saco">saco</option>
+                                    </select>
+                                    <select style="margin-left: 10px;" class="filtr-select-talla w-25 col-2">
+                                        <option value="" selected>Talla</option>
+                                        <option value="S">S</option>
+                                        <option value="M">M</option>
+                                        <option value="L">L</option>
+                                    </select>
+                                </div>
+                                <br>
+                            </div>
+
+                            <div style="float: right;" class="form-check">
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="marcarTodo">
+                                    <label class="custom-control-label" for="marcarTodo">Marcar todo</label>
+                                </div>
+                            </div>
+                            <div id="imagenesProductos" class="filter-2 filter-3">
+                                <div class="col-md-2 filtr-item" data-category="1,hombre,anillo,M" data-title="300">
+                                    <div class="checkbox"><div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="producto1" value="producto1">
+                                    <label class="custom-control-label" for="producto1"></label>
+                                </div></div>
+                                    <img src="../assets/img/inventario/1.jpg" alt="sample" />
+                                    <div class="contenidoProducto">
+                                        <h6 class="card-title">Artículo 1</h6>
+                                        <p class="card-text">$300 mxn.</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 filtr-item" data-category="2,mujer,anillo,S" data-title="400">
+                                    <div class="checkbox"><div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="producto2" value="producto2">
+                                    <label class="custom-control-label" for="producto2"></label>
+                                </div></div>
+                                    <img src="../assets/img/inventario/2.png" alt="sample" />
+                                    <div class="contenidoProducto">
+                                        <h6 class="card-title">Artículo 2</h6>
+                                        <p class="card-text">$400 mxn.</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 filtr-item" data-category="3,hombre,anillo,L" data-title="500">
+                                    <div class="checkbox"><div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="producto3" value="producto3">
+                                    <label class="custom-control-label" for="producto3"></label>
+                                </div></div>
+                                    <img src="../assets/img/inventario/3.png" alt="sample" />
+                                    <div class="contenidoProducto">
+                                        <h6 class="card-title">Artículo 3</h6>
+                                        <p class="card-text">$500 mxn.</p>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-2 filtr-item" data-category="3,mujer,saco,S" data-title="600">
+                                    <div class="checkbox"><div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="producto4" value="producto4">
+                                    <label class="custom-control-label" for="producto4"></label>
+                                </div></div>
+                                    <img src="../assets/img/inventario/5.jpg" alt="sample" />
+                                    <div class="contenidoProducto">
+                                        <h6 class="card-title">Artículo 4</h6>
+                                        <p class="card-text">$600 mxn.</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 filtr-item" data-category="2,hombre,anillo,L" data-title="700">
+                                    <div class="checkbox"><div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="producto5" value="producto5">
+                                    <label class="custom-control-label" for="producto5"></label>
+                                </div></div>
+                                    <img src="../assets/img/inventario/6.jpg" alt="sample" />
+                                    <div class="contenidoProducto">
+                                        <h6 class="card-title">Artículo 5</h6>
+                                        <p class="card-text">$700 mxn.</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 filtr-item" data-category="3,mujer,saco,M" data-title="800">
+                                    <div class="checkbox"><div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="producto6" value="producto6">
+                                    <label class="custom-control-label" for="producto6"></label>
+                                </div></div>
+                                    <img src="../assets/img/inventario/2.png" alt="sample" />
+                                    <div class="contenidoProducto">
+                                        <h6 class="card-title">Artículo 6</h6>
+                                        <p class="card-text">$800 mxn.</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 filtr-item" data-category="3,hombre,saco,L" data-title="900">
+                                    <div class="checkbox"><div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="producto7" value="producto7">
+                                    <label class="custom-control-label" for="producto7"></label>
+                                </div></div>
+                                    <img src="../assets/img/inventario/5.jpg" alt="sample" />
+                                    <div class="contenidoProducto">
+                                        <h6 class="card-title">Artículo 7</h6>
+                                        <p class="card-text">$900 mxn.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <button id="tester" class="btn btn-success">Testiar</button>
+                        </form>
+
+                    </div>
+
+
+                    <div id="promocionEspecial" style="margin-top: 20px;" class="container" disabled hidden>
+                        <div class="col-md-12 col-xs-12">
+                            <div class="row justify-content-center">
+                                <form class="validacionFormularioPromoEspecial" novalidate="" action="/echo" method="POST" id="formularioPromoNormalEspecial">
+
+                                    <div class="form-row">
+                                        <label class="col-form-label" for="tituloPromocion">Título de la promoción:</label>
+                                        <div class="col-6">
+                                            <input type="text" class="form-control w-100" placeholder="Título" id="tituloPromocion" required />
+                                            <div class="invalid-feedback">
+                                                Por favor, escriba el título de la promoción.
+                                            </div>
+                                            <div class="valid-feedback">
+                                                Correcto!
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <div class="form-row">
+                                        <label class="col-form-label" for="fechaInicioPromocion">Inicio de promoción:</label>
+                                        <div class="col-5">
+                                            <input type="date" class="form-control w-100" placeholder="título" id="fechaInicioPromocion" required />
+                                            <div class="invalid-feedback">
+                                                Por favor, escriba la hora de fecha de inicio.
+                                            </div>
+                                            <div class="valid-feedback">
+                                                Correcto!
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <div class="form-row">
+                                        <label class="col-form-label" for="horaInicioPromocion">Hora de promoción:</label>
+                                        <div class="col-4">
+                                            <input type="time" id="horaInicioPromocion" class="form-control" name="horaInicio" min="09:00" max="18:00" required>
+
+                                            <div class="invalid-feedback">
+                                                Por favor, escriba la hora de inicio
+                                            </div>
+                                            <div class="valid-feedback">
+                                                Correcto!
+                                            </div>
+                                        </div>
+
+                                        <div class="custom-control custom-switch ">
+                                            <input type="checkbox" class="custom-control-input col-sm-2" id="activarHora" checked>
+                                            <label class="custom-control-label" for="activarHora">Activar</label>
+                                        </div>
+
+                                    </div>
+
+                                    <br>
+                                    <div class="form-row">
+                                        <label class="col-form-label" for="descuento"> Descuento -%:</label>
+                                        <div class="col-sm-4">
+                                            <input id="descuento" type="number" class="form-control w-50" placeholder="0.0" required />
+                                            <div class="invalid-feedback">
+                                                Se necesita un dato de tipo numero.
+                                            </div>
+                                            <div class="valid-feedback">
+                                                Correcto!
+                                            </div>
+                                        </div>
+                                        <label style="margin-left:-100px" class="col-form-label" for="cantidadDescuento">/ -$:</label>
+                                        <div class="col-sm-4">
+                                            <input id="cantidadDescuento" type="number" class="form-control w-50" placeholder="0.0" required />
+                                            <div style="margin-left: 60px" class="invalid-feedback">
+                                                Se necesita un dato de tipo numero.
+                                            </div>
+                                            <div class="valid-feedback">
+                                                Correcto!
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <label class="" for="mensaje">Mensaje de promoción:</label>
+                                    <div class="form-row">
+                                        <div class="col-10">
+                                            <p><textarea id="mensaje" class="fc-gray form-control" name="nombreProducto" cols="40" rows="3" placeholder="Escribe aqui tu mensaje" required></textarea></p>
+                                            <div class="invalid-feedback">
+                                                Por favor, escriba mensaje.
+                                            </div>
+                                            <div class="valid-feedback">
+                                                Correcto!
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <div class="form-row">
+                                        <article>
+                                            <label for="files">Agregar una imagen a tu promoción:</label>
+                                            <div style="margin-left: 50px" class="row ">
+                                                <div class="custom-file-container " data-upload-id="image">
+                                                    <label class=" custom-file-container__custom-file">
+                                                        <input type="file" class="form-control" accept="image/*" multiple required>
+                                                        <div class="invalid-feedback">
+                                                            Sube una fotografía.
+                                                        </div>
+                                                        <div class="valid-feedback">
+                                                            fotografía cargada!
+                                                        </div>
+                                                        <input type="hidden" name="MAX_FILE_SIZE" value="10485760" />
+                                                        <span class="custom-file-container__custom-file__custom-file-control"></span>
+                                                    </label>
+                                                    <div class="custom-file-container__image-preview"></div>
+                                                    <label><a href="javascript:void(0)" class="custom-file-container__image-clear btn btn-primary" title="Clear Image">Limpiar</a></label>
+                                                </div>
+                                            </div>
+                                        </article>
+                                    </div>
+                                    <br>
+                                    <button type="submit" class="btn btn-primary" id="submit-all" style="float: right;">Guardar</button>
+                                </form>
+                                <!-- Modal Publicar Promoción-->
+                                <div class="modal fade" id="publicarPromocion" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="publicarPromoTitulo">Publicar Promoción</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <p><strong>Tu promoción normal 3 de 4 será enviada. ¿Estás seguro de que deseas publicar esta promoción?</strong></p>
+
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Cancelar</button>
+                                                <button type="button" class="publicarPromocion btn btn-primary">Aceptar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Modal Publicar Actualizar-->
+                                <div class="modal fade" id="actualizarPaquete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="publicarPromoTitulo">Publicar Promoción</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <p><strong>Tus promociones normales se han agotado ¿Deseas actualizar tu paquete?</strong></p>
+
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Actualizar después</button>
+                                                <button type="button" class="publicarPromocion btn btn-primary">Actualizar ahora</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <footer class="py-4 bg-light mt-auto">
+                <div class="container-fluid">
+                    <div class="d-flex align-items-center justify-content-between small">
+                        <div class="text-muted">Copyright &copy; Your Website 2019 -- Dash --</div>
+                        <div>
+                            <a href="#">Privacy Policy</a>
+                            &middot;
+                            <a href="#">Terms &amp; Conditions</a>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+</body>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+</script>
+<script src="../assets/js/file-upload-with-preview.min.js"></script>
+<script src='../assets/js/spectrum.js'></script>
+<script src="../assets/js/dash.js"></script>
+<script src="../assets/js/time.js"></script>
+<script type="text/javascript" src="../assets/js/jquery.filterizr.min.js"></script>
+<script src="../assets/js/promociones.js"></script>
+
+</html>

@@ -17,8 +17,8 @@ if ($_SERVER["REQUEST_METHOD"]=="POST") {
 
                 $data = $update -> mdlUpdatePassword($mail,$password);
 
-                if($data = true){
-                    $response = new Response(array('status' => Constants::OK_RESPONSE, 'Your password has been updated'));
+                if($data == true){
+                    $response = new Response(array('status' => Constants::OK_RESPONSE, 'message' => 'La contraseña ha sido actualizada correctamente'));
                     
                     echo json_encode($response, JSON_UNESCAPED_UNICODE);
                 } else {
@@ -26,6 +26,11 @@ if ($_SERVER["REQUEST_METHOD"]=="POST") {
 
                     echo json_encode($response, JSON_UNESCAPED_UNICODE); 
                 } 
+            }
+            else {
+                $response = new Response(array('status' => Constants::BAD_RESPONSE, 'message' => 'Las contraseñas no coinciden'));
+
+                echo json_encode($response, JSON_UNESCAPED_UNICODE); 
             }
         } else {
                 

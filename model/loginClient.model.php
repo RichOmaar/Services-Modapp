@@ -146,7 +146,7 @@ class modelLoginClient {
 
         $connection = $db -> get_connection();
 
-        print_r($connection);
+        //print_r($connection);
 
         $hash = password_hash($password,PASSWORD_BCRYPT);
 

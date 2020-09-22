@@ -1,0 +1,153 @@
+/*particularidades*/
+.fc-gray {
+    color: #707070;
+}
+
+.fc-gray-main {
+    color: #393939;
+    font-weight: 500;
+}
+
+.image-preview {
+    width: 300px;
+    min-height: 100px;
+    border: 2px solid #dddddd;
+    margin-bottom: 10px;
+    /*Default text*/
+    font-weight: bold;
+    color: #cccccc;
+}
+
+.image-preview .image-preview__imagen {
+    width: 100%;
+}
+
+
+#navPrincipal {
+    background-color: #f8f9fa !important;
+    /* background-color: crimson !important; */
+}
+
+nav .nav-tabs .nav-item .nav-link div {
+    padding: 2px 5px;
+}
+
+#layoutSidenav_content div.sb_subcontent {
+    display: flex;
+    /* flex-direction: column; */
+    height: 100%;
+    flex-wrap: nowrap;
+}
+
+#layoutSidenav_content div.sb_subcontent div.sb_subcontent-content {
+    /* background-color: aquamarine; */
+    overflow-y: auto;
+    flex-grow: 1;
+    /* max-height: 65vh; */
+}
+
+#layoutSidenav_content div.sb_subcontent div.sb_subcontent-footer {
+    align-self: flex-end;
+    padding: 20px 5px;
+    flex-shrink: 0;
+}
+
+/*  Modales */
+/*Dias de la semana*/
+table.table td {
+    border: 1px solid blue;
+    cursor: pointer;
+}
+
+table td.highlighted {
+    background-color: #90cee6;
+}
+
+table#schedule {
+    border-spacing: 5px;
+    border-collapse: separate;
+}
+
+/*Horario*/
+.empresaAtencion-horas {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    /* background-color: burlywood; */
+}
+
+.empresaAtencion-horas div svg {
+    /* background-color: wheat; */
+    margin: 5px;
+    cursor: pointer;
+}
+
+.empresaAtencion-horas div span.sized {
+    /* background-color: whitesmoke; */
+    margin: 10px;
+    text-align: center;
+    width: 40px;
+}
+
+.empresaAtencion-horas div span {
+    padding: 5px;
+    margin: 10px 0;
+    /* border: 1px solid  blue; */
+}
+
+.empresaAtencion-horas div span.meridiano {
+    /* margin: 20px; */
+    border: 1px solid blue;
+    cursor: pointer;
+}
+
+/* suscripciones */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-gap: 1rem;
+}
+.grid > div.element {
+    /*background: #EDE7F6;*/
+    padding: 1.5rem;
+    border-radius: 1rem;
+}
+
+.grid > .paquete {
+    border: 1px solid rgb(0, 123, 255);;
+    /* border-radius: 1rem; */
+}
+
+.grid .paquete h2 {
+    font-size: 45px;
+    font-weight: 500;
+    height: 38px;
+    line-height: 38px;
+}
+.grid .paquete h3 {
+    font-weight: 400;
+    font-size: 35px;
+    margin-bottom: 0px;
+
+}
+
+.grid .paquete h4 {
+    font-weight: 200;
+    font-size: 25px;
+}
+
+.grid .paquete p {
+    font-size: 14px;
+    margin-bottom: 0;
+}
+
+.grid .paquete .promo {
+    color: rgb(0, 123, 255);
+}
+
+hr {
+    height: 1px;
+    margin-bottom: 0;
+    margin-top: 0;
+}

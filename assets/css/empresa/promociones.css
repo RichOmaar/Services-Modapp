@@ -1,0 +1,117 @@
+.campoPromocion {
+    border-style: solid;
+    border-width: 1.5px;
+    width: 320px;
+    height: 200px;
+    text-align: center;
+    font-size: 60px;
+}
+
+.boton {
+    color: white;
+    margin-top: 20px;
+    border-style: solid;
+    border-width: 1.5px;
+    width: 320px;
+    height: 50px;
+    text-align: center;
+    font-size: 20px;
+}
+
+ul {
+    text-align: center;
+}
+
+ul li {
+    display: inline-block;
+    list-style: none;
+    background-color: transparent;
+    color: grey;
+    padding: 0px 0;
+    border-radius: 10px;
+    border: solid 1px gray;
+    margin: 0 5px;
+    cursor: pointer;
+    font-weight: 100;
+    width: 220px;
+    height: 40px;
+    font-size: 20px;
+}
+
+.nav li.active {
+    background: #0080ff;
+    color: white;
+}
+
+/*Formulario promoción normal especial*/
+/*Entradas tipo fecha*/
+[type="date"] {
+    background: #fff url(https://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/calendar_2.png) 97% 50% no-repeat;
+}
+
+[type="date"]::-webkit-inner-spin-button {
+    display: none;
+}
+
+[type="date"]::-webkit-calendar-picker-indicator {
+    opacity: 0;
+}
+
+/*Entradas tipo time*/
+[type="time"] {
+    background: #fff url(https://www.iconfinder.com/icons/171505/download/png/16) 97% 50% no-repeat;
+}
+
+[type="time"]::-webkit-inner-spin-button {
+    display: none;
+}
+
+[type="time"]::-webkit-calendar-picker-indicator {
+    opacity: 0;
+}
+
+textarea {
+    border: none;
+}
+
+#promocionNormal img {
+    width: 85%;
+    margin: 20px;
+    margin-left: 20px;
+    margin-top: 30px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.checkbox {
+    position: absolute;
+    z-index: 4;
+    padding: 2px;
+    border-bottom-right-radius: 3px;
+    right: 20px;
+    top: 30px;
+
+}
+
+.custom-file-container__image-preview {
+    height: 300px;
+    width: 100%;
+}
+
+.custom-file-container__image-multi-preview {
+    width: 90%;
+    height: 90%;
+}
+
+.categorias select {
+    max-width:100px;
+    height: calc(1.5em + 0.75rem + 2px);
+    font-size: 1rem;
+    color: #495057;
+    background-color: #fff;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: url(https://www.iconfinder.com/icons/1814082/download/png/16) 96% / 20% no-repeat #eee;
+}

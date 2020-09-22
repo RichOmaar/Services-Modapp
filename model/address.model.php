@@ -31,7 +31,7 @@ class modelAddress {
 
         $statement -> execute();
 
-        return ($statement);
+        return ($statement->rowCount() > 0? true: false);
 
     }
 
@@ -61,7 +61,7 @@ class modelAddress {
 
         $statement -> execute();
 
-        return ($statement);
+        return ($statement->rowCount() > 0? true: false);
 
     }
 
@@ -91,7 +91,7 @@ class modelAddress {
 
         $statement -> execute();
 
-        return ($statement);
+        return ($statement->rowCount() > 0? true: false);
 
     }
 
@@ -109,7 +109,7 @@ class modelAddress {
 
         $statement -> execute();
 
-        return ($statement);
+        return ($statement->rowCount() > 0? true: false);
 
     }
 
@@ -195,7 +195,7 @@ class modelAddress {
 
         $statement -> execute();
 
-        return $statement;
+        return $statement->rowCount() > 0? true: false;
     }
 }
 

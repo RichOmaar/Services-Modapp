@@ -80,10 +80,8 @@ class modelScheduleStore {
 
         $statement -> bindParam(':closeD',$closeD);
 
-        $statement -> execute();
-
-        return $statement;
-
+        
+        return $statement->execute();
     }
 
     public function mdlAddMoreSchedule($idStore, $openL, $closeL, $openM, $closeM, $openW, $closeW, $openJ, $closeJ, $openV, $closeV, $openS, $closeS, $openD, $closeD) {

@@ -1,0 +1,47 @@
+.contenedor {
+    margin-top: 40px;
+}
+
+textarea {
+    border: none;
+}
+
+.precioAnterior {
+    text-decoration: line-through;
+}
+
+.etiquetas ul {
+    text-align: center;
+    margin-top: 25px;
+
+}
+
+.etiquetas ul li {
+    display: inline-block;
+    list-style: none;
+    background-color: transparent;
+    color: grey;
+    padding: 0px 0;
+    border-radius: 10px;
+    border: solid 1px gray;
+    margin: 0 5px;
+    cursor: pointer;
+    font-weight: 100;
+    width: 100px;
+}
+
+.productoImagen img {
+    display: block;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 5px;
+    width: 100px;
+    height: 100px;
+
+}
+
+.fotoPrincipal {
+    text-align: center;
+    font-size: 6px;
+    color: red;
+}

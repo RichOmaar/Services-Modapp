@@ -43,12 +43,12 @@ class modelLogin {
          //2.- El string que quiero bucar
          //3.- Desde la posición donde quiero buscar (entero)
 
-         $at = strpos($login,'@',0);
+         $at = strpos($login,'@');
 
          //False en caso de que no haya un @ dentro de la cadena
          //Retorna la posición en donde se encuentra el @
 
-         if($at === FALSE){
+         if($at === false){
 
             try{
 
@@ -147,7 +147,7 @@ class modelLogin {
 
         $connection = $db -> get_connection();
 
-        print_r($connection);
+        // print_r($connection);
 
         $hash = password_hash($password,PASSWORD_BCRYPT);
 
