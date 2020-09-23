@@ -1,31 +1,23 @@
 <?php
 
-include '../model/store.model.php';
+include '../model/category.model.php';
 
 if ($_SERVER["REQUEST_METHOD"]=="POST") {
-    
+
     //$idClient = $_POST['idClient'];
     $action = $_POST['action'];
 
     switch($action) {
 
-        case 'addStore':
+        case 'addCategory':
 
-            $store_name = $_POST['store_name'];
-            $image = $_POST['image'];
-            $maps = $_POST['maps'];
+            $categoryName = $_POST['categoryName'];
 
-            if(strlen($store_name) > 0 && strlen($maps) > 0) {
+            if(strlen($categoryName) > 0) {
 
-                $addStore = new modelStore();
+                $addCategory =  new modelCategory();
 
-                if($image == '') {
-
-                    $image = NULL;
-                    
-                }
-
-                $data = $addStore -> mdlAddStore($store_name, $image, $maps, $idClient);
+                $data = $addCategory -> mdlAddCategory($categoryName);
 
                 if(!$data) {
 
@@ -40,33 +32,25 @@ if ($_SERVER["REQUEST_METHOD"]=="POST") {
                     echo json_encode($response, JSON_UNESCAPED_UNICODE);
     
                 }
-            
+
             } else {  
         
                 $response = new Response(array('status' => Constants::BAD_RESPONSE, 'message' => Constants::BAD_RESPONSE_DESCRIPTION));
     
                 echo json_encode($response, JSON_UNESCAPED_UNICODE); 
-            }
+            }    
         break;
 
-        case 'updateStore':
+        case 'updateCategory':
+            
+            $categoryName = $_POST['categoryName'];
+            $idCategory = $_POST['idCategory'];
 
-            $store_name = $_POST['store_name'];
-            $image = $_POST['image'];
-            $maps = $_POST['maps'];
-            $idStore = $_POST['idStore'];
+            if(strlen($categoryName) > 0 && strlen($idCategory) > 0) {
 
-            if(strlen($idStore) > 0 && strlen($store_name) > 0 && strlen($maps) > 0) {
+                $updateCategory =  new modelCategory();
 
-                $updateStore = new modelStore();
-
-                if($image == '') {
-
-                    $image = NULL;
-                    
-                }
-
-                $data = $updateStore -> mdlUpdateStore($idStore, $store_name, $image, $maps);
+                $data = $updateCategory -> mdlUpdateCategory($categoryName,$idCategory);
 
                 if(!$data) {
 
@@ -81,65 +65,65 @@ if ($_SERVER["REQUEST_METHOD"]=="POST") {
                     echo json_encode($response, JSON_UNESCAPED_UNICODE);
     
                 }
-            
+
             } else {  
         
                 $response = new Response(array('status' => Constants::BAD_RESPONSE, 'message' => Constants::BAD_RESPONSE_DESCRIPTION));
     
                 echo json_encode($response, JSON_UNESCAPED_UNICODE); 
-            }
-
+            } 
         break;
 
-        case 'deleteStore':
+        case 'deleteCategory':
 
-            $idStore = $_POST['idStore'];
+            $idCategory = $_POST['idCategory'];
 
-            if(strlen($idStore) > 0) {
+            if(strlen($idCategory) > 0) {
 
-                $deleteStore = new modelStore();
+                $deleteCategory =  new modelCategory();
 
-                $delete = $deleteStore -> mdlDeleteStore($idStore);
+                $data = $deleteCategory -> mdlDeleteCategory($idCategory);
 
-                if(!$delete) {
+                if(!$data) {
 
                     $response = new Response(array('status' => Constants::BAD_RESPONSE, 'message' => Constants::BAD_RESPONSE_DESCRIPTION));
                         
                     echo json_encode($response, JSON_UNESCAPED_UNICODE);
-                    
+    
                 } else {
-
+    
                     $response = new Response(array('status' => Constants::OK_RESPONSE, 'message' => $data));
-        
+    
                     echo json_encode($response, JSON_UNESCAPED_UNICODE);
+    
                 }
 
             } else {  
         
-                $response = new Response(array('status' => Constants::BAD_RESPONSE, 'message' => 'Constants::BAD_RESPONSE_DESCRIPTION'));
+                $response = new Response(array('status' => Constants::BAD_RESPONSE, 'message' => Constants::BAD_RESPONSE_DESCRIPTION));
     
                 echo json_encode($response, JSON_UNESCAPED_UNICODE); 
-            }
-
+            } 
         break;
 
-        case 'infoStore':
+        case 'infoCategory':
 
-            $infoStore = new modelStore();
+            $infoCategory =  new modelCategory();
 
-            $info = $infoStore -> mdlInfoStore($idClient);
+            $data = $infoCategory -> mdlGeneralInfoCategory();
 
-            if($info == false) {
+            if(!$data) {
 
                 $response = new Response(array('status' => Constants::BAD_RESPONSE, 'message' => Constants::BAD_RESPONSE_DESCRIPTION));
-                        
+                    
                 echo json_encode($response, JSON_UNESCAPED_UNICODE);
 
             } else {
 
-                $response = new Response(array('status' => Constants::OK_RESPONSE, 'message' => $info));
-    
+                $response = new Response(array('status' => Constants::OK_RESPONSE, 'message' => $data));
+
                 echo json_encode($response, JSON_UNESCAPED_UNICODE);
+
             }
 
         break;
@@ -148,8 +132,7 @@ if ($_SERVER["REQUEST_METHOD"]=="POST") {
 
             $response = new Response(array('status' => Constants::BAD_RESPONSE, 'message' => Constants::BAD_RESPONSE));
             
-            echo json_encode($response, JSON_UNESCAPED_UNICODE); 
-
+            echo json_encode($response, JSON_UNESCAPED_UNICODE);
     }
 }
 

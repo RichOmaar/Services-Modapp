@@ -57,7 +57,7 @@ class modelCategory {
         return ($statement);
     }
 
-    public function mdlInfoCategory() {
+    public function mdlGeneralInfoCategory() {
         
         $db = new Connection();
 
@@ -72,7 +72,7 @@ class modelCategory {
         return ($statement->rowCount() > 0) ? $statement->fetchAll(PDO::FETCH_ASSOC) : false;
     }
 
-    public function mdlGeneralInfoCategory($idCategory) {
+    public function mdlInfoCategory($idCategory) {
         
         $db = new Connection();
 
