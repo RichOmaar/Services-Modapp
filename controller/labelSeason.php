@@ -1,6 +1,6 @@
 <?php
 
-include '../model/category.model.php';
+include '../model/labelSeason.model.php';
 
 if ($_SERVER["REQUEST_METHOD"]=="POST") {
 
@@ -9,15 +9,47 @@ if ($_SERVER["REQUEST_METHOD"]=="POST") {
 
     switch($action) {
 
-        case 'addCategory':
+        case 'addLabelSeason':
 
-            $categoryName = $_POST['categoryName'];
+            $seasonName = $_POST['seasonName'];
 
-            if(strlen($categoryName) > 0) {
+            if(strlen($seasonName) > 0) {
 
-                $addCategory =  new modelCategory();
+                $addSeason = new modelLabelSeason();
 
-                $data = $addCategory -> mdlAddCategory($categoryName);
+                $data = $addSeason -> mdlAddLabelSeason($seasonName);
+
+                if(!$data) {
+
+                    $response = new Response(array('status' => Constants::BAD_RESPONSE, 'message' => Constants::BAD_RESPONSE_DESCRIPTION));
+                        
+                    echo json_encode($response, JSON_UNESCAPED_UNICODE);
+    
+                } else {
+    
+                    $response = new Response(array('status' => Constants::OK_RESPONSE, 'message' => $data));
+    
+                    echo json_encode($response, JSON_UNESCAPED_UNICODE);
+    
+                }
+                
+            } else {  
+        
+                $response = new Response(array('status' => Constants::BAD_RESPONSE, 'message' => Constants::BAD_RESPONSE_DESCRIPTION));
+    
+                echo json_encode($response, JSON_UNESCAPED_UNICODE); 
+            }  
+        break;
+
+        case 'deleteLabelSeason':
+
+            $idLabelSeason = $_POST['idLabelSeason'];
+
+            if(strlen($idLabelSeason) > 0) {
+
+                $deleteSeason = new modelLabelSeason();
+
+                $data = $deleteSeason -> mdlDeleteLabelSeason($idLabelSeason);
 
                 if(!$data) {
 
@@ -38,79 +70,15 @@ if ($_SERVER["REQUEST_METHOD"]=="POST") {
                 $response = new Response(array('status' => Constants::BAD_RESPONSE, 'message' => Constants::BAD_RESPONSE_DESCRIPTION));
     
                 echo json_encode($response, JSON_UNESCAPED_UNICODE); 
-            }    
+            }
+
         break;
 
-        case 'updateCategory':
-            
-            $categoryName = $_POST['categoryName'];
-            $idCategory = $_POST['idCategory'];
+        case 'showAllSeasons':
 
-            if(strlen($categoryName) > 0 && strlen($idCategory) > 0) {
+            $showSeason = new modelLabelSeason();
 
-                $updateCategory =  new modelCategory();
-
-                $data = $updateCategory -> mdlUpdateCategory($categoryName,$idCategory);
-
-                if(!$data) {
-
-                    $response = new Response(array('status' => Constants::BAD_RESPONSE, 'message' => Constants::BAD_RESPONSE_DESCRIPTION));
-                        
-                    echo json_encode($response, JSON_UNESCAPED_UNICODE);
-    
-                } else {
-    
-                    $response = new Response(array('status' => Constants::OK_RESPONSE, 'message' => $data));
-    
-                    echo json_encode($response, JSON_UNESCAPED_UNICODE);
-    
-                }
-
-            } else {  
-        
-                $response = new Response(array('status' => Constants::BAD_RESPONSE, 'message' => Constants::BAD_RESPONSE_DESCRIPTION));
-    
-                echo json_encode($response, JSON_UNESCAPED_UNICODE); 
-            } 
-        break;
-
-        case 'deleteCategory':
-
-            $idCategory = $_POST['idCategory'];
-
-            if(strlen($idCategory) > 0) {
-
-                $deleteCategory =  new modelCategory();
-
-                $data = $deleteCategory -> mdlDeleteCategory($idCategory);
-
-                if(!$data) {
-
-                    $response = new Response(array('status' => Constants::BAD_RESPONSE, 'message' => Constants::BAD_RESPONSE_DESCRIPTION));
-                        
-                    echo json_encode($response, JSON_UNESCAPED_UNICODE);
-    
-                } else {
-    
-                    $response = new Response(array('status' => Constants::OK_RESPONSE, 'message' => $data));
-    
-                    echo json_encode($response, JSON_UNESCAPED_UNICODE);
-    
-                }
-
-            } else {  
-        
-                $response = new Response(array('status' => Constants::BAD_RESPONSE, 'message' => Constants::BAD_RESPONSE_DESCRIPTION));
-    
-                echo json_encode($response, JSON_UNESCAPED_UNICODE); 
-            } 
-        break;
-
-        case 'infoCategory':
-
-            $infoCategory =  new modelCategory();
-
-            $data = $infoCategory -> mdlGeneralInfoCategory($infoCategory);
+            $data = $showSeason -> mdlGeneralInfoLabelSeason();
 
             if(!$data) {
 
@@ -128,10 +96,42 @@ if ($_SERVER["REQUEST_METHOD"]=="POST") {
 
         break;
 
-        default:
+        case 'showSeason':
 
-            $response = new Response(array('status' => Constants::BAD_RESPONSE, 'message' => Constants::BAD_RESPONSE));
+            $idLabelSeason = $_POST['idLabelSeason'];
+
+            if(strlen($idLabelSeason) > 0) {
+
+                $showSeason = new modelLabelSeason();
+
+                $data = $showSeason -> mdlInfoLabelSeason($idLabelSeason);
+
+                if(!$data) {
+
+                    $response = new Response(array('status' => Constants::BAD_RESPONSE, 'message' => Constants::BAD_RESPONSE_DESCRIPTION));
+                        
+                    echo json_encode($response, JSON_UNESCAPED_UNICODE);
+
+                } else {
+
+                    $response = new Response(array('status' => Constants::OK_RESPONSE, 'message' => $data));
+
+                    echo json_encode($response, JSON_UNESCAPED_UNICODE);
+
+                }
+            } else {  
             
+                $response = new Response(array('status' => Constants::BAD_RESPONSE, 'message' => Constants::BAD_RESPONSE_DESCRIPTION));
+
+                echo json_encode($response, JSON_UNESCAPED_UNICODE); 
+            }
+            
+        break;
+
+        default:
+        
+            $response = new Response(array('status' => Constants::BAD_RESPONSE, 'message' => Constants::BAD_RESPONSE));
+                
             echo json_encode($response, JSON_UNESCAPED_UNICODE);
     }
 }
