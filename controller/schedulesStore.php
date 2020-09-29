@@ -3,6 +3,14 @@
 include '../model/scheduleStore.model.php';
 
 if ($_SERVER["REQUEST_METHOD"]=="POST") {
+
+
+    if( ! (isset($_POST["idStore"]) && isset($_POST["action"])) ){
+        $response = new Response(array('status' => Constants::BAD_RESPONSE, 'message' => Constants::BAD_RESPONSE));
+        echo json_encode($response, JSON_UNESCAPED_UNICODE); 
+        die();
+    }
+
     
     $idStore = $_POST['idStore'];
     $action = $_POST['action'];
@@ -116,7 +124,7 @@ if ($_SERVER["REQUEST_METHOD"]=="POST") {
                 
                 $data2 = $check -> mdlAddFirstSchedule($idStore, $openL, $closeL, $openM, $closeM, $openW, $closeW, $openJ, $closeJ, $openV, $closeV, $openS, $closeS, $openD, $closeD);
 
-                var_dump($data2);
+
 
                 if($data2 == false) {
 
@@ -154,71 +162,58 @@ if ($_SERVER["REQUEST_METHOD"]=="POST") {
             $closeD = $_POST['closeD'];
 
             if(strlen($openL) == 0){
-    
                 $openL = NULL;
                 $closeL = NULL;
-
             }
 
             if(strlen($openM) == 0){
-
                 $openM = NULL;
                 $closeM = NULL;
-
             }
 
             if(strlen($openW) == 0){
-
                 $openW = NULL;
                 $closeW = NULL;
-
             }
 
             if(strlen($openJ) == 0){
-
                 $openJ = NULL;
                 $closeJ = NULL;
-
             }
 
             if(strlen($openV) == 0){
-
                 $openV = NULL;
                 $closeV = NULL;
-
             }
 
             if(strlen($openS) == 0){
-
                 $openS = NULL;
                 $closeS = NULL;
-
             }
 
             if(strlen($openD) == 0){
-
                 $openD = NULL;
                 $closeD = NULL;
-
             } 
+
 
             $update = new modelScheduleStore();
             
             $data = $update -> mdlAddMoreSchedule($idStore, $openL, $closeL, $openM, $closeM, $openW, $closeW, $openJ, $closeJ, $openV, $closeV, $openS, $closeS, $openD, $closeD);
 
-                if($data == false) {
+            if($data == false) {
 
-                    $response = new Response(array('status' => Constants::BAD_RESPONSE, 'message' => Constants::BAD_RESPONSE));
-                        
-                    echo json_encode($response, JSON_UNESCAPED_UNICODE); 
+                $response = new Response(array('status' => Constants::BAD_RESPONSE, 'message' => Constants::BAD_RESPONSE));
+                    
+                echo json_encode($response, JSON_UNESCAPED_UNICODE); 
 
-                } else {
-                
-                    $response = new Response(array('status' => Constants::OK_RESPONSE, 'message' => $data));
+            } else {
             
-                    echo json_encode($response, JSON_UNESCAPED_UNICODE);
+                $response = new Response(array('status' => Constants::OK_RESPONSE, 'message' => 'Horario actualizado correctamente'));
+        
+                echo json_encode($response, JSON_UNESCAPED_UNICODE);
 
-                }
+            }
         break;
 
 

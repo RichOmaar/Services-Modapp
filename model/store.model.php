@@ -22,17 +22,27 @@ class modelStore {
 
         $statement -> bindParam(':id_client', $idClient);
 
-        $statement -> execute();
+        $statement->execute();
 
-        return ($statement);
+        return $statement->rowCount() > 0 ? true: false;
 
     }
 
-    public function mdlUpdateStore ($idStore, $store_name, $image, $maps) {
+    public function mdlUpdateStore ( $idStore, $store_name, $image, $maps) {
 
         $db = new Connection();
 
         $connection = $db -> get_connection();
+
+        $sql = "SELECT COUNT(*) AS total FROM store WHERE id_store = :id_store";
+        $statement = $connection -> prepare($sql);
+        $statement -> bindParam(':id_store', $idStore);
+        $statement->execute();
+        $count = $statement->fetch(PDO::FETCH_ASSOC);
+        if ($count["total"] == 0) {
+            return false;
+        }
+
 
         $sql = "UPDATE store SET store_name = :store_name, image = :image, maps = :maps WHERE id_store = :id_store";
 
@@ -46,9 +56,7 @@ class modelStore {
 
         $statement -> bindParam(':id_store', $idStore);
 
-        $statement -> execute();
-
-        return ($statement);
+        return $statement -> execute();
     }
 
     public function mdlDeleteStore ($idStore) {
@@ -65,7 +73,7 @@ class modelStore {
 
         $statement -> execute();
 
-        return ($statement);
+        return $statement->rowCount() > 0 ? true : false;
     }
 
     public function mdlInfoStore ($idClient) {

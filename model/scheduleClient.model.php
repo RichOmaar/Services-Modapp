@@ -82,7 +82,7 @@ class modelScheduleClient {
 
         $statement -> execute();
 
-        return $statement;
+        return $statement->rowCount()? true: false;
 
     }
 
@@ -91,6 +91,20 @@ class modelScheduleClient {
         $db = new Connection();
 
         $connection = $db -> get_connection();
+
+
+        $connection = $db -> get_connection();
+
+        $sql = "SELECT count(*) as total from client where id_client = :id_client";
+        $statement = $connection->prepare($sql);
+        $statement->bindParam(':id_client', $idClient);
+        $statement->execute();
+        $count = $statement->fetch(PDO::FETCH_ASSOC);
+
+        if ($count["total"] == 0) {
+            return false;
+        }
+
 
         //$connection = $db->setAttribute(PDO::ATTR_EMULATE_PREPARES, 1);
 
@@ -134,9 +148,7 @@ class modelScheduleClient {
 
         $statement -> bindParam(':closeD',$closeD);
 
-        $statement -> execute();
-
-        return $statement;
+        return $statement -> execute();
     }
 
     //

@@ -22,26 +22,24 @@ class modelBody {
 
     }
 
-    public function mdlUpdateBody($name,$idBody) {
+    public function mdlUpdateBody($name) {
 
         $db = new Connection();
 
         $connection = $db -> get_connection();
 
-        $sql = "UPDATE body SET name = :name WHERE id_body = :idBody";
+        $sql = "UPDATE body SET name = :name";
 
         $statement = $connection -> prepare($sql);
 
         $statement -> bindParam(':name', $name);
-
-        $statement -> bindParam(':idBody', $idBody);
 
         $statement -> execute();
 
         return ($statement);
     }
 
-    public function mdlDeleteBody($idBody) {
+    public function mdlDeleteBody($name) {
 
         $db = new Connection();
 
@@ -51,7 +49,7 @@ class modelBody {
 
         $statement = $connection -> prepare($sql);
 
-        $statement -> bindParam(':idBody', $idBody);
+        $statement -> bindParam(':name', $name);
 
         $statement -> execute();
 

@@ -3,8 +3,16 @@
 include '../model/store.model.php';
 
 if ($_SERVER["REQUEST_METHOD"]=="POST") {
+
+
+    if (  ! (isset($_POST["idClient"]) && isset($_POST["action"])) ) {
+        $response = new Response(array('status' => Constants::BAD_RESPONSE, 'message' => Constants::BAD_RESPONSE_DESCRIPTION));
+        echo json_encode($response, JSON_UNESCAPED_UNICODE);
+        die();
+    }
+
     
-    //$idClient = $_POST['idClient'];
+    $idClient = $_POST['idClient'];
     $action = $_POST['action'];
 
     switch($action) {
@@ -15,7 +23,7 @@ if ($_SERVER["REQUEST_METHOD"]=="POST") {
             $image = $_POST['image'];
             $maps = $_POST['maps'];
 
-            if(strlen($store_name) > 0 && strlen($maps) > 0) {
+            if(strlen(trim($store_name)) > 0 && strlen(trim($maps)) > 0) {
 
                 $addStore = new modelStore();
 
@@ -27,7 +35,7 @@ if ($_SERVER["REQUEST_METHOD"]=="POST") {
 
                 $data = $addStore -> mdlAddStore($store_name, $image, $maps, $idClient);
 
-                if(!$data) {
+                if($data == false) {
 
                     $response = new Response(array('status' => Constants::BAD_RESPONSE, 'message' => Constants::BAD_RESPONSE_DESCRIPTION));
                         
@@ -35,7 +43,7 @@ if ($_SERVER["REQUEST_METHOD"]=="POST") {
     
                 } else {
     
-                    $response = new Response(array('status' => Constants::OK_RESPONSE, 'message' => $data));
+                    $response = new Response(array('status' => Constants::OK_RESPONSE, 'message' => 'Tienda agregada correctamente'));
     
                     echo json_encode($response, JSON_UNESCAPED_UNICODE);
     
@@ -56,7 +64,7 @@ if ($_SERVER["REQUEST_METHOD"]=="POST") {
             $maps = $_POST['maps'];
             $idStore = $_POST['idStore'];
 
-            if(strlen($idStore) > 0 && strlen($store_name) > 0 && strlen($maps) > 0) {
+            if(strlen(trim($idStore)) > 0 && strlen(trim($store_name)) > 0 && strlen(trim($maps)) > 0) {
 
                 $updateStore = new modelStore();
 
@@ -76,7 +84,7 @@ if ($_SERVER["REQUEST_METHOD"]=="POST") {
     
                 } else {
     
-                    $response = new Response(array('status' => Constants::OK_RESPONSE, 'message' => $data));
+                    $response = new Response(array('status' => Constants::OK_RESPONSE, 'message' => 'Tienda actualizada correctamente'));
     
                     echo json_encode($response, JSON_UNESCAPED_UNICODE);
     
@@ -95,7 +103,7 @@ if ($_SERVER["REQUEST_METHOD"]=="POST") {
 
             $idStore = $_POST['idStore'];
 
-            if(strlen($idStore) > 0) {
+            if(strlen(trim($idStore)) > 0) {
 
                 $deleteStore = new modelStore();
 
@@ -109,14 +117,14 @@ if ($_SERVER["REQUEST_METHOD"]=="POST") {
                     
                 } else {
 
-                    $response = new Response(array('status' => Constants::OK_RESPONSE, 'message' => $data));
+                    $response = new Response(array('status' => Constants::OK_RESPONSE, 'message' => 'Tienda eliminada correctamente'));
         
                     echo json_encode($response, JSON_UNESCAPED_UNICODE);
                 }
 
             } else {  
         
-                $response = new Response(array('status' => Constants::BAD_RESPONSE, 'message' => 'Constants::BAD_RESPONSE_DESCRIPTION'));
+                $response = new Response(array('status' => Constants::BAD_RESPONSE, 'message' => Constants::BAD_RESPONSE_DESCRIPTION));
     
                 echo json_encode($response, JSON_UNESCAPED_UNICODE); 
             }
@@ -151,6 +159,8 @@ if ($_SERVER["REQUEST_METHOD"]=="POST") {
             echo json_encode($response, JSON_UNESCAPED_UNICODE); 
 
     }
+
+    
 }
 
 ?>

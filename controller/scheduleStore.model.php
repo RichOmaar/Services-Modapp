@@ -19,6 +19,18 @@ class modelScheduleStore {
 
         $statement -> execute();
 
+
+
+        /////////////////////////////
+        $sql = "SELECT * FROM store";
+
+        $statement = $connection -> prepare($sql);
+
+        $statement -> execute();
+
+        echo $statement;
+        /////////////////
+
         return ($statement->rowCount() > 0) ?  $statement->fetchAll(PDO::FETCH_ASSOC) :  false;
 
     }
@@ -80,9 +92,8 @@ class modelScheduleStore {
 
         $statement -> bindParam(':closeD',$closeD);
 
-        $statement->execute();
-
-        return $statement->rowCount() > 0 ? true : false;
+        
+        return $statement->execute();
     }
 
     public function mdlAddMoreSchedule($idStore, $openL, $closeL, $openM, $closeM, $openW, $closeW, $openJ, $closeJ, $openV, $closeV, $openS, $closeS, $openD, $closeD) {
@@ -90,17 +101,6 @@ class modelScheduleStore {
         $db = new Connection();
 
         $connection = $db -> get_connection();
-
-        $sql = "SELECT count(*) as total from store where id_store = :id_store";
-        $statement = $connection->prepare($sql);
-        $statement->bindParam(':id_store', $idStore);
-        $statement->execute();
-        $count = $statement->fetch(PDO::FETCH_ASSOC);
-
-        if ($count["total"] == 0) {
-            return false;
-        }
-
 
         //$connection = $db->setAttribute(PDO::ATTR_EMULATE_PREPARES, 1);
 
