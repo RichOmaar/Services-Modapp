@@ -93,5 +93,25 @@ class modelColors {
 
         return ($statement->rowCount() > 0) ? $statement->fetchAll(PDO::FETCH_ASSOC) : false;
     }
+
+    public function mdlAddProductColor($idColor,$idProduct) {
+
+        $db = new Connection();
+
+        $connection = $db -> get_connection();
+
+        $sql = "INSERT INTO product_color(id_product,id_color) VALUES (:idProduct,:idColor)";
+
+        $statement = $connection -> prepare($sql);
+
+        $statement -> bindParam('idProduct', $idProduct);
+
+        $statement -> bindParam('idColor', $idColor);
+
+        $statement -> execute();
+
+        return ($statement);
+
+    }
 }
 ?>

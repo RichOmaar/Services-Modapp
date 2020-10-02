@@ -32,7 +32,6 @@ if ($_SERVER["REQUEST_METHOD"]=="POST") {
                     echo json_encode($response, JSON_UNESCAPED_UNICODE);
     
                 }
-                
             } else {  
         
                 $response = new Response(array('status' => Constants::BAD_RESPONSE, 'message' => Constants::BAD_RESPONSE_DESCRIPTION));

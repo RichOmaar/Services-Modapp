@@ -22,7 +22,7 @@ class modelPrints {
 
     }
 
-    public function mdlUpdatePrint($printName, $idPrint) {
+    public function mdlUpdatePrint($printName,$idPrint) {
 
         $db = new Connection();
 
