@@ -10,7 +10,7 @@ class modelPartsClothing {
 
         $connection = $db -> get_connection();
 
-        $sql = "INSERT INTO parts_clothing ('name') VALUES (:partName)";
+        $sql = "INSERT INTO parts_clothing (name) VALUES (:partName)";
 
         $statement = $connection -> prepare($sql);
 
@@ -27,7 +27,7 @@ class modelPartsClothing {
 
         $connection = $db -> get_connection();
 
-        $sql = "UPDATE parts_clothing SET 'name' = :partName WHERE id_partsClothing = :idPartName";
+        $sql = "UPDATE parts_clothing SET name = :partName WHERE id_partsClothing = :idPartName";
 
         $statement = $connection -> prepare($sql);
 
@@ -58,7 +58,7 @@ class modelPartsClothing {
     }
 
     //SELECT GENERAL
-    public function mdlInfoPartClothing() {
+    public function mdlGeneralInfoPartClothing() {
         
         $db = new Connection();
 
@@ -68,6 +68,24 @@ class modelPartsClothing {
 
         $statement = $connection -> prepare($sql);
 
+        $statement -> execute();
+
+        return ($statement->rowCount() > 0) ? $statement->fetchAll(PDO::FETCH_ASSOC) : false; 
+        
+    }
+
+    public function mdlInfoPartClothing($idPartName) {
+
+        $db = new Connection();
+
+        $connection = $db -> get_connection();
+
+        $sql = "SELECT * FROM parts_clothing WHERE id_partsClothing = :idPartName";
+
+        $statement = $connection -> prepare($sql);
+
+        $statement -> bindParam(':idPartName', $idPartName);
+        
         $statement -> execute();
 
         return ($statement->rowCount() > 0) ? $statement->fetchAll(PDO::FETCH_ASSOC) : false; 

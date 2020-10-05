@@ -2973,7 +2973,7 @@
 									"_parent": {
 										"$ref": "AAAAAAF0Qd+caiA+Wk4="
 									},
-									"fillColor": "#6cd800",
+									"fillColor": "#00ff00",
 									"font": "Arial;13;1",
 									"left": 1176,
 									"top": 413,
@@ -3000,7 +3000,7 @@
 											"model": {
 												"$ref": "AAAAAAF0Qd+okyBJ9oA="
 											},
-											"fillColor": "#6cd800",
+											"fillColor": "#00ff00",
 											"font": "Arial;13;0",
 											"left": 1181,
 											"top": 436,
@@ -3016,7 +3016,7 @@
 											"model": {
 												"$ref": "AAAAAAF0Qd+2VSBQluA="
 											},
-											"fillColor": "#6cd800",
+											"fillColor": "#00ff00",
 											"font": "Arial;13;0",
 											"left": 1181,
 											"top": 451,
@@ -3024,7 +3024,7 @@
 											"height": 13
 										}
 									],
-									"fillColor": "#6cd800",
+									"fillColor": "#00ff00",
 									"font": "Arial;13;0",
 									"left": 1176,
 									"top": 431,
@@ -3032,7 +3032,7 @@
 									"height": 38
 								}
 							],
-							"fillColor": "#6cd800",
+							"fillColor": "#00ff00",
 							"font": "Arial;13;0",
 							"left": 1176,
 							"top": 408,
@@ -4566,7 +4566,7 @@
 									"_parent": {
 										"$ref": "AAAAAAF0VoE6CwDCY+M="
 									},
-									"fillColor": "#6cd800",
+									"fillColor": "#00d600",
 									"font": "Roboto;13;1",
 									"left": 944,
 									"top": 621,
@@ -4593,7 +4593,7 @@
 											"model": {
 												"$ref": "AAAAAAF0VoFRBADNSF8="
 											},
-											"fillColor": "#6cd800",
+											"fillColor": "#00d600",
 											"font": "Roboto;13;0",
 											"left": 949,
 											"top": 644,
@@ -4609,7 +4609,7 @@
 											"model": {
 												"$ref": "AAAAAAF0VoGNjQDkRo0="
 											},
-											"fillColor": "#6cd800",
+											"fillColor": "#00d600",
 											"font": "Roboto;13;0",
 											"left": 949,
 											"top": 659,
@@ -4617,7 +4617,7 @@
 											"height": 13
 										}
 									],
-									"fillColor": "#6cd800",
+									"fillColor": "#00d600",
 									"font": "Roboto;13;0",
 									"left": 944,
 									"top": 639,
@@ -4625,7 +4625,7 @@
 									"height": 38
 								}
 							],
-							"fillColor": "#6cd800",
+							"fillColor": "#00d600",
 							"font": "Roboto;13;0",
 							"left": 944,
 							"top": 616,
@@ -4654,7 +4654,7 @@
 									"_parent": {
 										"$ref": "AAAAAAF0VoQ0+wDtgII="
 									},
-									"fillColor": "#6cd800",
+									"fillColor": "#00ff00",
 									"font": "Roboto;13;1",
 									"left": 976,
 									"top": 725,
@@ -4681,7 +4681,7 @@
 											"model": {
 												"$ref": "AAAAAAF0VoRBEQD4diY="
 											},
-											"fillColor": "#6cd800",
+											"fillColor": "#00ff00",
 											"font": "Roboto;13;0",
 											"left": 981,
 											"top": 748,
@@ -4697,7 +4697,7 @@
 											"model": {
 												"$ref": "AAAAAAF0VoRQDQD/3Ms="
 											},
-											"fillColor": "#6cd800",
+											"fillColor": "#00ff00",
 											"font": "Roboto;13;0",
 											"left": 981,
 											"top": 763,
@@ -4705,7 +4705,7 @@
 											"height": 13
 										}
 									],
-									"fillColor": "#6cd800",
+									"fillColor": "#00ff00",
 									"font": "Roboto;13;0",
 									"left": 976,
 									"top": 743,
@@ -4713,7 +4713,7 @@
 									"height": 38
 								}
 							],
-							"fillColor": "#6cd800",
+							"fillColor": "#00ff00",
 							"font": "Roboto;13;0",
 							"left": 976,
 							"top": 720,
@@ -5517,8 +5517,8 @@
 								"$ref": "AAAAAAFyfLsU31Lxhxg="
 							},
 							"font": "Arial;13;0",
-							"left": 2000,
-							"top": 88,
+							"left": 1976,
+							"top": 80,
 							"width": 93.72802734375,
 							"height": 116,
 							"text": "Dependiento el tipo de artículo se van amostrar sus Features"

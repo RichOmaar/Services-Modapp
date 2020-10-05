@@ -40,22 +40,6 @@ class modelRanges {
 
         return ($statement);
     }
-    
-    //SELECT GENERAL
-    public function mdlInfoRange() {
-
-        $db = new Connection();
-
-        $connection = $db -> get_connection();
-
-        $sql = "SELECT * FROM ranges";
-
-        $statement = $connection -> prepare($sql);
-        
-        $statement -> execute();
-
-        return ($statement);
-    }
 
     public function mdlDeleteRange($idRange) {
 
@@ -71,8 +55,43 @@ class modelRanges {
 
         $statement -> execute();
 
+        return ($statement);
+    }
+    
+    //SELECT GENERAL
+    public function mdlGeneralInfoRange() {
+
+        $db = new Connection();
+
+        $connection = $db -> get_connection();
+
+        $sql = "SELECT * FROM ranges";
+
+        $statement = $connection -> prepare($sql);
+        
+        $statement -> execute();
+
         return ($statement->rowCount() > 0) ? $statement->fetchAll(PDO::FETCH_ASSOC) : false;
     }
+
+    public function mdlInfoRange($idRange) {
+
+        $db = new Connection();
+
+        $connection = $db -> get_connection();
+
+        $sql = "SELECT * FROM ranges WHERE id_range = :idRange";
+
+        $statement = $connection -> prepare($sql);
+
+        $statement -> bindParam(':idRange', $idRange);
+
+        $statement -> execute();
+
+        return ($statement->rowCount() > 0) ? $statement->fetchAll(PDO::FETCH_ASSOC) : false;
+
+    }
+
 }
 
 ?>

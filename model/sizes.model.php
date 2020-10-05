@@ -22,13 +22,13 @@ class modelSizes {
     
     }
 
-    public function mdlUpdateSize($size,$idSize) {
+    public function mdlUpdateSize($idSize,$size) {
         
         $db = new Connection();
 
         $connection = $db -> get_connection();
 
-        $sql = "UPDATE sizes SET size = :size";
+        $sql = "UPDATE sizes SET size = :size WHERE id_size = :idSize";
 
         $statement = $connection -> prepare($sql);
 
@@ -60,7 +60,7 @@ class modelSizes {
     }
 
     //SELECT GENERAL
-    public function mdlInfoSize() {
+    public function mdlGeneralInfoSize() {
         
         $db = new Connection();
 
@@ -69,6 +69,23 @@ class modelSizes {
         $sql = "SELECT * FROM sizes";
 
         $statement = $connection -> prepare($sql);
+
+        $statement -> execute();
+
+        return ($statement->rowCount() > 0) ? $statement->fetchAll(PDO::FETCH_ASSOC) : false;
+    }
+
+    public function mdlInfoSize($idSize) {
+
+        $db = new Connection();
+
+        $connection = $db -> get_connection();
+
+        $sql = "SELECT * FROM sizes WHERE id_size = :idSize";
+
+        $statement = $connection -> prepare($sql);
+
+        $statement -> bindParam(':idSize', $idSize);
 
         $statement -> execute();
 

@@ -4,17 +4,19 @@ require_once 'connection.php';
 
 class modelFeatures {
 
-    public function mdlAddFeature($featureName) {
+    public function mdlAddFeature($featureName,$value) {
 
         $db = new Connection();
 
         $connection = $db -> get_connection();
 
-        $sql = "INSERT INTO features (featureName) VALUES :featureName";
+        $sql = "INSERT INTO features (featureName, value) VALUES (:featureName, :value)";
 
         $statement = $connection -> prepare($sql);
 
         $statement -> bindParam(':featureName', $featureName);
+        
+        $statement -> bindParam(':value', $value);
 
         $statement -> execute();
 
