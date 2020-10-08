@@ -2,7 +2,7 @@
 
 require_once 'connection.php';
 
-class modelProduc {
+class modelProduct {
 
     public function mdlAddProduct($productName, $price, $avgDiscount, $priceDiscount, $idArticleType, $idCategory, $idGender, $idBody, $labelStyle, $labelOccasion, $idLabelSeason, $idClient, $idMeasurement) {
 
@@ -121,6 +121,7 @@ class modelProduc {
 
         return ($statement->rowCount() > 0) ? $statement->fetchAll(PDO::FETCH_ASSOC) : false;
     }
+
 }
 
 ?>

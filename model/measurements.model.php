@@ -22,7 +22,22 @@ class modelMeasurement {
 
         $statement -> execute();
 
-        return ($statement);
+        if(!$statement) {
+
+            return ($statement);
+
+        } else {
+
+            $lastId = new modelMeasurement();
+
+            $data = $lastId -> mdlGeneralInfoMeasurement();
+//echo json_encode($data[0]['id_measurement']);
+            return ($data[0]['id_measurement']);
+
+        }
+
+//        $last_id = $db -> insert_id;
+
     }
 
     public function mdlUpdateMeasurement($idRange, $idPartClothing, $idSize, $idMeasurement) {
@@ -83,6 +98,21 @@ class modelMeasurement {
 
         return ($statement->rowCount() > 0) ? $statement->fetchAll(PDO::FETCH_ASSOC) : false;
         
+    }
+
+    public function mdlGeneralInfoMeasurement() {
+
+        $db = new Connection();
+
+        $connection = $db -> get_connection();
+
+        $sql = "SELECT * FROM measurements ORDER BY id_measurement DESC";
+
+        $statement = $connection -> prepare($sql);
+
+        $statement -> execute();
+
+        return ($statement->rowCount() > 0) ? $statement->fetchAll(PDO::FETCH_ASSOC) : false;
     }
 }
 
