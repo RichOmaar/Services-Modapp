@@ -42,7 +42,8 @@ class modelProduct {
 
         $statement -> execute();
 
-        return ($statement);
+        return($statement);
+
     }
 
     public function mdlUpdateProduct($productName, $price, $avgDiscount, $priceDiscount, $idArticleType, $idCategory, $idGender, $idBody, $labelStyle, $labelOccasion, $idLabelSeason, $idClient, $idMeasurement, $idProduct) {
@@ -119,6 +120,21 @@ class modelProduct {
 
         $statement -> execute();
 
+        return ($statement->rowCount() > 0) ? $statement->fetchAll(PDO::FETCH_ASSOC) : false;
+    }
+
+    public function mdlLastIdProduct() {
+
+        $db = new Connection();
+
+        $connection = $db -> get_connection();
+
+        $sql = "SELECT * FROM products ORDER BY id_product DESC";
+
+        $statement = $connection -> prepare($sql);
+
+        $statement -> execute();
+        
         return ($statement->rowCount() > 0) ? $statement->fetchAll(PDO::FETCH_ASSOC) : false;
     }
 

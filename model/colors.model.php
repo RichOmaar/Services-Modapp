@@ -14,7 +14,7 @@ class modelColors {
 
         $statement = $connection -> prepare($sql);
 
-        $statement -> bindParam('colorName' ,$colorName);
+        $statement -> bindParam(':colorName' ,$colorName);
 
         $statement -> bindParam(':hex', $hex);
         
@@ -94,6 +94,21 @@ class modelColors {
         return ($statement->rowCount() > 0) ? $statement->fetchAll(PDO::FETCH_ASSOC) : false;
     }
 
+    public function mdlIdColor() {
+        
+        $db = new Connection();
+
+        $connection = $db -> get_connection();
+
+        $sql = "SELECT * FROM colors ORDER BY id_color DESC";
+
+        $statement = $connection -> prepare($sql);
+
+        $statement -> execute();
+
+        return ($statement->rowCount() > 0) ? $statement->fetchAll(PDO::FETCH_ASSOC) : false;
+    }
+
     public function mdlAddProductColor($idColor,$idProduct) {
 
         $db = new Connection();
@@ -104,14 +119,34 @@ class modelColors {
 
         $statement = $connection -> prepare($sql);
 
-        $statement -> bindParam('idProduct', $idProduct);
+        $statement -> bindParam(':idProduct', $idProduct);
 
-        $statement -> bindParam('idColor', $idColor);
+        $statement -> bindParam(':idColor', $idColor);
 
         $statement -> execute();
 
         return ($statement);
 
+    }
+
+    public function mdlDeleteProductColor($idColor,$idProduct) {
+
+        $db = new Connection();
+
+        $connection = $db -> get_connection();
+
+        $sql = "DELETE FROM colors WHERE id_product = :idProduct AND id_color = :idColor";
+
+        $statement = $connection -> prepare($sql);
+
+        $statement -> bindParam(':idProduct', $idProduct);
+
+        $statement -> bindParam(':idColor', $idColor);
+
+        $statement -> execute();
+
+        return ($statement);
+        
     }
 }
 ?>

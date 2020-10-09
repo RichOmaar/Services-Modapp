@@ -1,22 +1,24 @@
 <?php
-echo 'hola';
-require_once 'connection.php';
 
-$db = new Connection();
+include '../model/measurements.model.php';
 
-$connection = $db -> get_connection();
-$connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-$sql = "SELECT * from address";
+$idRange = 5;
+$idPartClothing = 1;
+$idSize = 1;
+
+$add = new modelMeasurement();
+
+$data = $add -> mdlAddMeasurement($idRange, $idPartClothing, $idSize);
+
+$array = array();
+
+$array['idColor'] = 1;
+$array['hex'] = '000000';
+$array['nombre'] = 'negro';
 
 
-$statement = $connection -> prepare($sql);
-$statement->execute();
 
+echo json_encode($array);
+$prueba = json_encode($array);
 
-echo ("debugging");
-
-
-
-
-/*$store = $statement->fetchAll(PDO::FETCH_ASSOC)
-var_dump($store);*/
+?>
