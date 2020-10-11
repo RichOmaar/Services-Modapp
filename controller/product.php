@@ -7,6 +7,7 @@ include '../model/productSize.model.php';
 include '../model/measurements.model.php';
 include '../model/colors.model.php';
 include '../model/prints.model.php';
+include '../model/storeProduct.model.php';
 
 //$idClient = $_POST['idClient'];
 $action = $_POST['action'];
@@ -77,8 +78,8 @@ switch($action) {
                 
                         } else {
 
-                            $colorName = 'NEGRO';
-                            $hex = '000000';
+                            $colorName = $_POST['colorName'];
+                            $hex = $_POST['hex'];
 
                             $color = new modelColors();
 
@@ -228,6 +229,75 @@ switch($action) {
                     
                                 }
 ////////////////////////////////////////////////// AQUI VA LO SIGUIENTE ////////////////////////////////////
+                            $idSize = $_POST['idSize'];
+                            
+                            $productSize = new modelProductSize();
+
+                            $addProductSize = $productSize -> mdlAddProductSize($lastIdProduct,$idSize);
+
+                            if(!$addProductSize) {
+
+                                $deleteProduct = $product -> mdlDeleteProduct($lastIdProduct);
+
+                                $deleteMeasuerement = $measurement -> mdlDeleteMeasurement($idMeasurement);
+
+                                $deleteColor = $color -> mdlDeleteColor($lastIdColor);
+
+                                $deleteProductColor = $color -> mdlDeleteProductColor($lastIdColor,$lastIdProduct);
+
+                                $deletePrint = $print -> mdlDelePrint($lastIdPrint);
+
+                                $deleteProductPrint = $print -> mdlDeleteProductPrint($lastIdProduct,$lastIdPrint);
+                                
+                                $response = new Response(array('status' => Constants::BAD_RESPONSE, 'message' => Constants::BAD_RESPONSE_DESCRIPTION));
+                                    
+                                echo json_encode($response, JSON_UNESCAPED_UNICODE);
+                
+                            } else {
+                
+                                $response = new Response(array('status' => Constants::OK_RESPONSE, 'message' => $data));
+                
+                                echo json_encode($response, JSON_UNESCAPED_UNICODE);
+                
+                            }
+
+                            $idStore = $_POST['idStore'];
+                            $quantity = $_POST['quantity'];
+
+                            $storeProduct = new modelStoreProduct();
+
+                            $addStoreProduct = $storeProduct -> mdlAddStoreProduct($idStore,$lastIdProduct,$idSize,$quantity);
+
+                            if(!$addStoreProduct) {
+
+                                echo json_encode($addStoreProduct);
+                                
+                                $deleteProduct = $product -> mdlDeleteProduct($lastIdProduct);
+
+                                $deleteMeasuerement = $measurement -> mdlDeleteMeasurement($idMeasurement);
+
+                                $deleteColor = $color -> mdlDeleteColor($lastIdColor);
+
+                                $deleteProductColor = $color -> mdlDeleteProductColor($lastIdColor,$lastIdProduct);
+
+                                $deletePrint = $print -> mdlDelePrint($lastIdPrint);
+
+                                $deleteProductPrint = $print -> mdlDeleteProductPrint($lastIdProduct,$lastIdPrint);
+
+                                $deleteProductSize = $productSize -> mdlDeleteProductSize($lastIdProduct,$idSize);
+                                
+                                $response = new Response(array('status' => Constants::BAD_RESPONSE, 'message' => Constants::BAD_RESPONSE_DESCRIPTION));
+                                    
+                                echo json_encode($response, JSON_UNESCAPED_UNICODE);
+                
+                            } else {
+                
+                                $response = new Response(array('status' => Constants::OK_RESPONSE, 'message' => $data));
+                
+                                echo json_encode($response, JSON_UNESCAPED_UNICODE);
+                
+                            }
+                        
                         }
     
                     } else {
