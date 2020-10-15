@@ -8,6 +8,8 @@ include '../model/measurements.model.php';
 include '../model/colors.model.php';
 include '../model/prints.model.php';
 include '../model/storeProduct.model.php';
+include '../model/features.model.php';
+include '../model/articleFeatures.model.php';
 
 //$idClient = $_POST['idClient'];
 $action = $_POST['action'];
@@ -298,6 +300,79 @@ switch($action) {
                 
                             }
                         
+                            $featureName = $_POST['featureName'];
+                            $valueFeature = $_POST['valueFeature'];
+
+                            echo json_encode($valueFeature);
+                            
+                            $features = new modelFeatures();
+
+                            $addFeatures = $features -> mdlAddFeature($featureName,$valueFeature);
+
+                            $lasdIdFeature = $features -> mdlLastFeatureId();
+
+                            if(!$addFeatures) {
+
+                                echo json_encode($addStoreProduct);
+                                
+                                $deleteProduct = $product -> mdlDeleteProduct($lastIdProduct);
+
+                                $deleteMeasuerement = $measurement -> mdlDeleteMeasurement($idMeasurement);
+
+                                $deleteColor = $color -> mdlDeleteColor($lastIdColor);
+
+                                $deleteProductColor = $color -> mdlDeleteProductColor($lastIdColor,$lastIdProduct);
+
+                                $deletePrint = $print -> mdlDelePrint($lastIdPrint);
+
+                                $deleteProductPrint = $print -> mdlDeleteProductPrint($lastIdProduct,$lastIdPrint);
+
+                                $deleteProductSize = $productSize -> mdlDeleteProductSize($lastIdProduct,$idSize);
+                                
+                                $response = new Response(array('status' => Constants::BAD_RESPONSE, 'message' => Constants::BAD_RESPONSE_DESCRIPTION));
+                                    
+                                echo json_encode($response, JSON_UNESCAPED_UNICODE);
+                
+                            } else {
+                
+                                $articleFeatures = new modelArticleFeatures();
+
+                                $addArticleFeature = $articleFeatures -> mdlAddArticleFeature($idArticleType,$lasdIdFeature);
+
+                                if(!$addArticleFeature) {
+
+                                    //echo json_encode($addStoreProduct);
+                                    
+                                    $deleteProduct = $product -> mdlDeleteProduct($lastIdProduct);
+    
+                                    $deleteMeasuerement = $measurement -> mdlDeleteMeasurement($idMeasurement);
+    
+                                    $deleteColor = $color -> mdlDeleteColor($lastIdColor);
+    
+                                    $deleteProductColor = $color -> mdlDeleteProductColor($lastIdColor,$lastIdProduct);
+    
+                                    $deletePrint = $print -> mdlDelePrint($lastIdPrint);
+    
+                                    $deleteProductPrint = $print -> mdlDeleteProductPrint($lastIdProduct,$lastIdPrint);
+    
+                                    $deleteProductSize = $productSize -> mdlDeleteProductSize($lastIdProduct,$idSize);
+
+                                    $deleteFeature = $features -> mdlDeleteFeature($lasdIdFeature);
+                                    
+                                    $response = new Response(array('status' => Constants::BAD_RESPONSE, 'message' => Constants::BAD_RESPONSE_DESCRIPTION));
+                                        
+                                    echo json_encode($response, JSON_UNESCAPED_UNICODE);
+                    
+                                } else {
+                    
+                                    $response = new Response(array('status' => Constants::OK_RESPONSE, 'message' => $data));
+                    
+                                    echo json_encode($response, JSON_UNESCAPED_UNICODE);
+                    
+                                }
+                
+                            }
+
                         }
     
                     } else {

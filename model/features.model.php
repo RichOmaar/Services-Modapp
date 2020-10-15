@@ -91,5 +91,20 @@ class modelFeatures {
 
         return ($statement->rowCount() > 0) ? $statement->fetchAll(PDO::FETCH_ASSOC) : false;
     }
+
+    public function mdlLastFeatureId() {
+
+        $db = new Connection();
+
+        $connection = $db -> get_connection();
+
+        $sql = "SELECT * FROM features ORDER BY id_feature DESC";
+
+        $statement = $connection -> prepare($sql);
+
+        $statement -> execute();
+
+        return ($statement->rowCount() > 0) ? $statement->fetchAll(PDO::FETCH_ASSOC) : false;
+    }
 }
 ?>
