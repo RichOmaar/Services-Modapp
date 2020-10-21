@@ -1,24 +1,31 @@
 <?php
 
+include '../model/products.model.php';
+include '../model/productColor.model.php';
+include '../model/productPrint.model.php';
+include '../model/productSize.model.php';
 include '../model/measurements.model.php';
+include '../model/colors.model.php';
+include '../model/prints.model.php';
+include '../model/storeProduct.model.php';
+include '../model/features.model.php';
+include '../model/articleFeatures.model.php';
 
-$idRange = 5;
-$idPartClothing = 1;
-$idSize = 1;
+class prueba {
 
-$add = new modelMeasurement();
+    public function mdlPrueba(){
 
-$data = $add -> mdlAddMeasurement($idRange, $idPartClothing, $idSize);
+        $array = array();
 
-$array = array();
+        $array[0]['hex'] = 'ffffff';
+        $array[0]['color'] = 'blanco';
+        $array[1]['hex'] = '0000000';
+        $array[1]['color'] = 'negro';
 
-$array['idColor'] = 1;
-$array['hex'] = '000000';
-$array['nombre'] = 'negro';
+        return json_encode($array);
+    }
+    
+}
 
-
-
-echo json_encode($array);
-$prueba = json_encode($array);
-
+           
 ?>
