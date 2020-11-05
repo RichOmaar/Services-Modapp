@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Oct 12, 2020 at 06:48 PM
+-- Generation Time: Nov 05, 2020 at 08:57 PM
 -- Server version: 5.7.26
 -- PHP Version: 7.4.2
 
@@ -62,7 +62,11 @@ CREATE TABLE `article_features` (
 --
 
 INSERT INTO `article_features` (`id_articleType`, `id_feature`) VALUES
-(1, 1);
+(4, 22),
+(4, 23),
+(4, 24),
+(4, 25),
+(4, 26);
 
 -- --------------------------------------------------------
 
@@ -184,16 +188,24 @@ CREATE TABLE `colors` (
 --
 
 INSERT INTO `colors` (`id_color`, `colorName`, `hex`) VALUES
-(5, 'NEGRO', '000000'),
-(6, 'NEGRO', '000000'),
-(7, 'NEGRO', '000000'),
-(8, 'NEGRO', '000000'),
-(9, 'NEGRO', '000000'),
-(10, 'BLANCO', 'FFFFFF'),
-(11, 'BLANCO', 'FFFFFF'),
-(12, 'BLANCO', 'FFFFFF'),
-(13, 'BLANCO', 'FFFFFF'),
-(14, 'BLANCO', 'FFFFFF');
+(80, 'BLANCO', 'FFFFFF'),
+(81, 'Negro', '0000000'),
+(82, 'BLANCO', 'FFFFFF'),
+(83, 'Negro', '0000000'),
+(84, 'BLANCO', 'FFFFFF'),
+(85, 'Negro', '0000000'),
+(86, 'BLANCO', 'FFFFFF'),
+(87, 'Negro', '0000000'),
+(88, 'BLANCO', 'FFFFFF'),
+(89, 'Negro', '0000000'),
+(90, 'BLANCO', 'FFFFFF'),
+(91, 'Negro', '0000000'),
+(92, 'BLANCO', 'FFFFFF'),
+(93, 'Negro', '0000000'),
+(94, 'BLANCO', 'FFFFFF'),
+(95, 'Negro', '0000000'),
+(96, 'BLANCO', 'FFFFFF'),
+(97, 'Negro', '0000000');
 
 -- --------------------------------------------------------
 
@@ -237,9 +249,31 @@ CREATE TABLE `features` (
 
 INSERT INTO `features` (`id_feature`, `featureName`, `value`) VALUES
 (1, 'Marca', ''),
-(2, 'Materiales', ''),
-(3, 'Manga', ''),
-(4, 'Largo', '');
+(2, 'Marca', 'Mosso'),
+(3, 'Marca', 'Mosso'),
+(4, 'Marca', 'Mosso'),
+(5, 'Marca', 'Mosso'),
+(6, 'Marca', 'Mosso'),
+(7, 'Marca', 'Mosso'),
+(8, 'Marca', 'Mosso'),
+(9, 'Marca', 'Mosso'),
+(10, 'Marca', 'Mosso'),
+(11, 'Marca', 'Mosso'),
+(12, 'Marca', 'Mosso'),
+(13, 'Marca', 'Mosso'),
+(14, 'Marca', 'Mosso'),
+(15, 'Marca', 'Mosso'),
+(16, 'Marca', 'Mosso'),
+(17, 'Marca', 'Mosso'),
+(18, 'Marca', 'Mosso'),
+(19, 'Marca', 'Mosso'),
+(20, 'Marca', 'Mosso'),
+(21, 'Marca', 'Mosso'),
+(22, 'Marca', 'Mosso'),
+(23, 'Marca', 'Mosso'),
+(24, 'Marca', 'Mosso'),
+(25, 'Marca', 'Mosso'),
+(26, 'Marca', 'Mosso');
 
 -- --------------------------------------------------------
 
@@ -348,18 +382,7 @@ CREATE TABLE `measurements` (
 --
 
 INSERT INTO `measurements` (`id_measurement`, `id_range`, `id_partsClothing`, `id_size`) VALUES
-(46, 5, 1, 1),
-(91, 5, 1, 1),
-(92, 5, 1, 1),
-(93, 5, 1, 1),
-(94, 5, 1, 1),
-(95, 5, 1, 1),
-(96, 5, 1, 1),
-(97, 5, 1, 1),
-(98, 5, 1, 1),
-(99, 5, 1, 1),
-(100, 5, 1, 1),
-(101, 5, 1, 1);
+(103, 5, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -395,17 +418,24 @@ CREATE TABLE `prints` (
 --
 
 INSERT INTO `prints` (`id_print`, `printName`) VALUES
-(2, 'camo verde'),
-(3, 'camo'),
-(4, 'Animal print'),
-(5, 'Animal print'),
-(6, 'Animal print'),
-(7, 'Animal print'),
-(8, 'Animal print'),
-(9, 'Animal print'),
-(10, 'Animal print'),
-(11, 'Animal print'),
-(12, 'Animal print');
+(50, 'Animal Print 1'),
+(51, 'Animal Print 2'),
+(52, 'Animal Print 1'),
+(53, 'Animal Print 2'),
+(54, 'Animal Print 1'),
+(55, 'Animal Print 2'),
+(56, 'Animal Print 1'),
+(57, 'Animal Print 2'),
+(58, 'Animal Print 1'),
+(59, 'Animal Print 2'),
+(60, 'Animal Print 1'),
+(61, 'Animal Print 2'),
+(62, 'Animal Print 1'),
+(63, 'Animal Print 2'),
+(64, 'Animal Print 1'),
+(65, 'Animal Print 2'),
+(66, 'Animal Print 1'),
+(67, 'Animal Print 2');
 
 -- --------------------------------------------------------
 
@@ -428,19 +458,20 @@ CREATE TABLE `products` (
   `id_labelSeason` int(11) DEFAULT NULL,
   `id_client` int(11) DEFAULT NULL,
   `id_measurement` int(11) DEFAULT NULL,
-  `status` int(5) NOT NULL DEFAULT '1'
+  `status` int(5) NOT NULL DEFAULT '1',
+  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `products`
 --
 
-INSERT INTO `products` (`id_product`, `productName`, `price`, `avgDiscount`, `priceDiscount`, `id_articleType`, `id_category`, `id_gender`, `id_body`, `labelStyle`, `labelOccasion`, `id_labelSeason`, `id_client`, `id_measurement`, `status`) VALUES
-(23, 'Camisa', 100, NULL, 100, 4, 1, 2, 1, 'Prueba8', 'Casual', 2, 1, 92, 1),
-(29, 'Camisa', 100, NULL, 100, 4, 1, 2, 1, 'Prueba18', 'Casual', 2, 1, 98, 1),
-(30, 'Camisa', 100, NULL, 100, 4, 1, 2, 1, 'Prueba18', 'Casual', 2, 1, 99, 1),
-(31, 'Camisa', 100, NULL, 100, 4, 1, 2, 1, 'Prueba18', 'Casual', 2, 1, 100, 1),
-(32, 'Camisa', 100, NULL, 100, 4, 1, 2, 1, 'Prueba18', 'Casual', 2, 1, 101, 1);
+INSERT INTO `products` (`id_product`, `productName`, `price`, `avgDiscount`, `priceDiscount`, `id_articleType`, `id_category`, `id_gender`, `id_body`, `labelStyle`, `labelOccasion`, `id_labelSeason`, `id_client`, `id_measurement`, `status`, `date`) VALUES
+(81, 'Camisa', 100, NULL, 100, 4, 1, 2, 1, 'Prueba 81', 'Casual', 2, 1, 103, 1, '2020-11-04 06:47:56'),
+(82, 'Camisa', 100, NULL, 100, 4, 1, 2, 1, 'Prueba 82', 'Casual', 2, 1, 103, 1, '2020-11-04 07:10:11'),
+(83, 'Camisa', 100, NULL, 100, 4, 1, 2, 1, 'Prueba 83', 'Casual', 2, 1, 103, 1, '2020-11-04 07:11:26'),
+(84, 'Camisa', 100, NULL, 100, 4, 1, 2, 1, 'Prueba 84', 'Casual', 2, 1, 103, 1, '2020-11-04 07:12:02'),
+(85, 'Camisa', 100, NULL, 100, 4, 1, 2, 1, 'Prueba 84', 'Casual', 2, 1, 103, 1, '2020-11-04 07:13:21');
 
 -- --------------------------------------------------------
 
@@ -458,11 +489,16 @@ CREATE TABLE `product_color` (
 --
 
 INSERT INTO `product_color` (`id_product`, `id_color`) VALUES
-(23, 5),
-(29, 11),
-(30, 12),
-(31, 13),
-(32, 14);
+(81, 88),
+(81, 89),
+(82, 90),
+(82, 91),
+(83, 92),
+(83, 93),
+(84, 94),
+(84, 95),
+(85, 96),
+(85, 97);
 
 -- --------------------------------------------------------
 
@@ -476,6 +512,15 @@ CREATE TABLE `product_images` (
   `id_product` int(11) DEFAULT NULL,
   `ordering` int(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `product_images`
+--
+
+INSERT INTO `product_images` (`id_productImage`, `imageUrl`, `id_product`, `ordering`) VALUES
+(1, 'www.prueba.com', 85, 1),
+(2, 'www.prueba2.com', 85, 3),
+(3, 'www.prueba3.com', 85, 2);
 
 -- --------------------------------------------------------
 
@@ -493,10 +538,16 @@ CREATE TABLE `product_print` (
 --
 
 INSERT INTO `product_print` (`id_product`, `id_print`) VALUES
-(29, 4),
-(30, 10),
-(31, 11),
-(32, 12);
+(81, 58),
+(81, 59),
+(82, 60),
+(82, 61),
+(83, 62),
+(83, 63),
+(84, 64),
+(84, 65),
+(85, 66),
+(85, 67);
 
 -- --------------------------------------------------------
 
@@ -529,10 +580,16 @@ CREATE TABLE `product_size` (
 --
 
 INSERT INTO `product_size` (`id_product`, `id_size`) VALUES
-(29, 1),
-(30, 1),
-(31, 1),
-(32, 1);
+(81, 1),
+(82, 1),
+(83, 1),
+(84, 1),
+(85, 1),
+(81, 2),
+(82, 2),
+(83, 2),
+(84, 2),
+(85, 2);
 
 -- --------------------------------------------------------
 
@@ -617,7 +674,21 @@ CREATE TABLE `store_product` (
 --
 
 INSERT INTO `store_product` (`id_storeProduct`, `id_store`, `id_product`, `id_size`, `quantity`, `date`) VALUES
-(3, 6, 29, 1, 20, '2020-10-11 23:20:11');
+(111, 1, 81, 1, 10, '2020-11-04 06:47:56'),
+(112, 4, 81, 1, 20, '2020-11-04 06:47:56'),
+(113, 4, 81, 2, 20, '2020-11-04 06:47:56'),
+(114, 1, 82, 1, 10, '2020-11-04 07:10:11'),
+(115, 4, 82, 1, 20, '2020-11-04 07:10:11'),
+(116, 4, 82, 2, 20, '2020-11-04 07:10:11'),
+(117, 1, 83, 1, 10, '2020-11-04 07:11:26'),
+(118, 4, 83, 1, 20, '2020-11-04 07:11:26'),
+(119, 4, 83, 2, 20, '2020-11-04 07:11:26'),
+(120, 1, 84, 1, 10, '2020-11-04 07:12:02'),
+(121, 4, 84, 1, 20, '2020-11-04 07:12:02'),
+(122, 4, 84, 2, 20, '2020-11-04 07:12:02'),
+(123, 1, 85, 1, 10, '2020-11-04 07:13:21'),
+(124, 4, 85, 1, 20, '2020-11-04 07:13:21'),
+(125, 4, 85, 2, 20, '2020-11-04 07:13:21');
 
 -- --------------------------------------------------------
 
@@ -871,7 +942,7 @@ ALTER TABLE `client`
 -- AUTO_INCREMENT for table `colors`
 --
 ALTER TABLE `colors`
-  MODIFY `id_color` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id_color` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=98;
 
 --
 -- AUTO_INCREMENT for table `days`
@@ -883,7 +954,7 @@ ALTER TABLE `days`
 -- AUTO_INCREMENT for table `features`
 --
 ALTER TABLE `features`
-  MODIFY `id_feature` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_feature` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `gender`
@@ -907,7 +978,7 @@ ALTER TABLE `label_season`
 -- AUTO_INCREMENT for table `measurements`
 --
 ALTER TABLE `measurements`
-  MODIFY `id_measurement` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=102;
+  MODIFY `id_measurement` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=104;
 
 --
 -- AUTO_INCREMENT for table `parts_clothing`
@@ -919,19 +990,19 @@ ALTER TABLE `parts_clothing`
 -- AUTO_INCREMENT for table `prints`
 --
 ALTER TABLE `prints`
-  MODIFY `id_print` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id_print` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
 
 --
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id_product` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `id_product` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=86;
 
 --
 -- AUTO_INCREMENT for table `product_images`
 --
 ALTER TABLE `product_images`
-  MODIFY `id_productImage` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_productImage` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `product_rating`
@@ -961,7 +1032,7 @@ ALTER TABLE `store`
 -- AUTO_INCREMENT for table `store_product`
 --
 ALTER TABLE `store_product`
-  MODIFY `id_storeProduct` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_storeProduct` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=126;
 
 --
 -- AUTO_INCREMENT for table `user`
