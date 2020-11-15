@@ -23,23 +23,38 @@ class modelProductSize {
         return ($statement);
     }
 
-    public function mdlDeleteProductSize($idProduct, $idSize) {
+    public function mdlDeleteProductSize($idProduct) {
         
         $db = new Connection();
 
         $connection = $db -> get_connection();
 
-        $sql = "DELETE FROM product_size WHERE id_product = :idProduct AND id_size = :idSize";
+        $sql = "DELETE FROM product_size WHERE id_product = :idProduct";
 
         $statement = $connection -> prepare($sql);
 
         $statement -> bindParam(':idProduct', $idProduct);
 
-        $statement -> bindParam(':idSize', $idSize);
-
         $statement -> execute();
 
         return ($statement);
+    }
+
+    public function mdlProductSize($idProduct) {
+
+        $db = new Connection();
+
+        $connection = $db -> get_connection();
+
+        $sql = "SELECT id_size FROM product_size WHERE id_product = :idProduct";
+
+        $statement = $connection -> prepare($sql);
+
+        $statement -> bindParam(':idProduct', $idProduct);
+
+        $statement -> execute();
+
+        return ($statement->rowCount() > 0) ? $statement->fetchAll(PDO::FETCH_ASSOC) : false;
     }
 }
 

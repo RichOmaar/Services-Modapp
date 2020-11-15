@@ -25,18 +25,19 @@ class modelMeasurement {
         if(!$statement) {
 
             return ($statement);
+            
 
         } else {
 
             $lastId = new modelMeasurement();
 
             $data = $lastId -> mdlGeneralInfoMeasurement();
-//echo json_encode($data[0]['id_measurement']);
+        //echo json_encode($data[0]['id_measurement']);
             return ($data[0]['id_measurement']);
 
         }
 
-//        $last_id = $db -> insert_id;
+        //        $last_id = $db -> insert_id;
 
     }
 
@@ -61,6 +62,7 @@ class modelMeasurement {
         $statement -> execute();
 
         return ($statement);
+            
     }
 
     public function mdlDeleteMeasurement($idMeasurement) {
