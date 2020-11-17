@@ -12,21 +12,36 @@ include '../model/articleFeatures.model.php';
 
 $idProduct = $_POST['idProduct'];
 
-$productSize = new modelProductSize();
+$productPrint = new modelProductPrint();
 
-$deleteProductSize = $productSize -> mdlDeleteProductSize($idProduct);
+$print = new modelPrints();
 
-if(!$deleteProductSize) {
+$prints = $productPrint -> mdlProductPrint($idProduct);
 
-    $response = new Response(array('status' => Constants::BAD_RESPONSE, 'message' => Constants::BAD_RESPONSE_DESCRIPTION));
-        
-    echo json_encode($response, JSON_UNESCAPED_UNICODE);
+$j = 0;
 
-} else {
+foreach($prints as $key => $value){
 
-    $response = new Response(array('status' => Constants::OK_RESPONSE, 'message' => $data));
+    $deleteProductPrint = $productPrint -> mdlDeleteProductPrint($idProduct);
 
-    echo json_encode($response, JSON_UNESCAPED_UNICODE);
+    $idPrint = $prints[$j]['id_print'];
 
+    $deletePrint = $print -> mdlDelePrint($idPrint);
+
+    if(!$deletePrint) {
+
+        $response = new Response(array('status' => Constants::BAD_RESPONSE, 'message' => Constants::BAD_RESPONSE_DESCRIPTION));
+            
+        echo json_encode($response, JSON_UNESCAPED_UNICODE);
+
+    } else {
+
+        $response = new Response(array('status' => Constants::OK_RESPONSE, 'message' => $data));
+
+        echo json_encode($response, JSON_UNESCAPED_UNICODE);
+
+    }
+    $j++;
 }
+
 ?>

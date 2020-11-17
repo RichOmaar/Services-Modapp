@@ -48,17 +48,17 @@ class modelProductsImages {
         return ($statement);
     }
 
-    public function mdlDeleteProducImage($idProductImage) {
+    public function mdlDeleteProducImage($idProduct) {
         
         $db = new Connection();
 
         $connection = $db -> get_connection();
 
-        $sql = "DELETE FROM product_images WHERE id_productImage = :idProductImage";
+        $sql = "DELETE FROM product_images WHERE id_product = :idProduct";
 
         $statement = $connection -> prepare($sql);
 
-        $statement -> bindParam(':idProductImage', $idProductImage);
+        $statement -> bindParam(':idProduct', $idProduct);
 
         $statement -> execute();
 

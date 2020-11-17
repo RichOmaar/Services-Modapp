@@ -23,6 +23,10 @@ switch($action) {
         $idPartClothing = $_POST['idPartClothing'];
         $idSize = $_POST['idSize'];
         
+        echo json_encode($idRange);
+        echo json_encode($idPartClothing);
+        echo json_encode($idSize);
+
         if(strlen($idRange) > 0 && ($idPartClothing) > 0 && ($idSize) > 0) {
 
             $measurement = new modelMeasurement();
@@ -448,6 +452,7 @@ switch($action) {
         $idProduct = $_POST['idProduct'];
 
         if(strlen($idProduct) > 0) {
+            echo json_encode($idProduct);
 
             $productColor = new modelProductColor();
             $color = new modelColors();
@@ -487,11 +492,11 @@ switch($action) {
 
             $prints = $productPrint -> mdlProductPrint($idProduct);
 
-            $deleteProductPrint = $productPrint -> mdlDeleteProductPrint($idProduct);
-
             $j = 0;
 
             foreach($prints as $key => $value){
+
+                $deleteProductPrint = $productPrint -> mdlDeleteProductPrint($idProduct);
 
                 $idPrint = $prints[$j]['id_print'];
 
@@ -518,6 +523,42 @@ switch($action) {
             $deleteProductSize = $productSize -> mdlDeleteProductSize($idProduct);
             
             if(!$deleteProductSize) {
+
+                $response = new Response(array('status' => Constants::BAD_RESPONSE, 'message' => Constants::BAD_RESPONSE_DESCRIPTION));
+                    
+                echo json_encode($response, JSON_UNESCAPED_UNICODE);
+
+            } else {
+
+                $response = new Response(array('status' => Constants::OK_RESPONSE, 'message' => $data));
+
+                echo json_encode($response, JSON_UNESCAPED_UNICODE);
+
+            }
+
+            $storeProduct = new modelStoreProduct();
+
+            $deleteStoreProduct = $storeProduct -> mdlDeleteStoreProduct($idProduct);
+
+            if(!$deleteStoreProduct) {
+
+                $response = new Response(array('status' => Constants::BAD_RESPONSE, 'message' => Constants::BAD_RESPONSE_DESCRIPTION));
+                    
+                echo json_encode($response, JSON_UNESCAPED_UNICODE);
+
+            } else {
+
+                $response = new Response(array('status' => Constants::OK_RESPONSE, 'message' => $data));
+
+                echo json_encode($response, JSON_UNESCAPED_UNICODE);
+
+            }
+
+            $imageProduct = new modelProductsImages();
+
+            $deleteProductImage = $imageProduct -> mdlDeleteProducImage($idProduct);
+
+            if(!$deleteProductImage) {
 
                 $response = new Response(array('status' => Constants::BAD_RESPONSE, 'message' => Constants::BAD_RESPONSE_DESCRIPTION));
                     

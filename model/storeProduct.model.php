@@ -52,17 +52,17 @@ class modelStoreProduct {
         return ($statement);
     }
 
-    public function mdlDeleteStoreProduct($idStoreProduct) {
+    public function mdlDeleteStoreProduct($idProduct) {
          
         $db = new Connection();
 
         $connection = $db -> get_connection();
 
-        $sql = "DELETE FROM store_product WHERE id_storeProduct = :idStoreProduct";
+        $sql = "DELETE FROM store_product WHERE id_product = :idProduct";
 
         $statement = $connection -> prepare($sql);
 
-        $statement -> bindParam(':idStoreProduct', $idStoreProduct);
+        $statement -> bindParam(':idProduct', $idProduct);
 
         $statement -> execute();
 
