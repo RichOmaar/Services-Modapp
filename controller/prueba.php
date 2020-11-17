@@ -12,23 +12,26 @@ include '../model/articleFeatures.model.php';
 
 $idProduct = $_POST['idProduct'];
 
-$productPrint = new modelProductPrint();
+$idRange = $_POST['idRange'];
+$idPartClothing = $_POST['idPartClothing'];
+$idSize = $_POST['idSize'];
+$array =array();
 
-$print = new modelPrints();
+$measurement = new modelMeasurement();
 
-$prints = $productPrint -> mdlProductPrint($idProduct);
+$i = 0;
 
-$j = 0;
+foreach($idSize as $key => $value) {
 
-foreach($prints as $key => $value){
+    $size = $idSize[$i]['idSize'];
 
-    $deleteProductPrint = $productPrint -> mdlDeleteProductPrint($idProduct);
+    $dataMeasurement = $measurement -> mdlAddMeasurement($idRange, $idPartClothing, $idSize);
 
-    $idPrint = $prints[$j]['id_print'];
-
-    $deletePrint = $print -> mdlDelePrint($idPrint);
-
-    if(!$deletePrint) {
+    echo json_encode($size);
+    echo json_encode($idRange);
+    echo json_encode($idPartClothing);
+    
+    if(!$dataMeasurement) {
 
         $response = new Response(array('status' => Constants::BAD_RESPONSE, 'message' => Constants::BAD_RESPONSE_DESCRIPTION));
             
@@ -36,12 +39,15 @@ foreach($prints as $key => $value){
 
     } else {
 
+        $array[$i] = $dataMeasurement;
+
+        echo json_encode($array);
+
         $response = new Response(array('status' => Constants::OK_RESPONSE, 'message' => $data));
 
         echo json_encode($response, JSON_UNESCAPED_UNICODE);
 
     }
-    $j++;
+    $i++;
 }
-
 ?>

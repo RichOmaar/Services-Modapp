@@ -31,142 +31,112 @@ switch($action) {
 
             $measurement = new modelMeasurement();
 
-            $dataMeasurement = $measurement -> mdlAddMeasurement($idRange, $idPartClothing, $idSize);
+            $i = 0;
 
-            echo json_encode($dataMeasurement);
-            if(!$dataMeasurement) {
+            foreach($idSize as $key => $value) {
 
-                $response = new Response(array('status' => Constants::BAD_RESPONSE, 'message' => Constants::BAD_RESPONSE_DESCRIPTION));
-                    
-                echo json_encode($response, JSON_UNESCAPED_UNICODE);
+                $size = $idSize[$i]['idSize'];
 
-            } else {
+                $dataMeasurement = $measurement -> mdlAddMeasurement($idRange, $idPartClothing, $idSize);
 
-                $productName = $_POST['productName']; 
-                $price = $_POST['price'];
-                $avgDiscount = $_POST['avgDiscount']; 
-                $priceDiscount = $_POST['priceDiscount']; 
-                $idArticleType = $_POST['idArticleType']; 
-                $idCategory = $_POST['idCategory']; 
-                $idGender = $_POST['idGender']; 
-                $idBody = $_POST['idBody']; 
-                $labelStyle = $_POST['labelStyle']; 
-                $labelOccasion = $_POST['labelOccasion']; 
-                $idLabelSeason = $_POST['idLabelSeason']; 
-                $idClient = $_POST['idClient'];
-                $idMeasurement = $dataMeasurement;
+                echo json_encode($dataMeasurement);
+                if(!$dataMeasurement) {
 
-                if($avgDiscount || $priceDiscount != '') {
-
-                    if($avgDiscount === '') {
-
-                        $avgDiscount = NULL;
-                    }
-    
-                    if($priceDiscount === '') {
-    
-                        $priceDiscount = NULL;
-    
-                    }
-
-                    if(strlen($productName) > 0 && strlen($price) > 0 && strlen($idArticleType) > 0 && strlen($idCategory) > 0 && strlen($idGender) > 0 && strlen($idBody) > 0 && strlen($labelStyle) > 0 && strlen($labelOccasion) > 0 && strlen($idLabelSeason) > 0 && strlen($idClient) > 0) {
-    
-                        $product = new modelProduct();
-    
-                        $dataProduct = $product -> mdlAddProduct($productName, $price, $avgDiscount, $priceDiscount, $idArticleType, $idCategory, $idGender, $idBody, $labelStyle, $labelOccasion, $idLabelSeason, $idClient, $idMeasurement);
-        
-                        $idProduct = $product -> mdlLastIdProduct();
-
-                        $lastIdProduct = $idProduct[0]['id_product'];
-
-                        if(!$dataProduct) {
-    
-                            $response = new Response(array('status' => Constants::BAD_RESPONSE, 'message' => Constants::BAD_RESPONSE_DESCRIPTION));
-                                
-                            echo json_encode($response, JSON_UNESCAPED_UNICODE);
-                
-                        } else {
-
-                            $colors = $_POST['colors'];
-
-                            $color = new modelColors();
-
-                            $i = 0;
-
-                            foreach($colors as $key => $value) {
-
-                                $colorName = $colors[$i]['colorName'];
-
-                                $hex = $colors[$i]['hex'];
-                                
-                                $result = $color -> mdlAddColor($colorName, $hex);
-
-                                $idColor = $color -> mdlIdColor();
-
-                                $lastIdColor = $idColor[0]['id_color'];
-
-                                if(!$result) {
-
-                                    $deleteProduct = $product -> mdlDeleteProduct($lastIdProduct);
-
-                                    $deleteMeasuerement = $measurement -> mdlDeleteMeasurement($idMeasurement);
-
-                                    $deleteColor = $color -> mdlDeleteColor($lastIdColor);
-
-                                    $response = new Response(array('status' => Constants::BAD_RESPONSE, 'message' => Constants::BAD_RESPONSE_DESCRIPTION));
-                    
-                                    echo json_encode($response, JSON_UNESCAPED_UNICODE);
-
-                                } else {
-                                    
-                                    $addProductColor = $color -> mdlAddProductColor($lastIdColor,$lastIdProduct);
-
-                                    if(!$addProductColor) {
+                    $response = new Response(array('status' => Constants::BAD_RESPONSE, 'message' => Constants::BAD_RESPONSE_DESCRIPTION));
                         
-                                        $deleteProduct = $product -> mdlDeleteProduct($lastIdProduct);
+                    echo json_encode($response, JSON_UNESCAPED_UNICODE);
 
-                                        $deleteMeasuerement = $measurement -> mdlDeleteMeasurement($idMeasurement);
+                } else {
 
-                                        $deleteColor = $color -> mdlDeleteColor($lastIdColor);
+                    $response = new Response(array('status' => Constants::OK_RESPONSE, 'message' => $data));
+    
+                    echo json_encode($response, JSON_UNESCAPED_UNICODE);
 
-                                        $deleteProductColor = $color -> mdlDeleteProductColor($lastIdColor,$lastIdProduct);
+                }
+                $i++;
+            }
 
-                                        $response = new Response(array('status' => Constants::BAD_RESPONSE, 'message' => Constants::BAD_RESPONSE_DESCRIPTION));
-                                            
-                                        echo json_encode($response, JSON_UNESCAPED_UNICODE);
-                        
-                                    } else {
+            $productName = $_POST['productName']; 
+            $price = $_POST['price'];
+            $avgDiscount = $_POST['avgDiscount']; 
+            $priceDiscount = $_POST['priceDiscount']; 
+            $idArticleType = $_POST['idArticleType']; 
+            $idCategory = $_POST['idCategory']; 
+            $idGender = $_POST['idGender']; 
+            $idBody = $_POST['idBody']; 
+            $labelStyle = $_POST['labelStyle']; 
+            $labelOccasion = $_POST['labelOccasion']; 
+            $idLabelSeason = $_POST['idLabelSeason']; 
+            $idClient = $_POST['idClient'];
+            $idMeasurement = $dataMeasurement;
 
-                                        $response = new Response(array('status' => Constants::OK_RESPONSE, 'message' => $data));
-                        
-                                        echo json_encode($response, JSON_UNESCAPED_UNICODE);
-                        
-                                    }
+            if($avgDiscount || $priceDiscount != '') {
 
-                                }
-                                $i++;
-                            }
-                
-                            /*AQUI IRÍA EL FOREACH DE LOS PRINT*/
-                           
-                            $prints = $_POST['prints'];
+                if($avgDiscount === '') {
+
+                    $avgDiscount = NULL;
+                }
+
+                if($priceDiscount === '') {
+
+                    $priceDiscount = NULL;
+
+                }
+
+                if(strlen($productName) > 0 && strlen($price) > 0 && strlen($idArticleType) > 0 && strlen($idCategory) > 0 && strlen($idGender) > 0 && strlen($idBody) > 0 && strlen($labelStyle) > 0 && strlen($labelOccasion) > 0 && strlen($idLabelSeason) > 0 && strlen($idClient) > 0) {
+
+                    $product = new modelProduct();
+
+                    $dataProduct = $product -> mdlAddProduct($productName, $price, $avgDiscount, $priceDiscount, $idArticleType, $idCategory, $idGender, $idBody, $labelStyle, $labelOccasion, $idLabelSeason, $idClient, $idMeasurement);
+
+                    $idProduct = $product -> mdlLastIdProduct();
+
+                    $lastIdProduct = $idProduct[0]['id_product'];
+
+                    if(!$dataProduct) {
+
+                        $response = new Response(array('status' => Constants::BAD_RESPONSE, 'message' => Constants::BAD_RESPONSE_DESCRIPTION));
                             
-                            $print = new modelPrints();
+                        echo json_encode($response, JSON_UNESCAPED_UNICODE);
+            
+                    } else {
 
-                            $i = 0;
+                        $colors = $_POST['colors'];
 
-                            foreach($prints as $key => $value) {
+                        $color = new modelColors();
 
-                                $printName = $prints[$i]['name'];
+                        $i = 0;
 
-                                $addPrint = $print -> mdlAddPrint($printName);
+                        foreach($colors as $key => $value) {
 
-                                $idPrint = $print -> mdlLastPrintId();
+                            $colorName = $colors[$i]['colorName'];
 
-                                $lastIdPrint = $idPrint[0]['id_print'];
+                            $hex = $colors[$i]['hex'];
+                            
+                            $result = $color -> mdlAddColor($colorName, $hex);
 
-                                if(!$addPrint) {
+                            $idColor = $color -> mdlIdColor();
 
+                            $lastIdColor = $idColor[0]['id_color'];
+
+                            if(!$result) {
+
+                                $deleteProduct = $product -> mdlDeleteProduct($lastIdProduct);
+
+                                $deleteMeasuerement = $measurement -> mdlDeleteMeasurement($idMeasurement);
+
+                                $deleteColor = $color -> mdlDeleteColor($lastIdColor);
+
+                                $response = new Response(array('status' => Constants::BAD_RESPONSE, 'message' => Constants::BAD_RESPONSE_DESCRIPTION));
+                
+                                echo json_encode($response, JSON_UNESCAPED_UNICODE);
+
+                            } else {
+                                
+                                $addProductColor = $color -> mdlAddProductColor($lastIdColor,$lastIdProduct);
+
+                                if(!$addProductColor) {
+                    
                                     $deleteProduct = $product -> mdlDeleteProduct($lastIdProduct);
 
                                     $deleteMeasuerement = $measurement -> mdlDeleteMeasurement($idMeasurement);
@@ -175,62 +145,63 @@ switch($action) {
 
                                     $deleteProductColor = $color -> mdlDeleteProductColor($lastIdColor,$lastIdProduct);
 
-                                    $deletePrint = $print -> mdlDelePrint($lastIdPrint);
-
                                     $response = new Response(array('status' => Constants::BAD_RESPONSE, 'message' => Constants::BAD_RESPONSE_DESCRIPTION));
                                         
                                     echo json_encode($response, JSON_UNESCAPED_UNICODE);
                     
                                 } else {
 
-                                    echo json_encode('Numero'.$i);
+                                    $response = new Response(array('status' => Constants::OK_RESPONSE, 'message' => $data));
                     
-                                    $addProductPrint = $print -> mdlAddProductPrint($lastIdProduct,$lastIdPrint);
-
-                                    if(!$addProductPrint) {
-
-                                        $deleteProduct = $product -> mdlDeleteProduct($lastIdProduct);
-
-                                        $deleteMeasuerement = $measurement -> mdlDeleteMeasurement($idMeasurement);
-
-                                        $deleteColor = $color -> mdlDeleteColor($lastIdColor);
-
-                                        $deleteProductColor = $color -> mdlDeleteProductColor($lastIdColor,$lastIdProduct);
-
-                                        $deletePrint = $print -> mdlDelePrint($lastIdPrint);
-
-                                        $deleteProductPrint = $print -> mdlDeleteProductPrint($lastIdProduct,$lastIdPrint);
-                                        
-                                        $response = new Response(array('status' => Constants::BAD_RESPONSE, 'message' => Constants::BAD_RESPONSE_DESCRIPTION));
-                                            
-                                        echo json_encode($response, JSON_UNESCAPED_UNICODE);
-                        
-                                    } else {
-                        
-                                        $response = new Response(array('status' => Constants::OK_RESPONSE, 'message' => $data));
-                        
-                                        echo json_encode($response, JSON_UNESCAPED_UNICODE);
-                        
-                                    }
+                                    echo json_encode($response, JSON_UNESCAPED_UNICODE);
+                    
                                 }
-                                $i++;
+
                             }
-                            
-                            $idSize = $_POST['idSize'];
+                            $i++;
+                        }
+            
+                        /*AQUI IRÍA EL FOREACH DE LOS PRINT*/
                         
-                            $productSize = new modelProductSize();
+                        $prints = $_POST['prints'];
+                        
+                        $print = new modelPrints();
 
-                            $i = 0;
+                        $i = 0;
 
-                            foreach($idSize as $key => $value) {
+                        foreach($prints as $key => $value) {
 
-                                $size = $idSize[$i]['idSize'];
+                            $printName = $prints[$i]['name'];
 
-                                echo json_encode($size);
+                            $addPrint = $print -> mdlAddPrint($printName);
 
-                                $addProductSize = $productSize -> mdlAddProductSize($lastIdProduct,$size);
+                            $idPrint = $print -> mdlLastPrintId();
 
-                                if(!$addProductSize) {
+                            $lastIdPrint = $idPrint[0]['id_print'];
+
+                            if(!$addPrint) {
+
+                                $deleteProduct = $product -> mdlDeleteProduct($lastIdProduct);
+
+                                $deleteMeasuerement = $measurement -> mdlDeleteMeasurement($idMeasurement);
+
+                                $deleteColor = $color -> mdlDeleteColor($lastIdColor);
+
+                                $deleteProductColor = $color -> mdlDeleteProductColor($lastIdColor,$lastIdProduct);
+
+                                $deletePrint = $print -> mdlDelePrint($lastIdPrint);
+
+                                $response = new Response(array('status' => Constants::BAD_RESPONSE, 'message' => Constants::BAD_RESPONSE_DESCRIPTION));
+                                    
+                                echo json_encode($response, JSON_UNESCAPED_UNICODE);
+                
+                            } else {
+
+                                echo json_encode('Numero'.$i);
+                
+                                $addProductPrint = $print -> mdlAddProductPrint($lastIdProduct,$lastIdPrint);
+
+                                if(!$addProductPrint) {
 
                                     $deleteProduct = $product -> mdlDeleteProduct($lastIdProduct);
 
@@ -247,76 +218,74 @@ switch($action) {
                                     $response = new Response(array('status' => Constants::BAD_RESPONSE, 'message' => Constants::BAD_RESPONSE_DESCRIPTION));
                                         
                                     echo json_encode($response, JSON_UNESCAPED_UNICODE);
-
+                    
                                 } else {
-
+                    
                                     $response = new Response(array('status' => Constants::OK_RESPONSE, 'message' => $data));
-                                                
+                    
                                     echo json_encode($response, JSON_UNESCAPED_UNICODE);
+                    
                                 }
-                                $i++;
                             }
-
-                            $storeSize = $_POST['storeSize'];
-
-                            $storeProduct = new modelStoreProduct();
-
-                            $j = 0;
-
-                            foreach($storeSize as $key => $value) {
-
-                                $idStore = $storeSize[$j]['idStore'];
-                                $size = $storeSize[$j]['idSize'];
-                                $quantity = $storeSize[$j]['quantity'];
-
-                                $addStoreProduct = $storeProduct -> mdlAddStoreProduct($idStore,$lastIdProduct,$size,$quantity);
-
-                                if(!$addStoreProduct) {
-                                    
-                                    $deleteProduct = $product -> mdlDeleteProduct($lastIdProduct);
-
-                                    $deleteMeasuerement = $measurement -> mdlDeleteMeasurement($idMeasurement);
-
-                                    $deleteColor = $color -> mdlDeleteColor($lastIdColor);
-
-                                    $deleteProductColor = $color -> mdlDeleteProductColor($lastIdColor,$lastIdProduct);
-
-                                    $deletePrint = $print -> mdlDelePrint($lastIdPrint);
-
-                                    $deleteProductPrint = $print -> mdlDeleteProductPrint($lastIdProduct,$lastIdPrint);
-
-                                    $deleteProductSize = $productSize -> mdlDeleteProductSize($lastIdProduct,$idSize);
-                                    
-                                    $response = new Response(array('status' => Constants::BAD_RESPONSE, 'message' => Constants::BAD_RESPONSE_DESCRIPTION));
-                                        
-                                    echo json_encode($response, JSON_UNESCAPED_UNICODE);
-
-                                } else {
-
-                                    $response = new Response(array('status' => Constants::OK_RESPONSE, 'message' => $data));
-
-                                    echo json_encode($response, JSON_UNESCAPED_UNICODE);
-
-                                }
-                                $j++;
-                            }
+                            $i++;
+                        }
                         
-                            $featureName = $_POST['featureName'];
-                            $valueFeature = $_POST['valueFeature'];
-                            
-                            $features = new modelFeatures();
+                        $idSize = $_POST['idSize'];
+                    
+                        $productSize = new modelProductSize();
 
-                            $addFeatures = $features -> mdlAddFeature($featureName,$valueFeature);
+                        $i = 0;
 
-                            $idFeature = $features -> mdlLastFeatureId();
+                        foreach($idSize as $key => $value) {
 
-                            $lasdIdFeature = $idFeature[0]['id_feature'];
+                            $size = $idSize[$i]['idSize'];
 
-                            echo json_encode($lasdIdFeature);
+                            echo json_encode($size);
 
-                            if(!$addFeatures) {
+                            $addProductSize = $productSize -> mdlAddProductSize($lastIdProduct,$size);
 
-                                echo json_encode($addStoreProduct);
+                            if(!$addProductSize) {
+
+                                $deleteProduct = $product -> mdlDeleteProduct($lastIdProduct);
+
+                                $deleteMeasuerement = $measurement -> mdlDeleteMeasurement($idMeasurement);
+
+                                $deleteColor = $color -> mdlDeleteColor($lastIdColor);
+
+                                $deleteProductColor = $color -> mdlDeleteProductColor($lastIdColor,$lastIdProduct);
+
+                                $deletePrint = $print -> mdlDelePrint($lastIdPrint);
+
+                                $deleteProductPrint = $print -> mdlDeleteProductPrint($lastIdProduct,$lastIdPrint);
+                                
+                                $response = new Response(array('status' => Constants::BAD_RESPONSE, 'message' => Constants::BAD_RESPONSE_DESCRIPTION));
+                                    
+                                echo json_encode($response, JSON_UNESCAPED_UNICODE);
+
+                            } else {
+
+                                $response = new Response(array('status' => Constants::OK_RESPONSE, 'message' => $data));
+                                            
+                                echo json_encode($response, JSON_UNESCAPED_UNICODE);
+                            }
+                            $i++;
+                        }
+
+                        $storeSize = $_POST['storeSize'];
+
+                        $storeProduct = new modelStoreProduct();
+
+                        $j = 0;
+
+                        foreach($storeSize as $key => $value) {
+
+                            $idStore = $storeSize[$j]['idStore'];
+                            $size = $storeSize[$j]['idSize'];
+                            $quantity = $storeSize[$j]['quantity'];
+
+                            $addStoreProduct = $storeProduct -> mdlAddStoreProduct($idStore,$lastIdProduct,$size,$quantity);
+
+                            if(!$addStoreProduct) {
                                 
                                 $deleteProduct = $product -> mdlDeleteProduct($lastIdProduct);
 
@@ -335,103 +304,146 @@ switch($action) {
                                 $response = new Response(array('status' => Constants::BAD_RESPONSE, 'message' => Constants::BAD_RESPONSE_DESCRIPTION));
                                     
                                 echo json_encode($response, JSON_UNESCAPED_UNICODE);
+
+                            } else {
+
+                                $response = new Response(array('status' => Constants::OK_RESPONSE, 'message' => $data));
+
+                                echo json_encode($response, JSON_UNESCAPED_UNICODE);
+
+                            }
+                            $j++;
+                        }
+                    
+                        $featureName = $_POST['featureName'];
+                        $valueFeature = $_POST['valueFeature'];
+                        
+                        $features = new modelFeatures();
+
+                        $addFeatures = $features -> mdlAddFeature($featureName,$valueFeature);
+
+                        $idFeature = $features -> mdlLastFeatureId();
+
+                        $lasdIdFeature = $idFeature[0]['id_feature'];
+
+                        echo json_encode($lasdIdFeature);
+
+                        if(!$addFeatures) {
+
+                            echo json_encode($addStoreProduct);
+                            
+                            $deleteProduct = $product -> mdlDeleteProduct($lastIdProduct);
+
+                            $deleteMeasuerement = $measurement -> mdlDeleteMeasurement($idMeasurement);
+
+                            $deleteColor = $color -> mdlDeleteColor($lastIdColor);
+
+                            $deleteProductColor = $color -> mdlDeleteProductColor($lastIdColor,$lastIdProduct);
+
+                            $deletePrint = $print -> mdlDelePrint($lastIdPrint);
+
+                            $deleteProductPrint = $print -> mdlDeleteProductPrint($lastIdProduct,$lastIdPrint);
+
+                            $deleteProductSize = $productSize -> mdlDeleteProductSize($lastIdProduct,$idSize);
+                            
+                            $response = new Response(array('status' => Constants::BAD_RESPONSE, 'message' => Constants::BAD_RESPONSE_DESCRIPTION));
+                                
+                            echo json_encode($response, JSON_UNESCAPED_UNICODE);
+            
+                        } else {
+            
+                            $articleFeatures = new modelArticleFeatures();
+
+                            $addArticleFeature = $articleFeatures -> mdlAddArticleFeature($idArticleType,$lasdIdFeature);
+
+                            if(!$addArticleFeature) {
+                                
+                                $deleteProduct = $product -> mdlDeleteProduct($lastIdProduct);
+
+                                $deleteMeasuerement = $measurement -> mdlDeleteMeasurement($idMeasurement);
+
+                                $deleteColor = $color -> mdlDeleteColor($lastIdColor);
+
+                                $deleteProductColor = $color -> mdlDeleteProductColor($lastIdColor,$lastIdProduct);
+
+                                $deletePrint = $print -> mdlDelePrint($lastIdPrint);
+
+                                $deleteProductPrint = $print -> mdlDeleteProductPrint($lastIdProduct,$lastIdPrint);
+
+                                $deleteProductSize = $productSize -> mdlDeleteProductSize($lastIdProduct,$idSize);
+
+                                $deleteFeature = $features -> mdlDeleteFeature($lasdIdFeature);
+                                
+                                $response = new Response(array('status' => Constants::BAD_RESPONSE, 'message' => Constants::BAD_RESPONSE_DESCRIPTION));
+                                    
+                                echo json_encode($response, JSON_UNESCAPED_UNICODE);
                 
                             } else {
+
+                                $response = new Response(array('status' => Constants::OK_RESPONSE, 'message' => $data));
                 
-                                $articleFeatures = new modelArticleFeatures();
-
-                                $addArticleFeature = $articleFeatures -> mdlAddArticleFeature($idArticleType,$lasdIdFeature);
-
-                                if(!$addArticleFeature) {
-                                    
-                                    $deleteProduct = $product -> mdlDeleteProduct($lastIdProduct);
-    
-                                    $deleteMeasuerement = $measurement -> mdlDeleteMeasurement($idMeasurement);
-    
-                                    $deleteColor = $color -> mdlDeleteColor($lastIdColor);
-    
-                                    $deleteProductColor = $color -> mdlDeleteProductColor($lastIdColor,$lastIdProduct);
-    
-                                    $deletePrint = $print -> mdlDelePrint($lastIdPrint);
-    
-                                    $deleteProductPrint = $print -> mdlDeleteProductPrint($lastIdProduct,$lastIdPrint);
-    
-                                    $deleteProductSize = $productSize -> mdlDeleteProductSize($lastIdProduct,$idSize);
-
-                                    $deleteFeature = $features -> mdlDeleteFeature($lasdIdFeature);
-                                    
-                                    $response = new Response(array('status' => Constants::BAD_RESPONSE, 'message' => Constants::BAD_RESPONSE_DESCRIPTION));
-                                        
-                                    echo json_encode($response, JSON_UNESCAPED_UNICODE);
-                    
-                                } else {
-
-                                    $response = new Response(array('status' => Constants::OK_RESPONSE, 'message' => $data));
-                    
-                                    echo json_encode($response, JSON_UNESCAPED_UNICODE);
-                    
-                                }
-                            }
-
-                            $imageProduct = $_POST['imageProduct'];
-
-                            $image = new modelProductsImages();
-
-                            $i = 0;
-
-                            foreach($imageProduct as $key => $value){
-
-                                $imageUrl = $imageProduct[$i]['url'];
-                                $order = $imageProduct[$i]['order'];
-
-                                $addImageProduct = $image -> mdlAddProducImage($imageUrl,$lastIdProduct,$order);
-
-                                if(!$addImageProduct){
-                                    $deleteProduct = $product -> mdlDeleteProduct($lastIdProduct);
-    
-                                    $deleteMeasuerement = $measurement -> mdlDeleteMeasurement($idMeasurement);
-    
-                                    $deleteColor = $color -> mdlDeleteColor($lastIdColor);
-    
-                                    $deleteProductColor = $color -> mdlDeleteProductColor($lastIdColor,$lastIdProduct);
-    
-                                    $deletePrint = $print -> mdlDelePrint($lastIdPrint);
-    
-                                    $deleteProductPrint = $print -> mdlDeleteProductPrint($lastIdProduct,$lastIdPrint);
-    
-                                    $deleteProductSize = $productSize -> mdlDeleteProductSize($lastIdProduct,$idSize);
-
-                                    $deleteFeature = $features -> mdlDeleteFeature($lasdIdFeature);
-                                    
-                                    $response = new Response(array('status' => Constants::BAD_RESPONSE, 'message' => Constants::BAD_RESPONSE_DESCRIPTION));
-                                        
-                                    echo json_encode($response, JSON_UNESCAPED_UNICODE);
-                                } else {
-
-                                    $response = new Response(array('status' => Constants::OK_RESPONSE, 'message' => $data));
-                    
-                                    echo json_encode($response, JSON_UNESCAPED_UNICODE);
-                                }
-                                $i++;
+                                echo json_encode($response, JSON_UNESCAPED_UNICODE);
+                
                             }
                         }
-                        
-                    } else {
-    
-                        $response = new Response(array('status' => Constants::BAD_RESPONSE, 'message' => 'Product Data Incomplete'));
+
+                        $imageProduct = $_POST['imageProduct'];
+
+                        $image = new modelProductsImages();
+
+                        $i = 0;
+
+                        foreach($imageProduct as $key => $value){
+
+                            $imageUrl = $imageProduct[$i]['url'];
+                            $order = $imageProduct[$i]['order'];
+
+                            $addImageProduct = $image -> mdlAddProducImage($imageUrl,$lastIdProduct,$order);
+
+                            if(!$addImageProduct){
+                                $deleteProduct = $product -> mdlDeleteProduct($lastIdProduct);
+
+                                $deleteMeasuerement = $measurement -> mdlDeleteMeasurement($idMeasurement);
+
+                                $deleteColor = $color -> mdlDeleteColor($lastIdColor);
+
+                                $deleteProductColor = $color -> mdlDeleteProductColor($lastIdColor,$lastIdProduct);
+
+                                $deletePrint = $print -> mdlDelePrint($lastIdPrint);
+
+                                $deleteProductPrint = $print -> mdlDeleteProductPrint($lastIdProduct,$lastIdPrint);
+
+                                $deleteProductSize = $productSize -> mdlDeleteProductSize($lastIdProduct,$idSize);
+
+                                $deleteFeature = $features -> mdlDeleteFeature($lasdIdFeature);
+                                
+                                $response = new Response(array('status' => Constants::BAD_RESPONSE, 'message' => Constants::BAD_RESPONSE_DESCRIPTION));
+                                    
+                                echo json_encode($response, JSON_UNESCAPED_UNICODE);
+                            } else {
+
+                                $response = new Response(array('status' => Constants::OK_RESPONSE, 'message' => $data));
                 
-                        echo json_encode($response, JSON_UNESCAPED_UNICODE); 
+                                echo json_encode($response, JSON_UNESCAPED_UNICODE);
+                            }
+                            $i++;
+                        }
                     }
-    
+                    
                 } else {
 
-                    $deleteMeasuerement = $measurement -> mdlDeleteMeasurement($idMeasurement);
-
-                    $response = new Response(array('status' => Constants::BAD_RESPONSE, 'message' => '$avgDiscount and $priceDiscount are empty'));
-                
-                    echo json_encode($response, JSON_UNESCAPED_UNICODE);
-
+                    $response = new Response(array('status' => Constants::BAD_RESPONSE, 'message' => 'Product Data Incomplete'));
+            
+                    echo json_encode($response, JSON_UNESCAPED_UNICODE); 
                 }
+
+            } else {
+
+                $deleteMeasuerement = $measurement -> mdlDeleteMeasurement($idMeasurement);
+
+                $response = new Response(array('status' => Constants::BAD_RESPONSE, 'message' => '$avgDiscount and $priceDiscount are empty'));
+            
+                echo json_encode($response, JSON_UNESCAPED_UNICODE);
 
             }
         
