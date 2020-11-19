@@ -15,7 +15,7 @@ $idProduct = $_POST['idProduct'];
 $idRange = $_POST['idRange'];
 $idPartClothing = $_POST['idPartClothing'];
 $idSize = $_POST['idSize'];
-$array =array();
+$array = array();
 
 $measurement = new modelMeasurement();
 
@@ -38,10 +38,6 @@ foreach($idSize as $key => $value) {
         echo json_encode($response, JSON_UNESCAPED_UNICODE);
 
     } else {
-
-        $array[$i] = $dataMeasurement;
-
-        echo json_encode($array);
 
         $response = new Response(array('status' => Constants::OK_RESPONSE, 'message' => $data));
 
