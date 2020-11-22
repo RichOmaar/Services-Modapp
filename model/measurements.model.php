@@ -82,6 +82,24 @@ class modelMeasurement {
         return ($statement);
         
     }
+
+    public function mdlGetIdMeasurement($idProduct) {
+
+        $db = new Connection();
+
+        $connection = $db -> get_connection();
+
+        $sql = "SELECT id_measurement FROM products WHERE id_product = :idProduct";
+
+        $statement = $connection -> prepare($sql);
+
+        $statement -> bindParam(':idProduct', $idProduct);
+
+        $statement -> execute();
+
+        return ($statement->rowCount() > 0) ? $statement->fetchAll(PDO::FETCH_ASSOC) : false;
+
+    }
     
     //SELECT GENERAL
     public function mdlInfoMeasurement($idMeasurement) {
