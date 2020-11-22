@@ -572,7 +572,23 @@ switch($action) {
 
             }
 
-            
+            $product = new modelProduct();
+
+            $deleteProduct = $product -> mdlDeleteProduct($idProduct);
+
+            if(!$deleteProduct) {
+
+                $response = new Response(array('status' => Constants::BAD_RESPONSE, 'message' => Constants::BAD_RESPONSE_DESCRIPTION));
+                    
+                echo json_encode($response, JSON_UNESCAPED_UNICODE);
+
+            } else {
+
+                $response = new Response(array('status' => Constants::OK_RESPONSE, 'message' => $data));
+
+                echo json_encode($response, JSON_UNESCAPED_UNICODE);
+
+            }
 
         } else {
 

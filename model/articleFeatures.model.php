@@ -41,6 +41,8 @@ class modelArticleFeatures {
 
         return ($statement);
     }
+
+    
 }
 
 ?>
