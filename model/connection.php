@@ -52,6 +52,7 @@ class Constants {
     const BAD_RESPONSE_NO_USER_INGENIO_FOUND = 'No se encontró ningún usuario relacionado con ese ingenio, verifica e intenta nuevamente';
     const BAD_RESPONSE_NO_USER_DEPARTMNET_FOUND = 'No se encontró ningún usuario relacionado con ese departamento, verifica e intenta nuevamente';
     const BAD_POST_RESPONSE = 'La petición POST no se hizo correctamente';
+    const BAD_POST_RESPONSE_NO_PRODUCT = 'No se encontró ningún producto con ese id';
     
     const BAD_RESPONSE_DESCRIPTION_COMPANY_NO_SERVICE = 'No se encontró ninguna empresa con el servicio que estás buscando';
     const BAD_RESPONSE_DESCRIPTION_COMPANY_NO_FOUND = 'No se encontró ninguna empresa con ese nombre, verifica e intenta nuevamente';
