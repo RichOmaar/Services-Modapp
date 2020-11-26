@@ -52,17 +52,19 @@ class modelProductRating {
         return ($statement);
     }
 
-    public function mdlDeleteProductRating($idProductRating) {
+    public function mdlDeleteProductRating($idProduct,$idUser) {
 
         $db = new Connection();
 
         $connection = $db -> get_connection();
 
-        $sql = "DELETE FROM `product_rating` WHERE id_productRating = :idProductRating";
+        $sql = "DELETE FROM product_rating WHERE id_user = :idUser AND id_product = :idProduct";
 
         $statement = $connection -> prepare($sql);
 
-        $statement -> bindParam(':idProductRating', $idProductRating);
+        $statement -> bindParam(':idUser', $idUser);
+
+        $statement -> bindParam(':idProduct', $idProduct);
 
         $statement -> execute();
 

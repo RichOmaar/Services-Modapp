@@ -616,6 +616,7 @@ switch($action) {
     break;
 
     case 'products':
+        
     break;
 
     case 'product':
