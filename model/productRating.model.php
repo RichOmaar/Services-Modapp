@@ -27,19 +27,17 @@ class modelProductRating {
         return ($statement);
     }
 
-    public function mdlUpdateProductRating($idUser, $idProduct, $content, $rate, $idProductRating) {
+    public function mdlUpdateProductRating($idUser,$content,$rate,$idProductRating) {
     
         $db = new Connection();
 
         $connection = $db -> get_connection();
 
-        $sql = "UPDATE `product_rating` SET `id_user` = :idUser, `id_product`= :idProduct,`content` = :content,`rate` = :rate WHERE id_productRating = :idProductRating";
+        $sql = "UPDATE product_rating SET content = :content, rate = :rate WHERE id_productRating = :idProductRating AND id_user = :idUser";
 
         $statement = $connection -> prepare($sql);
 
         $statement -> bindParam(':idUser', $idUser);
-
-        $statement -> bindParam(':idProduct', $idProduct);
 
         $statement -> bindParam(':content', $content);
 
