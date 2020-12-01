@@ -132,7 +132,7 @@ switch($action) {
                         
                                     } else {
 
-                                        $response = new Response(array('status' => Constants::OK_RESPONSE, 'message' => $data));
+                                        $response = new Response(array('status' => Constants::OK_RESPONSE, 'message' => $addProductColor));
                         
                                         echo json_encode($response, JSON_UNESCAPED_UNICODE);
                         
@@ -198,7 +198,7 @@ switch($action) {
                         
                                     } else {
                         
-                                        $response = new Response(array('status' => Constants::OK_RESPONSE, 'message' => $data));
+                                        $response = new Response(array('status' => Constants::OK_RESPONSE, 'message' => $addProductPrint));
                         
                                         echo json_encode($response, JSON_UNESCAPED_UNICODE);
                         
@@ -239,7 +239,7 @@ switch($action) {
 
                                 } else {
 
-                                    $response = new Response(array('status' => Constants::OK_RESPONSE, 'message' => $data));
+                                    $response = new Response(array('status' => Constants::OK_RESPONSE, 'message' => $addProductSize));
                                                 
                                     echo json_encode($response, JSON_UNESCAPED_UNICODE);
                                 }
@@ -282,7 +282,7 @@ switch($action) {
 
                                 } else {
 
-                                    $response = new Response(array('status' => Constants::OK_RESPONSE, 'message' => $data));
+                                    $response = new Response(array('status' => Constants::OK_RESPONSE, 'message' => $addStoreProduct));
 
                                     echo json_encode($response, JSON_UNESCAPED_UNICODE);
 
@@ -353,7 +353,7 @@ switch($action) {
                     
                                 } else {
 
-                                    $response = new Response(array('status' => Constants::OK_RESPONSE, 'message' => $data));
+                                    $response = new Response(array('status' => Constants::OK_RESPONSE, 'message' => $addArticleFeature));
                     
                                     echo json_encode($response, JSON_UNESCAPED_UNICODE);
                     
@@ -395,7 +395,7 @@ switch($action) {
                                     echo json_encode($response, JSON_UNESCAPED_UNICODE);
                                 } else {
 
-                                    $response = new Response(array('status' => Constants::OK_RESPONSE, 'message' => $data));
+                                    $response = new Response(array('status' => Constants::OK_RESPONSE, 'message' => $addImageProduct));
                     
                                     echo json_encode($response, JSON_UNESCAPED_UNICODE);
                                 }
@@ -433,6 +433,7 @@ switch($action) {
     break;
 
     case 'updateProduct':
+
     break;
 
     case 'deleteProduct':
@@ -476,7 +477,7 @@ switch($action) {
         
                     } else {
         
-                        $response = new Response(array('status' => Constants::OK_RESPONSE, 'message' => $data));
+                        $response = new Response(array('status' => Constants::OK_RESPONSE, 'message' => $deleteColor));
         
                         echo json_encode($response, JSON_UNESCAPED_UNICODE);
         
@@ -507,7 +508,7 @@ switch($action) {
         
                     } else {
         
-                        $response = new Response(array('status' => Constants::OK_RESPONSE, 'message' => $data));
+                        $response = new Response(array('status' => Constants::OK_RESPONSE, 'message' => $deletePrint));
         
                         echo json_encode($response, JSON_UNESCAPED_UNICODE);
         
@@ -527,7 +528,7 @@ switch($action) {
 
                 } else {
 
-                    $response = new Response(array('status' => Constants::OK_RESPONSE, 'message' => $data));
+                    $response = new Response(array('status' => Constants::OK_RESPONSE, 'message' => $deleteProductSize));
 
                     echo json_encode($response, JSON_UNESCAPED_UNICODE);
 
@@ -545,7 +546,7 @@ switch($action) {
 
                 } else {
 
-                    $response = new Response(array('status' => Constants::OK_RESPONSE, 'message' => $data));
+                    $response = new Response(array('status' => Constants::OK_RESPONSE, 'message' => $deleteStoreProduct));
 
                     echo json_encode($response, JSON_UNESCAPED_UNICODE);
 
@@ -563,7 +564,7 @@ switch($action) {
 
                 } else {
 
-                    $response = new Response(array('status' => Constants::OK_RESPONSE, 'message' => $data));
+                    $response = new Response(array('status' => Constants::OK_RESPONSE, 'message' => $deleteProductImage));
 
                     echo json_encode($response, JSON_UNESCAPED_UNICODE);
 
@@ -583,7 +584,7 @@ switch($action) {
 
                 } else {
 
-                    $response = new Response(array('status' => Constants::OK_RESPONSE, 'message' => $data));
+                    $response = new Response(array('status' => Constants::OK_RESPONSE, 'message' => $deleteProduct));
 
                     echo json_encode($response, JSON_UNESCAPED_UNICODE);
 
@@ -599,7 +600,7 @@ switch($action) {
 
                 } else {
 
-                    $response = new Response(array('status' => Constants::OK_RESPONSE, 'message' => $data));
+                    $response = new Response(array('status' => Constants::OK_RESPONSE, 'message' => $deleteMeasuerement));
 
                     echo json_encode($response, JSON_UNESCAPED_UNICODE);
 
@@ -617,12 +618,46 @@ switch($action) {
 
     case 'products':
         
+        $idClient = $_POST['idClient'];
+
+        if(strlen($idClient) > 0) {
+
+            $product = new modelProduct();
+
+            $allInfoProducts = $product -> mdlAllInfoProduct($idClient);
+
+            if(!$allInfoProducts) {
+
+                $response = new Response(array('status' => Constants::BAD_RESPONSE, 'message' => Constants::BAD_POST_RESPONSE_NO_PRODUCT));
+        
+                echo json_encode($response, JSON_UNESCAPED_UNICODE);
+
+            } else {
+
+                $response = new Response(array('status' => Constants::OK_RESPONSE, 'message' => $allInfoProducts));
+
+                echo json_encode($response, JSON_UNESCAPED_UNICODE);
+
+            }
+            
+        } else {
+                    
+            $response = new Response(array('status' => Constants::BAD_RESPONSE, 'message' => Constants::BAD_RESPONSE_DESCRIPTION));
+
+            echo json_encode($response, JSON_UNESCAPED_UNICODE); 
+        }
+
     break;
 
     case 'product':
+        
     break;
 
     default:
+    
+        $response = new Response(array('status' => Constants::BAD_RESPONSE, 'message' => Constants::BAD_RESPONSE_DESCRIPTION));
+
+        echo json_encode($response, JSON_UNESCAPED_UNICODE);
 }
 
 ?>

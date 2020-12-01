@@ -106,13 +106,13 @@ class modelProduct {
         return ($statement);
     }
 
-    public function mdlGeneralInfoProduct($idClient) {
+    public function mdlAllInfoProduct($idClient) {
         
         $db = new Connection();
 
         $connection = $db -> get_connection();
 
-        $sql = "SELECT id_product, productName, price, avgDiscount, priceDiscount, id_articleType, id_category, id_gender, id_body, labelStyle, labelOccasion, id_labelSeason, id_client, id_measurement, status FROM products WHERE id_client = :idClient";
+        $sql = "SELECT products.id_product, products.productName, products.price, products.avgDiscount, products.priceDiscount, products.status, product_images.imageUrl FROM (product_images LEFT JOIN products ON product_images.id_product = products.id_product) LEFT JOIN client ON products.id_client = client.id_client WHERE client.id_client = :idClient AND product_images.ordering = 1";
 
         $statement = $connection -> prepare($sql);
 

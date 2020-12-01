@@ -35,7 +35,7 @@ switch($action) {
 
                 } else {
 
-                    $response = new Response(array('status' => Constants::OK_RESPONSE, 'message' => $data));
+                    $response = new Response(array('status' => Constants::OK_RESPONSE, 'message' => $addRate));
 
                     echo json_encode($response, JSON_UNESCAPED_UNICODE);
 
@@ -70,7 +70,7 @@ switch($action) {
 
             } else {
 
-                $response = new Response(array('status' => Constants::OK_RESPONSE, 'message' => $data));
+                $response = new Response(array('status' => Constants::OK_RESPONSE, 'message' => $deleteRate));
 
                 echo json_encode($response, JSON_UNESCAPED_UNICODE);
 
@@ -112,7 +112,7 @@ switch($action) {
     
                 } else {
     
-                    $response = new Response(array('status' => Constants::OK_RESPONSE, 'message' => $data));
+                    $response = new Response(array('status' => Constants::OK_RESPONSE, 'message' => $updateReate));
     
                     echo json_encode($response, JSON_UNESCAPED_UNICODE);
     
@@ -130,6 +130,66 @@ switch($action) {
      break;
 
      case 'showRate':
+
+        $idUser = $_POST['idUser'];
+        $idProduct = $_POST['idProduct'];
+
+        if(strlen($idUser) > 0 && strlen($idProduct) > 0) {
+
+            $showRating = $productRating -> mdlInfoProductRating($idUser,$idProduct);
+
+            if(!$showRating) {
+
+                $response = new Response(array('status' => Constants::BAD_RESPONSE, 'message' => Constants::BAD_RESPONSE_DESCRIPTION));
+                    
+                echo json_encode($response, JSON_UNESCAPED_UNICODE);
+
+            } else {
+
+                $response = new Response(array('status' => Constants::OK_RESPONSE, 'message' => $showRating));
+
+                echo json_encode($response, JSON_UNESCAPED_UNICODE);
+
+            }
+
+        } else {
+                    
+            $response = new Response(array('status' => Constants::BAD_RESPONSE, 'message' => Constants::BAD_RESPONSE_DESCRIPTION));
+
+            echo json_encode($response, JSON_UNESCAPED_UNICODE); 
+        }
+
+     break;
+
+     case 'showAllRates':
+        
+        $idProduct = $_POST['idProduct'];
+
+        if(strlen($idProduct) > 0) {
+
+            $showAllRating = $productRating -> mdlAllProductRating($idProduct);
+
+            if(!$showAllRating) {
+
+                $response = new Response(array('status' => Constants::BAD_RESPONSE, 'message' => Constants::BAD_RESPONSE_DESCRIPTION));
+                    
+                echo json_encode($response, JSON_UNESCAPED_UNICODE);
+
+            } else {
+
+                $response = new Response(array('status' => Constants::OK_RESPONSE, 'message' => $showAllRating));
+
+                echo json_encode($response, JSON_UNESCAPED_UNICODE);
+
+            }
+
+        } else {
+                    
+            $response = new Response(array('status' => Constants::BAD_RESPONSE, 'message' => Constants::BAD_RESPONSE_DESCRIPTION));
+
+            echo json_encode($response, JSON_UNESCAPED_UNICODE); 
+        }
+
      break;
 
      default:

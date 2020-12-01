@@ -69,17 +69,17 @@ class modelProductRating {
         return ($statement);
     }
 
-    public function mdlGeneralInfoProductRating ($idProductRating) {
+    public function mdlAllProductRating ($idProduct) {
 
         $db = new Connection();
 
         $connection = $db -> get_connection();
 
-        $sql = "SELECT * FROM product_rating WHERE id_productRating = :idProductRating";
+        $sql = "SELECT user.username, user.image, product_rating.rate, product_rating.content, product_rating.date FROM product_rating LEFT JOIN user ON product_rating.id_user = user.id_user WHERE product_rating.id_product = :idProduct";
 
         $statement = $connection -> prepare($sql);
 
-        $statement -> bindParam(':idProductRating', $idProductRating);
+        $statement -> bindParam(':idProduct', $idProduct);
 
         $statement -> execute();
 
@@ -87,16 +87,18 @@ class modelProductRating {
 
     }
 
-    public function mdlInfoProductRating ($idProduct) {
+    public function mdlInfoProductRating ($idUser,$idProduct) {
 
         $db = new Connection();
 
         $connection = $db -> get_connection();
 
-        $sql = "SELECT * FROM product_rating WHERE id_product = :idProduct";
+        $sql = "SELECT user.username, user.image, product_rating.rate, product_rating.content, product_rating.date FROM product_rating LEFT JOIN user ON product_rating.id_user = user.id_user WHERE product_rating.id_user = :idUser AND product_rating.id_product = :idProduct";
 
         $statement = $connection -> prepare($sql);
 
+        $statement -> bindParam(':idUser', $idUser);
+       
         $statement -> bindParam(':idProduct', $idProduct);
 
         $statement -> execute();
