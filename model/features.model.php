@@ -20,7 +20,7 @@ class modelFeatures {
 
         $statement -> execute();
 
-        return ($statement);
+        return ($statement->rowCount() > 0) ? true : false;
     }
 
     public function mdlUpdateFeature($featureName, $idFeature) {
@@ -39,7 +39,7 @@ class modelFeatures {
 
         $statement -> execute();
 
-        return ($statement);
+        return ($statement->rowCount() > 0) ? true : false;
     }
 
     public function mdlDeleteFeature($idFeature) {
@@ -56,7 +56,7 @@ class modelFeatures {
 
         $statement -> execute();
 
-        return ($statement);
+        return ($statement->rowCount() > 0) ? true : false;
     }
 
     public function mdlGeneralInfoFeature() {

@@ -18,7 +18,7 @@ class modelPrints {
 
         $statement -> execute();
 
-        return ($statement);
+        return ($statement->rowCount() > 0) ? true : false;
 
     }
 
@@ -38,7 +38,7 @@ class modelPrints {
 
         $statement -> execute();
 
-        return ($statement);
+        return ($statement->rowCount() > 0) ? true : false;
     }
 
     public function mdlDelePrint($idPrint) {
@@ -55,7 +55,7 @@ class modelPrints {
 
         $statement -> execute();
 
-        return ($statement);
+        return ($statement->rowCount() > 0) ? true : false;
     }
 
     public function mdlGeneralInfoPrint() {
@@ -122,7 +122,7 @@ class modelPrints {
 
         $statement -> execute();
 
-        return ($statement);
+        return ($statement->rowCount() > 0) ? true : false;
 
     }
 
@@ -144,7 +144,7 @@ class modelPrints {
 
         $statement -> execute();
 
-        return ($statement);
+        return ($statement->rowCount() > 0) ? true : false;
 
     }
 }

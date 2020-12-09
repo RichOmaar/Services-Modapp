@@ -22,7 +22,7 @@ class modelProductsImages {
 
         $statement -> execute();
 
-        return ($statement);
+        return ($statement->rowCount() > 0) ? true : false;
     }
 
     public function mdlUpdateProducImage($idProductImage, $imageUrl, $idProduct, $ordering) {
@@ -45,7 +45,7 @@ class modelProductsImages {
 
         $statement -> execute();
 
-        return ($statement);
+        return ($statement->rowCount() > 0) ? true : false;
     }
 
     public function mdlDeleteProducImage($idProduct) {
@@ -62,7 +62,7 @@ class modelProductsImages {
 
         $statement -> execute();
 
-        return ($statement);
+        return ($statement->rowCount() > 0) ? true : false;
     }
 
     public function mdlGeneralInfoProducImage($idProduct) {

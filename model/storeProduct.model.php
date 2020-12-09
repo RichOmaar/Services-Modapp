@@ -24,7 +24,7 @@ class modelStoreProduct {
 
         $statement -> execute();
 
-        return ($statement);
+        return ($statement->rowCount() > 0) ? true : false;
     }
 
     public function mdlUpdateStoreProduct($idStore, $idProduct, $idSize, $quantity, $idStoreProduct) {
@@ -49,7 +49,7 @@ class modelStoreProduct {
 
         $statement -> execute();
 
-        return ($statement);
+        return ($statement->rowCount() > 0) ? true : false;
     }
 
     public function mdlDeleteStoreProduct($idProduct) {
@@ -66,7 +66,7 @@ class modelStoreProduct {
 
         $statement -> execute();
 
-        return ($statement);
+        return ($statement->rowCount() > 0) ? true : false;
     }
 
     public function mdlStoreInfoStoreProduct($idStore) {

@@ -20,7 +20,7 @@ class modelArticleFeatures {
 
         $statement -> execute();
 
-        return ($statement);
+        return ($statement->rowCount() > 0) ? true : false;
     }
 
     public function mdlDeleteArticleFeature($idArticleType, $idFeature) {
@@ -39,7 +39,7 @@ class modelArticleFeatures {
 
         $statement -> execute();
 
-        return ($statement);
+        return ($statement->rowCount() > 0) ? true : false;
     }
 
     

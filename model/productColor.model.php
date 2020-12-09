@@ -20,7 +20,8 @@ class modelProductColor {
 
         $statement -> execute();
 
-        return ($statement);
+        return ($statement->rowCount() > 0) ? true : false;
+
     }
 
     public function mdlDeleteProductColor($idProduct) {
@@ -37,7 +38,8 @@ class modelProductColor {
 
         $statement -> execute();
 
-        return ($statement);
+        return ($statement->rowCount() > 0) ? true : false;
+
     }
 
     public function mdlProductColor($idProduct) {

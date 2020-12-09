@@ -85,16 +85,19 @@ switch($action) {
                             $colors = $_POST['colors'];
 
                             $color = new modelColors();
+                            
+                            $_colors = json_decode($colors,true);
 
-                            $i = 0;
+                            print_r($_colors);
 
-                            foreach($colors as $key => $value) {
+                            foreach($_colors as $key => $value) {
 
-                                $colorName = $colors[$i]['colorName'];
+                                $colorName = $value['colorName'];
+                                echo ($colorName);
+                                $hex = $value['hex'];
+                                echo ($hex);
 
-                                $hex = $colors[$i]['hex'];
-                                
-                                $result = $color -> mdlAddColor($colorName, $hex);
+                                $result = $color -> mdlAddColor($colorName,$hex);
 
                                 $idColor = $color -> mdlIdColor();
 
@@ -139,7 +142,6 @@ switch($action) {
                                     }
 
                                 }
-                                $i++;
                             }
                                             
                             $prints = $_POST['prints'];
@@ -419,9 +421,7 @@ switch($action) {
                     echo json_encode($response, JSON_UNESCAPED_UNICODE);
 
                 }
-            }
-
-            
+            } 
         
         } else {
             
@@ -644,7 +644,8 @@ switch($action) {
                     
             $response = new Response(array('status' => Constants::BAD_RESPONSE, 'message' => Constants::BAD_RESPONSE_DESCRIPTION));
 
-            echo json_encode($response, JSON_UNESCAPED_UNICODE); 
+            echo json_encode($response, JSON_UNESCAPED_UNICODE);
+            
         }
 
     break;
@@ -659,5 +660,4 @@ switch($action) {
 
         echo json_encode($response, JSON_UNESCAPED_UNICODE);
 }
-
 ?>

@@ -20,7 +20,8 @@ class modelProductPrint {
 
         $statement -> execute();
 
-        return ($statement);
+        return ($statement->rowCount() > 0) ? true : false;
+
     }
 
     public function mdlDeleteProductPrint ($idProduct) {
@@ -37,7 +38,8 @@ class modelProductPrint {
 
         $statement -> execute();
 
-        return ($statement);
+        return ($statement->rowCount() > 0) ? true : false;
+
     }
 
     public function mdlProductPrint($idProduct){

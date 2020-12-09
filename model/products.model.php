@@ -42,7 +42,7 @@ class modelProduct {
 
         $statement -> execute();
 
-        return($statement);
+        return ($statement->rowCount() > 0) ? true : false;
 
     }
 
@@ -86,7 +86,8 @@ class modelProduct {
 
         $statement -> execute();
 
-        return ($statement);
+        return ($statement->rowCount() > 0) ? true : false;
+
     }
 
     public function mdlDeleteProduct($idProduct) {
@@ -103,7 +104,8 @@ class modelProduct {
 
         $statement -> execute();
 
-        return ($statement);
+        return ($statement->rowCount() > 0) ? true : false;
+
     }
 
     public function mdlAllInfoProduct($idClient) {
@@ -152,7 +154,7 @@ class modelProduct {
 
         $statement -> execute();
         
-        return ($statement->rowCount() == 1) ? $statement->fetchAll(PDO::FETCH_ASSOC) : false;
+        return ($statement->columnCount() >= 1) ? $statement->fetchAll(PDO::FETCH_ASSOC) : false;
     }
 
 }

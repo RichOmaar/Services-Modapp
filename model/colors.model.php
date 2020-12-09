@@ -20,7 +20,7 @@ class modelColors {
         
         $statement -> execute();
 
-        return ($statement);
+        return ($statement->rowCount() > 0) ? true : false;
     }
 
     public function mdlUpdateColor($colorName, $hex, $idColor) {
@@ -41,7 +41,7 @@ class modelColors {
         
         $statement -> execute();
 
-        return ($statement);
+        return ($statement->rowCount() > 0) ? true : false;
     }
 
     public function mdlDeleteColor($idColor) {
@@ -58,7 +58,7 @@ class modelColors {
         
         $statement -> execute();
 
-        return ($statement);
+        return ($statement->rowCount() > 0) ? true : false;
 
     }
 
@@ -125,7 +125,7 @@ class modelColors {
 
         $statement -> execute();
 
-        return ($statement);
+        return ($statement->rowCount() > 0) ? true : false;
 
     }
 
@@ -145,7 +145,7 @@ class modelColors {
 
         $statement -> execute();
 
-        return ($statement);
+        return ($statement->rowCount() > 0) ? true : false;
         
     }
 }

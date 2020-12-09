@@ -20,7 +20,7 @@ class modelProductSize {
 
         $statement -> execute();
 
-        return ($statement);
+        return ($statement->rowCount() > 0) ? true : false;
     }
 
     public function mdlDeleteProductSize($idProduct) {
@@ -37,7 +37,7 @@ class modelProductSize {
 
         $statement -> execute();
 
-        return ($statement);
+        return ($statement->rowCount() > 0) ? true : false;
     }
 
     public function mdlProductSize($idProduct) {

@@ -61,7 +61,7 @@ class modelMeasurement {
 
         $statement -> execute();
 
-        return ($statement);
+        return ($statement->rowCount() > 0) ? true : false;
             
     }
 
@@ -79,7 +79,7 @@ class modelMeasurement {
 
         $statement -> execute();
 
-        return ($statement);
+        return ($statement->rowCount() > 0) ? true : false;
         
     }
 
