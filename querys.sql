@@ -39,15 +39,18 @@ CREATE TABLE category(
 CREATE TABLE features(
     id_feature INT(11) NOT NULL AUTO_INCREMENT,
     featureName VARCHAR(500),
-    PRIMARY KEY (id_feature)
+    value VARCHAR(500),
+    PRIMARY KEY (id_feature),
+    FOREIGN KEY (id_product) REFERENCES products(id_product)
 )
-
+/*Esta ya no*/
 CREATE TABLE article_type (
     id_articleType INT(11) NOT NULL AUTO_INCREMENT,
     typeName VARCHAR(500),
     PRIMARY KEY (id_articleType)
 )
-*/
+
+/*Esta ya no*/
 CREATE TABLE article_features(
     id_articleType INT(11),
     id_feature INT(11),
