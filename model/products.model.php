@@ -4,13 +4,13 @@ require_once 'connection.php';
 
 class modelProduct {
 
-    public function mdlAddProduct($productName, $price, $avgDiscount, $priceDiscount, $idArticleType, $idCategory, $idGender, $idBody, $labelStyle, $labelOccasion, $idLabelSeason, $idClient, $idMeasurement) {
+    public function mdlAddProduct($productName, $price, $avgDiscount, $priceDiscount, $idCategory, $idGender, $idBody, $labelStyle, $labelOccasion, $idLabelSeason, $idClient, $idMeasurement, $articleTypeName) {
 
         $db = new Connection();
 
         $connection = $db -> get_connection();
 
-        $sql = "INSERT INTO products(productName, price, avgDiscount, priceDiscount, id_articleType, id_category, id_gender, id_body, labelStyle, labelOccasion, id_labelSeason, id_client, id_measurement) VALUES (:productName, :price, :avgDiscount, :priceDiscount, :idArticleType, :idCategory, :idGender, :idBody, :labelStyle, :labelOccasion, :idLabelSeason, :idClient, :idMeasurement)";
+        $sql = "INSERT INTO products(productName, price, avgDiscount, priceDiscount, id_category, id_gender, id_body, labelStyle, labelOccasion, id_labelSeason, id_client, id_measurement, articleTypeName) VALUES (:productName, :price, :avgDiscount, :priceDiscount, :idCategory, :idGender, :idBody, :labelStyle, :labelOccasion, :idLabelSeason, :idClient, :idMeasurement, :articleTypeName)";
 
         $statement = $connection -> prepare($sql);
 
@@ -21,8 +21,6 @@ class modelProduct {
         $statement -> bindParam(':avgDiscount', $avgDiscount);
 
         $statement -> bindParam(':priceDiscount', $priceDiscount);
-
-        $statement -> bindParam(':idArticleType', $idArticleType);
 
         $statement -> bindParam(':idCategory', $idCategory);
 
@@ -39,6 +37,8 @@ class modelProduct {
         $statement -> bindParam(':idClient', $idClient);
 
         $statement -> bindParam(':idMeasurement', $idMeasurement);
+
+        $statement -> bindParam(':articleTypeName', $articleTypeName);
 
         $statement -> execute();
 
@@ -46,13 +46,13 @@ class modelProduct {
 
     }
 
-    public function mdlUpdateProduct($productName, $price, $avgDiscount, $priceDiscount, $idArticleType, $idCategory, $idGender, $idBody, $labelStyle, $labelOccasion, $idLabelSeason, $idClient, $idMeasurement, $idProduct) {
+    public function mdlUpdateProduct($productName, $price, $avgDiscount, $priceDiscount, $idCategory, $idGender, $idBody, $labelStyle, $labelOccasion, $idLabelSeason, $idClient, $idMeasurement, $articleTypeName, $idProduct) {
 
         $db = new Connection();
 
         $connection = $db -> get_connection();
 
-        $sql = "UPDATE products SET productName = :productName, price = :price, avgDiscount = :avgDiscount, priceDiscount = :priceDiscount, id_articleType = :idArticleType, id_category = :idCategory, id_gender = :idGender, id_body = :idBody, labelStyle = :labelStyle, labelOccasion = :labelOccasion, id_labelSeason = :idLabelSeason, id_client = :idClient, id_measurement = :idMeasurement WHERE id_product = :idProduct";
+        $sql = "UPDATE products SET productName = :productName, price = :price, avgDiscount = :avgDiscount, priceDiscount = :priceDiscount, id_category = :idCategory, id_gender = :idGender, id_body = :idBody, labelStyle = :labelStyle, labelOccasion = :labelOccasion, id_labelSeason = :idLabelSeason, id_client = :idClient, id_measurement = :idMeasurement, articleTypeName = :articleTypeName WHERE id_product = :idProduct";
 
         $statement = $connection -> prepare($sql);
 
@@ -63,8 +63,6 @@ class modelProduct {
         $statement -> bindParam(':avgDiscount', $avgDiscount);
 
         $statement -> bindParam(':priceDiscount', $priceDiscount);
-
-        $statement -> bindParam(':idArticleType', $idArticleType);
 
         $statement -> bindParam(':idCategory', $idCategory);
 
@@ -82,6 +80,8 @@ class modelProduct {
 
         $statement -> bindParam(':idMeasurement', $idMeasurement);
 
+        $statement -> bindParam(':articleTypeName', $articleTypeName);
+        
         $statement -> bindParam(':idProduct', $idProduct);
 
         $statement -> execute();

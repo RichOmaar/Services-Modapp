@@ -10,11 +10,13 @@ class modelPrints {
 
         $connection = $db -> get_connection();
 
-        $sql = "INSERT INTO prints(printName) VALUES (:printName)";
+        $sql = "INSERT INTO prints(printName,printColors) VALUES (:printName,:printColors)";
 
         $statement = $connection -> prepare($sql);
 
         $statement -> bindParam(':printName', $printName);
+        
+        $statement -> bindParam(':printColors', $printColors);
 
         $statement -> execute();
 
@@ -28,11 +30,13 @@ class modelPrints {
 
         $connection = $db -> get_connection();
 
-        $sql = "UPDATE prints SET printName = :printName WHERE id_print = :idPrint";
+        $sql = "UPDATE prints SET printName = :printName, printColors = :printColors WHERE id_print = :idPrint";
 
         $statement = $connection -> prepare($sql);
 
         $statement -> bindParam(':printName', $printName);
+        
+        $statement -> bindParam(':printColors', $printColors);
 
         $statement -> bindParam(':idPrint', $idPrint);
 
@@ -80,7 +84,7 @@ class modelPrints {
 
         $connection = $db -> get_connection();
 
-        $sql = "SELECT id_print, printName FROM prints WHERE id_print = :idPrint";
+        $sql = "SELECT id_print, printName, printColors FROM prints WHERE id_print = :idPrint";
 
         $statement = $connection -> prepare($sql);
 
