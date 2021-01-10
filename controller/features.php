@@ -1,7 +1,5 @@
 <?php
 
-include '../model/articleType.model.php';
-include '../model/articleFeatures.model.php';
 include '../model/features.model.php';
 
 //$idClient = $_POST['idClient'];
@@ -11,25 +9,160 @@ switch($action) {
 
     case 'addFeature':
 
-        $idType = $_POST['idType'];
-        $brand = $_POST['brand'];
-        $material = $_POST['material'];
-        $sleeve = $_POST['sleeve'];
-        $large = $_POST['large'];
+        $featureName = $_POST['featureName'];
+        $value = $_POST['value'];
+        $idProduct = $_POST['idProduct'];
 
+        if(strlen($featureName) > 0 && strlen($value) > 0 && strlen($idProduct) > 0) {
+        
+            $addFeature = new modelFeatures();
+
+            $data = $addFeature -> mdlAddFeature($featureName,$value,$idProduct);
+
+            if(!$data) {
+
+                $response = new Response(array('status' => Constants::BAD_RESPONSE, 'message' => Constants::BAD_RESPONSE_DESCRIPTION));
+                    
+                echo json_encode($response, JSON_UNESCAPED_UNICODE);
+
+            } else {
+
+                $response = new Response(array('status' => Constants::OK_RESPONSE, 'message' => $data));
+
+                echo json_encode($response, JSON_UNESCAPED_UNICODE);
+
+            }
+
+        } else {  
+        
+            $response = new Response(array('status' => Constants::BAD_RESPONSE, 'message' => Constants::BAD_RESPONSE_DESCRIPTION));
+
+            echo json_encode($response, JSON_UNESCAPED_UNICODE); 
+        }
 
     break;
 
-    case 'showArticleType':
+    case 'updateFeature':
+
+        $featureName = $_POST['featureName'];
+        $value = $_POST['value'];
+        $idFeature = $_POST['idFeature'];
+
+        if(strlen($featureName) > 0 && strlen($value) > 0 && strlen($idFeature) > 0) {
+        
+            $updateFeature = new modelFeatures();
+
+            $data = $updateFeature -> mdlUpdateFeature($featureName,$value,$idFeature);
+
+            if(!$data) {
+
+                $response = new Response(array('status' => Constants::BAD_RESPONSE, 'message' => Constants::BAD_RESPONSE_DESCRIPTION));
+                    
+                echo json_encode($response, JSON_UNESCAPED_UNICODE);
+
+            } else {
+
+                $response = new Response(array('status' => Constants::OK_RESPONSE, 'message' => $data));
+
+                echo json_encode($response, JSON_UNESCAPED_UNICODE);
+
+            }
+
+        } else {  
+        
+            $response = new Response(array('status' => Constants::BAD_RESPONSE, 'message' => Constants::BAD_RESPONSE_DESCRIPTION));
+
+            echo json_encode($response, JSON_UNESCAPED_UNICODE); 
+        }
+
     break;
 
-    case '':
+    case 'deleteFeature':
+
+        $idFeature = $_POST['idFeature'];
+
+        if(strlen($idFeature) > 0) {
+
+            $deteleFeature = new modelFeatures();
+
+            $data = $deteleFeature -> mdlDeleteFeature($idFeature);
+
+            if(!$data) {
+
+                $response = new Response(array('status' => Constants::BAD_RESPONSE, 'message' => Constants::BAD_RESPONSE_DESCRIPTION));
+                    
+                echo json_encode($response, JSON_UNESCAPED_UNICODE);
+
+            } else {
+
+                $response = new Response(array('status' => Constants::OK_RESPONSE, 'message' => $data));
+
+                echo json_encode($response, JSON_UNESCAPED_UNICODE);
+
+            }
+        
+        } else {  
+        
+            $response = new Response(array('status' => Constants::BAD_RESPONSE, 'message' => Constants::BAD_RESPONSE_DESCRIPTION));
+
+            echo json_encode($response, JSON_UNESCAPED_UNICODE); 
+        } 
+
     break;
 
-    case '':
+    case 'allFeatures':
+
+        $allFeatures = new modelFeatures();
+
+        $data = $allFeatures -> mdlGeneralInfoFeature();
+
+        if(!$data) {
+
+            $response = new Response(array('status' => Constants::BAD_RESPONSE, 'message' => Constants::BAD_RESPONSE_DESCRIPTION));
+                
+            echo json_encode($response, JSON_UNESCAPED_UNICODE);
+
+        } else {
+
+            $response = new Response(array('status' => Constants::OK_RESPONSE, 'message' => $data));
+
+            echo json_encode($response, JSON_UNESCAPED_UNICODE);
+
+        }
+
     break;
 
-    case '':
+    case 'infoFeature':
+
+        $idFeature = $_POST['idFeature'];
+
+        if(strlen($idFeature) > 0) {
+        
+            $infoFeature = new modelFeatures();
+
+            $data = $infoFeature -> mdlInfoFeature($idFeature);
+
+            if(!$data) {
+
+                $response = new Response(array('status' => Constants::BAD_RESPONSE, 'message' => Constants::BAD_RESPONSE_DESCRIPTION));
+                    
+                echo json_encode($response, JSON_UNESCAPED_UNICODE);
+
+            } else {
+
+                $response = new Response(array('status' => Constants::OK_RESPONSE, 'message' => $data));
+
+                echo json_encode($response, JSON_UNESCAPED_UNICODE);
+
+            }
+            
+        } else {  
+        
+            $response = new Response(array('status' => Constants::BAD_RESPONSE, 'message' => Constants::BAD_RESPONSE_DESCRIPTION));
+
+            echo json_encode($response, JSON_UNESCAPED_UNICODE); 
+        } 
+
     break;
 
     default:

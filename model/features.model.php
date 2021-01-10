@@ -4,13 +4,13 @@ require_once 'connection.php';
 
 class modelFeatures {
 
-    public function mdlAddFeature($featureName,$value) {
+    public function mdlAddFeature($featureName,$value,$idProduct) {
 
         $db = new Connection();
 
         $connection = $db -> get_connection();
 
-        $sql = "INSERT INTO features (featureName, value) VALUES (:featureName, :value)";
+        $sql = "INSERT INTO features (featureName, value, id_product) VALUES (:featureName, :value, :idProduct)";
 
         $statement = $connection -> prepare($sql);
 
@@ -18,28 +18,34 @@ class modelFeatures {
         
         $statement -> bindParam(':value', $value);
 
+        $statement -> bindParam(':idProduct', $idProduct);
+
         $statement -> execute();
 
         return ($statement->rowCount() > 0) ? true : false;
+
     }
 
-    public function mdlUpdateFeature($featureName, $idFeature) {
+    public function mdlUpdateFeature($featureName, $value, $idFeature) {
         
         $db = new Connection();
 
         $connection = $db -> get_connection();
 
-        $sql = "UPDATE features SET featureName = :featureName WHERE id_feature = :idFeature";
+        $sql = "UPDATE features SET featureName = :featureName, value = :value WHERE id_feature = :idFeature";
 
         $statement = $connection -> prepare($sql);
 
         $statement -> bindParam(':featureName', $featureName);
+        
+        $statement -> bindParam(':value', $value);
 
         $statement -> bindParam(':idFeature', $idFeature);
 
         $statement -> execute();
 
         return ($statement->rowCount() > 0) ? true : false;
+    
     }
 
     public function mdlDeleteFeature($idFeature) {
@@ -57,6 +63,7 @@ class modelFeatures {
         $statement -> execute();
 
         return ($statement->rowCount() > 0) ? true : false;
+   
     }
 
     public function mdlGeneralInfoFeature() {
@@ -81,7 +88,7 @@ class modelFeatures {
 
         $connection = $db -> get_connection();
 
-        $sql = "SELECT id_feature, featureName FROM features WHERE id_feature = :idFeature";
+        $sql = "SELECT id_feature, featureName, value FROM features WHERE id_feature = :idFeature";
 
         $statement = $connection -> prepare($sql);
 
@@ -90,6 +97,7 @@ class modelFeatures {
         $statement -> execute();
 
         return ($statement->rowCount() > 0) ? $statement->fetchAll(PDO::FETCH_ASSOC) : false;
+
     }
 
     public function mdlLastFeatureId() {
@@ -105,6 +113,9 @@ class modelFeatures {
         $statement -> execute();
 
         return ($statement->rowCount() > 0) ? $statement->fetchAll(PDO::FETCH_ASSOC) : false;
+
     }
+
 }
+
 ?>

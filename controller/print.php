@@ -10,12 +10,13 @@ switch($action) {
     case 'addPrint':
 
         $printName = $_POST['printName'];
+        $printColors = $_POST['printColors'];
 
         if(strlen($printName) > 0) {
 
             $addPrint = new modelPrints();
 
-            $data = $addPrint -> mdlAddPrint($printName);
+            $data = $addPrint -> mdlAddPrint($printName,$printColors);
 
             if(!$data) {
 
@@ -77,13 +78,18 @@ switch($action) {
 
         $idPrint = $_POST['idPrint'];
         $printName = $_POST['printName'];
+        $printColors = $_POST['printColors'];
 
         if(strlen($idPrint) > 0 && strlen($idPrint) > 0) {
 
             $updatePrint = new modelPrints();
 
-            $data = $updatePrint -> mdlUpdatePrint($printName,$idPrint);
+            $data = $updatePrint -> mdlUpdatePrint($printName,$idPrint,$printColors);
 
+            echo json_encode($idPrint);
+            echo json_encode($printName);
+            echo json_encode($printColors);
+            
             if(!$data) {
 
                 $response = new Response(array('status' => Constants::BAD_RESPONSE, 'message' => Constants::BAD_RESPONSE_DESCRIPTION));

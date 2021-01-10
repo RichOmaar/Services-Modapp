@@ -41,7 +41,6 @@ switch($action) {
                 $price = $_POST['price'];
                 $avgDiscount = $_POST['avgDiscount']; 
                 $priceDiscount = $_POST['priceDiscount']; 
-                $idArticleType = $_POST['idArticleType']; 
                 $idCategory = $_POST['idCategory']; 
                 $idGender = $_POST['idGender']; 
                 $idBody = $_POST['idBody']; 
@@ -50,6 +49,7 @@ switch($action) {
                 $idLabelSeason = $_POST['idLabelSeason']; 
                 $idClient = $_POST['idClient'];
                 $idMeasurement = $dataMeasurement;
+                $articleTypeName = ['articleTypeName'];
 
                 if($avgDiscount || $priceDiscount != '') {
 
@@ -68,7 +68,7 @@ switch($action) {
 
                         $product = new modelProduct();
 
-                        $dataProduct = $product -> mdlAddProduct($productName, $price, $avgDiscount, $priceDiscount, $idArticleType, $idCategory, $idGender, $idBody, $labelStyle, $labelOccasion, $idLabelSeason, $idClient, $idMeasurement);
+                        $dataProduct = $product -> mdlAddProduct($productName, $price, $avgDiscount, $priceDiscount, $idCategory, $idGender, $idBody, $labelStyle, $labelOccasion, $idLabelSeason, $idClient, $idMeasurement, $articleTypeName);
 
                         $idProduct = $product -> mdlLastIdProduct();
 
@@ -154,7 +154,7 @@ switch($action) {
 
                                 $printName = $prints[$i]['name'];
 
-                                $addPrint = $print -> mdlAddPrint($printName);
+                                $addPrint = $print -> mdlAddPrint($printName,$printColors);
 
                                 $idPrint = $print -> mdlLastPrintId();
 
@@ -206,7 +206,9 @@ switch($action) {
                         
                                     }
                                 }
+
                                 $i++;
+                            
                             }
                             
                             $idSize = $_POST['idSize'];

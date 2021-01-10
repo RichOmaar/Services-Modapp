@@ -4,10 +4,10 @@ require_once 'connection.php';
 
 class modelPrints {
 
-    public function mdlAddPrint($printName) {
+    public function mdlAddPrint($printName,$printColors) {
 
         $db = new Connection();
-
+        
         $connection = $db -> get_connection();
 
         $sql = "INSERT INTO prints(printName,printColors) VALUES (:printName,:printColors)";
@@ -24,7 +24,7 @@ class modelPrints {
 
     }
 
-    public function mdlUpdatePrint($printName,$idPrint) {
+    public function mdlUpdatePrint($printName,$idPrint,$printColors) {
 
         $db = new Connection();
 
