@@ -1,15 +1,25 @@
 <?php
 
-$array = array();
+include '../model/features.model.php';
 
-$array[0]['url'] = 'www.prueba.com';
-$array[0]['order'] = '1';
-$array[1]['url'] = 'www.prueba2.com';
-$array[1]['order'] = '2';
-$array[2]['url'] = 'www.prueba3.com';
-$array[2]['order'] = '3';
+$idProduct = $_POST['idProduct'];
 
-print_r($array);
-echo json_encode($array);
+$features = new modelFeatures();
+
+$deteleFeatures = $features -> mdlDeleteFeature($idProduct);
+
+if(!$deteleFeatures) {
+
+    $response = new Response(array('status' => Constants::BAD_RESPONSE, 'message' => Constants::BAD_RESPONSE_DESCRIPTION));
+        
+    echo json_encode($response, JSON_UNESCAPED_UNICODE);
+
+} else {
+
+    $response = new Response(array('status' => Constants::OK_RESPONSE, 'message' => $deleteProductImage));
+
+    echo json_encode($response, JSON_UNESCAPED_UNICODE);
+
+}
 
 ?>

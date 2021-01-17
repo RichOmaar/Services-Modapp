@@ -48,17 +48,17 @@ class modelFeatures {
     
     }
 
-    public function mdlDeleteFeature($idFeature) {
+    public function mdlDeleteFeature($idProduct) {
         
         $db = new Connection();
 
         $connection = $db -> get_connection();
         
-        $sql = "DELETE FROM features WHERE id_feature = :idFeature";
+        $sql = "DELETE FROM features WHERE id_product = :idProduct";
 
         $statement = $connection -> prepare($sql);
 
-        $statement -> bindParam(':idFeature', $idFeature);
+        $statement -> bindParam(':idProduct', $idProduct);
 
         $statement -> execute();
 
