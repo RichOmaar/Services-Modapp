@@ -1,0 +1,102 @@
+[01-Jul-2020 03:11:27 UTC] PHP Fatal error:  Class 'modelMail' not found in /home3/longbit/modapp.longbit.mx/controller/pruebas.php on line 13
+[01-Jul-2020 03:12:12 UTC] PHP Fatal error:  Class 'modelMail' not found in /home3/longbit/modapp.longbit.mx/controller/pruebas.php on line 13
+[01-Jul-2020 03:12:48 UTC] PHP Fatal error:  Class 'modelMail' not found in /home3/longbit/modapp.longbit.mx/controller/pruebas.php on line 13
+[01-Jul-2020 03:15:17 UTC] PHP Fatal error:  Cannot redeclare class ruta in /home3/longbit/modapp.longbit.mx/model/route.model.php on line 3
+[01-Jul-2020 03:15:37 UTC] PHP Fatal error:  Cannot redeclare class ruta in /home3/longbit/modapp.longbit.mx/model/route.model.php on line 3
+[01-Jul-2020 03:15:58 UTC] PHP Fatal error:  Cannot redeclare class ruta in /home3/longbit/modapp.longbit.mx/model/route.model.php on line 3
+[01-Jul-2020 03:18:45 UTC] PHP Fatal error:  Cannot redeclare class ruta in /home3/longbit/modapp.longbit.mx/model/route.model.php on line 3
+[01-Jul-2020 03:18:58 UTC] PHP Fatal error:  Cannot redeclare class ruta in /home3/longbit/modapp.longbit.mx/model/route.model.php on line 3
+[01-Jul-2020 03:46:23 UTC] PHP Fatal error:  Class 'modelLoginClient' not found in /home3/longbit/modapp.longbit.mx/controller/pruebas.php on line 11
+[01-Jul-2020 03:46:52 UTC] PHP Fatal error:  Class 'modelLoginClient' not found in /home3/longbit/modapp.longbit.mx/controller/pruebas.php on line 10
+[16-Jul-2020 03:16:46 UTC] PHP Fatal error:  Class 'Response' not found in /home3/longbit/modapp.longbit.mx/controller/loginClient.php on line 46
+[16-Jul-2020 03:18:07 UTC] PHP Fatal error:  Class 'Response' not found in /home3/longbit/modapp.longbit.mx/controller/loginClient.php on line 46
+[22-Jul-2020 05:31:11 UTC] PHP Fatal error:  Class 'Response' not found in /home3/longbit/modapp.longbit.mx/controller/testSendRecoveryEmail.php on line 63
+[22-Jul-2020 05:31:34 UTC] PHP Fatal error:  Class 'Response' not found in /home3/longbit/modapp.longbit.mx/controller/testSendRecoveryEmail.php on line 63
+[22-Jul-2020 05:39:56 UTC] PHP Fatal error:  Class 'Response' not found in /home3/longbit/modapp.longbit.mx/controller/testPasswordRecovery.php on line 39
+[22-Jul-2020 05:42:59 UTC] PHP Fatal error:  Class 'Response' not found in /home3/longbit/modapp.longbit.mx/controller/testPasswordRecovery.php on line 39
+[23-Jul-2020 21:21:14 UTC] PHP Fatal error:  Class 'Response' not found in /home3/longbit/modapp.longbit.mx/controller/testPasswordRecovery.php on line 39
+[29-Jul-2020 00:36:16 UTC] PHP Fatal error:  Class 'Response' not found in /home3/longbit/modapp.longbit.mx/controller/dataClient.php on line 79
+[01-Aug-2020 04:12:22 UTC] PHP Warning:  PDOStatement::execute(): SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens in /home3/longbit/modapp.longbit.mx/model/dataClient.model.php on line 173
+[01-Aug-2020 04:16:56 UTC] PHP Warning:  PDOStatement::execute(): SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens in /home3/longbit/modapp.longbit.mx/model/dataClient.model.php on line 173
+[01-Aug-2020 05:23:50 UTC] PHP Fatal error:  Call to a member function mdlAddMoreSchedule() on a non-object in /home3/longbit/modapp.longbit.mx/controller/pruebas.php on line 203
+[01-Aug-2020 05:25:13 UTC] PHP Fatal error:  Call to a member function mdlAddMoreSchedule() on a non-object in /home3/longbit/modapp.longbit.mx/controller/pruebas.php on line 203
+[21-Aug-2020 04:56:15 UTC] PHP Fatal error:  Class 'modelScheduleClient' not found in /home3/longbit/modapp.longbit.mx/controller/schedulesStore.php on line 16
+[21-Aug-2020 04:56:48 UTC] PHP Fatal error:  Class 'modelScheduleClient' not found in /home3/longbit/modapp.longbit.mx/controller/schedulesStore.php on line 14
+[21-Aug-2020 04:57:05 UTC] PHP Fatal error:  Class 'modelScheduleClient' not found in /home3/longbit/modapp.longbit.mx/controller/schedulesStore.php on line 14
+[21-Aug-2020 04:57:21 UTC] PHP Fatal error:  Class 'modelScheduleClient' not found in /home3/longbit/modapp.longbit.mx/controller/schedulesStore.php on line 36
+[21-Aug-2020 04:58:20 UTC] PHP Fatal error:  Class 'modelScheduleClient' not found in /home3/longbit/modapp.longbit.mx/controller/schedulesStore.php on line 36
+[21-Aug-2020 05:00:11 UTC] PHP Fatal error:  Class 'modelScheduleClient' not found in /home3/longbit/modapp.longbit.mx/controller/schedulesStore.php on line 36
+[21-Aug-2020 05:00:49 UTC] PHP Fatal error:  Class 'modelScheduleClient' not found in /home3/longbit/modapp.longbit.mx/controller/schedulesStore.php on line 36
+[21-Aug-2020 05:01:45 UTC] PHP Fatal error:  Class 'modelScheduleClient' not found in /home3/longbit/modapp.longbit.mx/controller/schedulesStore.php on line 38
+[21-Aug-2020 05:01:59 UTC] PHP Fatal error:  Class 'modelScheduleClient' not found in /home3/longbit/modapp.longbit.mx/controller/schedulesStore.php on line 38
+[21-Aug-2020 05:02:15 UTC] PHP Fatal error:  Class 'modelScheduleClient' not found in /home3/longbit/modapp.longbit.mx/controller/schedulesStore.php on line 39
+[21-Aug-2020 05:02:17 UTC] PHP Fatal error:  Class 'modelScheduleClient' not found in /home3/longbit/modapp.longbit.mx/controller/schedulesStore.php on line 39
+[21-Aug-2020 05:02:18 UTC] PHP Fatal error:  Class 'modelScheduleClient' not found in /home3/longbit/modapp.longbit.mx/controller/schedulesStore.php on line 39
+[21-Aug-2020 05:03:05 UTC] PHP Fatal error:  Class 'modelScheduleClient' not found in /home3/longbit/modapp.longbit.mx/controller/schedulesStore.php on line 17
+[21-Aug-2020 05:03:28 UTC] PHP Fatal error:  Class 'modelScheduleClient' not found in /home3/longbit/modapp.longbit.mx/controller/schedulesStore.php on line 14
+[17-Sep-2020 17:23:04 UTC] PHP Fatal error:  Class 'Response' not found in /home3/longbit/modapp.longbit.mx/controller/testPasswordRecovery.php on line 39
+[17-Sep-2020 17:23:22 UTC] PHP Fatal error:  Class 'Response' not found in /home3/longbit/modapp.longbit.mx/controller/testPasswordRecovery.php on line 39
+[17-Sep-2020 17:23:46 UTC] PHP Fatal error:  Class 'Response' not found in /home3/longbit/modapp.longbit.mx/controller/testPasswordRecovery.php on line 39
+[17-Sep-2020 17:29:54 UTC] PHP Fatal error:  Class 'Response' not found in /home3/longbit/modapp.longbit.mx/controller/testPasswordRecovery.php on line 39
+[17-Sep-2020 17:30:19 UTC] PHP Fatal error:  Class 'Response' not found in /home3/longbit/modapp.longbit.mx/controller/testSendRecoveryEmail.php on line 63
+[17-Sep-2020 17:30:32 UTC] PHP Fatal error:  Class 'Response' not found in /home3/longbit/modapp.longbit.mx/controller/testSendRecoveryEmail.php on line 63
+[18-Sep-2020 19:16:45 UTC] PHP Fatal error:  Class 'Response' not found in /home3/longbit/modapp.longbit.mx/controller/testSendRecoveryEmail.php on line 63
+[18-Sep-2020 19:17:22 UTC] PHP Fatal error:  Class 'Response' not found in /home3/longbit/modapp.longbit.mx/controller/testSendRecoveryEmail.php on line 63
+[18-Sep-2020 19:18:16 UTC] PHP Fatal error:  Class 'Response' not found in /home3/longbit/modapp.longbit.mx/controller/testSendRecoveryEmail.php on line 63
+[18-Sep-2020 19:18:24 UTC] PHP Fatal error:  Class 'Response' not found in /home3/longbit/modapp.longbit.mx/controller/testSendRecoveryEmail.php on line 63
+[18-Sep-2020 19:20:22 UTC] PHP Fatal error:  Class 'Response' not found in /home3/longbit/modapp.longbit.mx/controller/testSendRecoveryEmail.php on line 63
+[18-Sep-2020 19:23:56 UTC] PHP Fatal error:  Class 'Response' not found in /home3/longbit/modapp.longbit.mx/controller/testSendRecoveryEmail.php on line 63
+[18-Sep-2020 19:30:56 UTC] PHP Fatal error:  Class 'Response' not found in /home3/longbit/modapp.longbit.mx/controller/testSendRecoveryEmail.php on line 63
+[18-Sep-2020 19:34:03 UTC] PHP Fatal error:  Class 'Response' not found in /home3/longbit/modapp.longbit.mx/controller/testSendRecoveryEmail.php on line 65
+[18-Sep-2020 19:56:27 UTC] PHP Fatal error:  Class 'Response' not found in /home3/longbit/modapp.longbit.mx/controller/testSendRecoveryEmail.php on line 65
+[18-Sep-2020 19:57:04 UTC] PHP Fatal error:  Class 'Response' not found in /home3/longbit/modapp.longbit.mx/controller/testSendRecoveryEmail.php on line 65
+[18-Sep-2020 19:57:14 UTC] PHP Fatal error:  Class 'Response' not found in /home3/longbit/modapp.longbit.mx/controller/testSendRecoveryEmail.php on line 65
+[18-Sep-2020 19:58:10 UTC] PHP Fatal error:  Class 'Response' not found in /home3/longbit/modapp.longbit.mx/controller/testSendRecoveryEmail.php on line 66
+[18-Sep-2020 20:39:14 UTC] PHP Fatal error:  Class 'Response' not found in /home3/longbit/modapp.longbit.mx/controller/prueba.php on line 66
+[18-Sep-2020 20:47:52 UTC] PHP Parse error:  syntax error, unexpected '}' in /home3/longbit/modapp.longbit.mx/controller/prueba.php on line 79
+[18-Sep-2020 21:32:17 UTC] PHP Parse error:  syntax error, unexpected 'echo' (T_ECHO) in /home3/longbit/modapp.longbit.mx/controller/testVerifyUser.php on line 25
+[18-Sep-2020 21:32:41 UTC] PHP Parse error:  syntax error, unexpected 'echo' (T_ECHO) in /home3/longbit/modapp.longbit.mx/controller/testVerifyUser.php on line 25
+[18-Sep-2020 21:33:56 UTC] PHP Parse error:  syntax error, unexpected 'echo' (T_ECHO) in /home3/longbit/modapp.longbit.mx/controller/testVerifyUser.php on line 25
+[18-Sep-2020 21:35:42 UTC] PHP Parse error:  syntax error, unexpected 'echo' (T_ECHO) in /home3/longbit/modapp.longbit.mx/controller/testVerifyUser.php on line 25
+[18-Sep-2020 21:35:46 UTC] PHP Parse error:  syntax error, unexpected 'echo' (T_ECHO) in /home3/longbit/modapp.longbit.mx/controller/testVerifyUser.php on line 25
+[18-Sep-2020 21:35:51 UTC] PHP Parse error:  syntax error, unexpected 'echo' (T_ECHO) in /home3/longbit/modapp.longbit.mx/controller/testVerifyUser.php on line 25
+[18-Sep-2020 21:41:56 UTC] PHP Parse error:  syntax error, unexpected '}' in /home3/longbit/modapp.longbit.mx/controller/testVerifyUser.php on line 22
+[18-Sep-2020 21:42:25 UTC] PHP Parse error:  syntax error, unexpected '}' in /home3/longbit/modapp.longbit.mx/controller/testVerifyUser.php on line 22
+[22-Sep-2020 17:01:55 UTC] PHP Parse error:  syntax error, unexpected ';' in /home3/longbit/modapp.longbit.mx/model/scheduleStore.model.php on line 87
+[22-Sep-2020 17:02:14 UTC] PHP Parse error:  syntax error, unexpected ';' in /home3/longbit/modapp.longbit.mx/model/scheduleStore.model.php on line 87
+[22-Sep-2020 17:02:34 UTC] PHP Parse error:  syntax error, unexpected ';' in /home3/longbit/modapp.longbit.mx/model/scheduleStore.model.php on line 86
+[04-Nov-2020 21:51:35 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home3/longbit/modapp.longbit.mx/controller/product.php on line 90
+[04-Nov-2020 21:51:35 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home3/longbit/modapp.longbit.mx/controller/product.php on line 152
+[04-Nov-2020 21:51:35 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home3/longbit/modapp.longbit.mx/controller/product.php on line 219
+[04-Nov-2020 21:51:35 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home3/longbit/modapp.longbit.mx/controller/product.php on line 260
+[04-Nov-2020 21:51:35 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home3/longbit/modapp.longbit.mx/controller/product.php on line 376
+[04-Nov-2020 21:52:25 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home3/longbit/modapp.longbit.mx/controller/product.php on line 90
+[04-Nov-2020 21:52:25 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home3/longbit/modapp.longbit.mx/controller/product.php on line 152
+[04-Nov-2020 21:52:25 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home3/longbit/modapp.longbit.mx/controller/product.php on line 219
+[04-Nov-2020 21:52:25 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home3/longbit/modapp.longbit.mx/controller/product.php on line 260
+[04-Nov-2020 21:52:25 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home3/longbit/modapp.longbit.mx/controller/product.php on line 376
+[04-Nov-2020 21:52:48 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home3/longbit/modapp.longbit.mx/controller/product.php on line 90
+[04-Nov-2020 21:52:48 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home3/longbit/modapp.longbit.mx/controller/product.php on line 152
+[04-Nov-2020 21:52:48 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home3/longbit/modapp.longbit.mx/controller/product.php on line 219
+[04-Nov-2020 21:52:48 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home3/longbit/modapp.longbit.mx/controller/product.php on line 260
+[04-Nov-2020 21:52:48 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home3/longbit/modapp.longbit.mx/controller/product.php on line 376
+[04-Nov-2020 21:53:44 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home3/longbit/modapp.longbit.mx/controller/product.php on line 90
+[04-Nov-2020 21:53:44 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home3/longbit/modapp.longbit.mx/controller/product.php on line 152
+[04-Nov-2020 21:53:44 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home3/longbit/modapp.longbit.mx/controller/product.php on line 219
+[04-Nov-2020 21:53:44 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home3/longbit/modapp.longbit.mx/controller/product.php on line 260
+[04-Nov-2020 21:53:44 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home3/longbit/modapp.longbit.mx/controller/product.php on line 376
+[04-Nov-2020 21:53:50 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home3/longbit/modapp.longbit.mx/controller/product.php on line 90
+[04-Nov-2020 21:53:50 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home3/longbit/modapp.longbit.mx/controller/product.php on line 152
+[04-Nov-2020 21:53:50 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home3/longbit/modapp.longbit.mx/controller/product.php on line 219
+[04-Nov-2020 21:53:50 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home3/longbit/modapp.longbit.mx/controller/product.php on line 260
+[04-Nov-2020 21:53:50 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home3/longbit/modapp.longbit.mx/controller/product.php on line 376
+[04-Nov-2020 21:55:04 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home3/longbit/modapp.longbit.mx/controller/product.php on line 90
+[04-Nov-2020 21:55:04 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home3/longbit/modapp.longbit.mx/controller/product.php on line 152
+[04-Nov-2020 21:55:04 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home3/longbit/modapp.longbit.mx/controller/product.php on line 219
+[04-Nov-2020 21:55:04 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home3/longbit/modapp.longbit.mx/controller/product.php on line 260
+[04-Nov-2020 21:55:04 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home3/longbit/modapp.longbit.mx/controller/product.php on line 376
+[04-Nov-2020 21:55:12 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home3/longbit/modapp.longbit.mx/controller/product.php on line 90
+[04-Nov-2020 21:55:12 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home3/longbit/modapp.longbit.mx/controller/product.php on line 152
+[04-Nov-2020 21:55:12 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home3/longbit/modapp.longbit.mx/controller/product.php on line 219
+[04-Nov-2020 21:55:12 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home3/longbit/modapp.longbit.mx/controller/product.php on line 260
+[04-Nov-2020 21:55:12 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home3/longbit/modapp.longbit.mx/controller/product.php on line 376
