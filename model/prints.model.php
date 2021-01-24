@@ -78,6 +78,24 @@ class modelPrints {
 
     }
 
+    public function mdlAllPrint($idProduct) {
+
+        $db = new Connection();
+
+        $connection = $db -> get_connection();
+
+        $sql = "SELECT prints.id_print, prints.printName, prints.printColors FROM product_print LEFT JOIN prints ON product_print.id_print = prints.id_print WHERE product_print.id_product = :idProduct";
+
+        $statement = $connection -> prepare($sql);
+
+        $statement -> bindParam(':idProduct', $idProduct);
+
+        $statement -> execute();
+
+        return ($statement->rowCount() > 0) ? $statement->fetchAll(PDO::FETCH_ASSOC) : false;
+        
+    }
+
     public function mdlInfoPrint($idPrint) {
         
         $db = new Connection();

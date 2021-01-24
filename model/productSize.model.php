@@ -56,6 +56,25 @@ class modelProductSize {
 
         return ($statement->rowCount() > 0) ? $statement->fetchAll(PDO::FETCH_ASSOC) : false;
     }
+
+    public function mdlAllSizes($idProduct) {
+
+        $db = new Connection();
+
+        $connection = $db -> get_connection();
+
+        $sql = "SELECT sizes.id_size, sizes.size FROM product_size LEFT JOIN sizes ON product_size.id_size = sizes.id_size WHERE product_size.id_product = :idProduct";
+
+        $statement = $connection -> prepare($sql);
+
+        $statement -> bindParam(':idProduct', $idProduct);
+        
+        $statement -> execute();
+
+        return ($statement->rowCount() > 0) ? $statement->fetchAll(PDO::FETCH_ASSOC) : false;
+    
+    }
+
 }
 
 ?>

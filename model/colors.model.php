@@ -94,6 +94,23 @@ class modelColors {
         return ($statement->rowCount() > 0) ? $statement->fetchAll(PDO::FETCH_ASSOC) : false;
     }
 
+    public function mdlAllColors($idProduct) {
+
+        $db = new Connection();
+
+        $connection = $db -> get_connection();
+
+        $sql = "SELECT colors.id_color, colors.colorName, colors.hex FROM product_color LEFT JOIN colors ON product_color.id_color = colors.id_color WHERE product_color.id_product = :idProduct";
+
+        $statement = $connection -> prepare($sql);
+
+        $statement -> bindParam(':idProduct', $idProduct);
+        $statement -> execute();
+
+        return ($statement->rowCount() > 0) ? $statement->fetchAll(PDO::FETCH_ASSOC) : false;
+
+    }
+
     public function mdlIdColor() {
         
         $db = new Connection();
@@ -148,5 +165,7 @@ class modelColors {
         return ($statement->rowCount() > 0) ? true : false;
         
     }
+
 }
+
 ?>

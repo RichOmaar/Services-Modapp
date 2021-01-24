@@ -88,7 +88,9 @@ class modelLabelSeason {
         $statement -> execute();
 
         return ($statement->rowCount() > 0) ? $statement->fetchAll(PDO::FETCH_ASSOC) : false;
+    
     }
+
 }
 
 ?>

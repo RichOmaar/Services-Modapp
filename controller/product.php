@@ -11,6 +11,10 @@ include '../model/storeProduct.model.php';
 include '../model/features.model.php';
 include '../model/articleFeatures.model.php';
 include '../model/productsImages.model.php';
+include '../model/category.model.php';
+include '../model/gender.model.php';
+include '../model/body.model.php';
+include '../model/labelSeason.model.php';
 
 //$idClient = $_POST['idClient'];
 $action = $_POST['action'];
@@ -490,21 +494,6 @@ switch($action) {
                                 $priceDiscount = NULL;
 
                             }
-        /*
-                            echo json_encode($productName);
-                            echo json_encode($price);
-                            echo json_encode($avgDiscount);
-                            echo json_encode($priceDiscount);
-                            echo json_encode($idCategory);
-                            echo json_encode($idGender);
-                            echo json_encode($idBody);
-                            echo json_encode($labelStyle);
-                            echo json_encode($labelOccasion);
-                            echo json_encode($idLabelSeason);
-                            echo json_encode($idClient);
-                            echo json_encode($idMeasurement);
-                            echo json_encode($articleTypeName);
-        */
 
                             if(strlen($productName) > 0 && strlen($price) > 0 && strlen($idCategory) > 0 && strlen($idGender) > 0 && strlen($idBody) > 0 && strlen($labelStyle) > 0 && strlen($labelOccasion) > 0 && strlen($idLabelSeason) > 0 && strlen($idClient) > 0 && strlen($articleTypeName) > 0) {
 
@@ -1309,7 +1298,278 @@ switch($action) {
     break;
 
     case 'product':
-        
+
+        $idProduct = $_POST['idProduct'];
+        $arrayGeneralProductInfo = array();
+        $arrayLabel = array();
+        $arrayPrice = array();
+        $arrayImage = array();
+        $arrayColor = array();
+        $arrayPrint = array();
+        $arraySize = array();
+
+        if(strlen($idProduct) > 0) {
+
+            $product = new modelProduct();
+
+            $getIds = $product -> mdlInfoProduct($idProduct);
+
+            $idCategory = $getIds[0]['id_category'];
+            
+            if(!$idCategory) {
+
+                $response = new Response(array('status' => Constants::BAD_RESPONSE, 'message' => Constants::BAD_RESPONSE));
+
+                echo json_encode($response, JSON_UNESCAPED_UNICODE);
+
+            } else {
+                
+                $caterogy = new modelCategory();
+
+                $dataCategory = $caterogy -> mdlGeneralInfoCategory($idCategory);
+
+                if(!$dataCategory) {
+
+                    $response = new Response(array('status' => Constants::BAD_RESPONSE, 'message' => Constants::BAD_RESPONSE));
+
+                    echo json_encode($response, JSON_UNESCAPED_UNICODE);
+
+                } else{
+
+                    echo json_encode($dataCategory);
+
+                }
+
+            }
+
+            $idGender = $getIds[0]['id_gender'];
+
+            if(!$idGender) {
+
+                $response = new Response(array('status' => Constants::BAD_RESPONSE, 'message' => Constants::BAD_RESPONSE));
+
+                echo json_encode($response, JSON_UNESCAPED_UNICODE);
+
+            } else {
+                
+                $gender = new modelGender();
+            
+                $dataGender = $gender -> mdlInfoGender($idGender);
+
+                if(!$dataGender) {
+
+                    $response = new Response(array('status' => Constants::BAD_RESPONSE, 'message' => Constants::BAD_RESPONSE));
+
+                    echo json_encode($response, JSON_UNESCAPED_UNICODE);
+
+                } else{
+
+                    echo json_encode($dataGender);
+
+                }
+
+            }
+
+            $idBody = $getIds[0]['id_body'];
+
+            if(!$idBody) {
+
+                $response = new Response(array('status' => Constants::BAD_RESPONSE, 'message' => Constants::BAD_RESPONSE));
+
+                echo json_encode($response, JSON_UNESCAPED_UNICODE);
+
+            } else {
+                
+                $body = new modelBody();
+            
+                $dataBody = $body -> mdlInfoBody($idBody);
+
+                if(!$dataBody) {
+
+                    $response = new Response(array('status' => Constants::BAD_RESPONSE, 'message' => Constants::BAD_RESPONSE));
+
+                    echo json_encode($response, JSON_UNESCAPED_UNICODE);
+
+                } else{
+
+                    echo json_encode($dataBody);
+
+                }
+
+            }
+
+            $arrayGeneralProductInfo[0]['idProduct'] = $getIds[0]['id_product']; 
+            $arrayGeneralProductInfo[0]['productName'] = $getIds[0]['productName']; 
+            $arrayGeneralProductInfo[0]['articleTypeName'] = $getIds[0]['articleTypeName'];
+
+            echo json_encode($arrayGeneralProductInfo);
+
+            $idLabelSeason = $getIds[0]['id_labelSeason'];
+
+            if(!$idLabelSeason) {
+
+                $response = new Response(array('status' => Constants::BAD_RESPONSE, 'message' => Constants::BAD_RESPONSE));
+
+                echo json_encode($response, JSON_UNESCAPED_UNICODE);
+
+            } else {
+                
+                $labelSeason = new modelLabelSeason();
+            
+                $dataSeason = $labelSeason -> mdlInfoLabelSeason($idLabelSeason);
+
+                if(!$dataGender) {
+
+                    $response = new Response(array('status' => Constants::BAD_RESPONSE, 'message' => Constants::BAD_RESPONSE));
+
+                    echo json_encode($response, JSON_UNESCAPED_UNICODE);
+
+                } else{
+
+
+                    $arrayLabel['labelStyle'] = $getIds[0]['labelStyle'];
+                    $arrayLabel['labelOccasion'] = $getIds[0]['labelOccasion'];
+                    $arrayLabel['labelSeason'] = $dataSeason[0]['seasonName'];
+
+                    echo json_encode($dataSeason);
+
+                }
+
+            }
+
+            $price = $getIds[0]['price'];
+            $avgDiscount = $getIds[0]['avgDiscount'];
+            $priceDiscount =  $getIds[0]['priceDiscount'];
+
+            if($avgDiscount == NULL) {
+
+                $finalPrice = $price - $priceDiscount;
+
+                $arrayPrice['price'] = $price;
+                $arrayPrice['avgDiscount'] = $avgDiscount;
+                $arrayPrice['priceDiscount'] = $priceDiscount;
+                $arrayPrice['finalPrice'] = $finalPrice;
+
+                echo json_encode($arrayPrice);
+
+            } else {
+
+                $aux = ($avgDiscount/100)*$price;
+
+                $finalPrice = $price - $aux;
+
+                $arrayPrice['price'] = $price;
+                $arrayPrice['avgDiscount'] = $avgDiscount;
+                $arrayPrice['priceDiscount'] = $priceDiscount;
+                $arrayPrice['finalPrice'] = $finalPrice;
+                
+                echo json_encode($arrayPrice);
+
+            }
+
+        } else {
+                    
+            $response = new Response(array('status' => Constants::BAD_RESPONSE, 'message' => Constants::BAD_RESPONSE_DESCRIPTION));
+
+            echo json_encode($response, JSON_UNESCAPED_UNICODE);
+            
+        }
+
+        $productImage = new modelProductsImages();
+
+        $dataImageProduct = $productImage -> mdlGeneralInfoProducImage($idProduct);
+
+        if(!$dataImageProduct) {
+
+            $response = new Response(array('status' => Constants::BAD_RESPONSE, 'message' => Constants::BAD_RESPONSE));
+
+            echo json_encode($response, JSON_UNESCAPED_UNICODE);
+
+        } else {
+
+            foreach($dataImageProduct as $key => $value){
+
+                $arrayImage[$key]['images']['idImage'] = $dataImageProduct[$key]['id_productImage'];
+                $arrayImage[$key]['images']['url'] = $dataImageProduct[$key]['imageUrl'];
+                $arrayImage[$key]['images']['order'] = $dataImageProduct[$key]['ordering'];
+
+            }
+
+            echo json_encode($arrayImage);
+
+        }
+
+        $colors = new modelColors();
+
+        $dataColors = $colors -> mdlAllColors($idProduct);
+
+        if(!$dataColors) {
+
+            $response = new Response(array('status' => Constants::BAD_RESPONSE, 'message' => Constants::BAD_RESPONSE));
+
+            echo json_encode($response, JSON_UNESCAPED_UNICODE);
+
+        } else {
+
+            foreach($dataColors as $key => $value){
+
+                $arrayColor[$key]['colors']['idColor'] = $dataColors[$key]['id_color'];
+                $arrayColor[$key]['colors']['colorName'] = $dataColors[$key]['colorName'];
+                $arrayColor[$key]['colors']['hex'] = $dataColors[$key]['hex'];
+
+            }
+
+            echo json_encode($arrayColor);
+
+        }
+
+        $print = new modelPrints();
+
+        $dataPrint = $print -> mdlAllPrint($idProduct);
+
+        if(!$dataPrint) {
+
+            $response = new Response(array('status' => Constants::BAD_RESPONSE, 'message' => Constants::BAD_RESPONSE));
+
+            echo json_encode($response, JSON_UNESCAPED_UNICODE);
+
+        } else {
+
+            foreach($dataPrint as $key => $value){
+
+                $arrayPrint[$key]['prints']['idPrint'] = $dataPrint[$key]['id_print'];
+                $arrayPrint[$key]['prints']['printName'] = $dataPrint[$key]['printName'];
+                $arrayPrint[$key]['prints']['printColors'] = $dataPrint[$key]['printColors'];
+
+            }
+
+            echo json_encode($arrayPrint);
+
+        }
+
+        $sizes = new modelProductSize();
+
+        $dataSize = $sizes -> mdlAllSizes($idProduct);
+
+        if(!$dataSize) {
+
+            $response = new Response(array('status' => Constants::BAD_RESPONSE, 'message' => Constants::BAD_RESPONSE));
+
+            echo json_encode($response, JSON_UNESCAPED_UNICODE);
+
+        } else {
+
+            foreach($dataSize as $key => $value){
+
+                $arraySize[$key]['sizes']['idSize'] = $dataSize[$key]['id_size'];
+                $arraySize[$key]['sizes']['size'] = $dataSize[$key]['size'];
+
+            }
+
+            echo json_encode($arraySize);
+
+        }
+
     break;
 
     default:
